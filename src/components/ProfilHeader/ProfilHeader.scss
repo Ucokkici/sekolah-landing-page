@@ -1,0 +1,48 @@
+.profil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 30px;
+
+  .contact-info {
+    display: flex;
+    gap: 20px;
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 10px;
+
+    a {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #3730a3;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}

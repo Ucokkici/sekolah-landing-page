@@ -1,0 +1,1468 @@
+// Variabel Warna & Tema
+$primary-color: #3b82f6;
+$secondary-color: #9333ea;
+$accent-color: #ec4899;
+$text-color: #1f2937;
+$text-light: #6b7280;
+$bg-gradient-start: #fdf2f8; // Pink muda
+$bg-gradient-end: #e0e7ff; // Biru muda
+$card-bg: rgba(255, 255, 255, 0.95);
+$card-border: #e5e7eb;
+
+// Mixins untuk Efek
+@mixin card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@mixin card-shadow-hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+// Komponen Utama
+.about-section {
+  position: relative;
+  overflow: hidden;
+  // Latar belakang statis yang elegan
+
+  padding: 5rem 1rem;
+
+  &__rings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &__bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  &__bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+  }
+
+  &__bubble--1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: -150px;
+  }
+
+  &__bubble--2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+  }
+
+  &__particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  &__particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  // --- Hero Header ---
+  &__hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    &-icon {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      .icon-container {
+        width: 6rem;
+        height: 6rem;
+        background: linear-gradient(
+          to bottom right,
+          $primary-color,
+          $secondary-color
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include card-shadow;
+        svg {
+          width: 3rem;
+          height: 3rem;
+          color: white;
+        }
+      }
+    }
+    &-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: $text-color;
+      margin-bottom: 1rem;
+      @media (min-width: 768px) {
+        font-size: 3.75rem;
+      }
+      .highlight {
+        color: $primary-color;
+      }
+    }
+    &-description {
+      font-size: 1.25rem;
+      color: $text-color;
+      max-width: 42rem;
+      margin: 0 auto;
+    }
+  }
+
+  // --- Stats Grid ---
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  &__stat-card {
+    background-color: $card-bg;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid $card-border;
+    @include card-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: translateY(-5px);
+      @include card-shadow-hover;
+    }
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: $primary-color;
+      margin: 0 auto 0.75rem;
+    }
+    .value {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: $text-color;
+      margin-bottom: 0.25rem;
+    }
+    .label {
+      font-size: 0.875rem;
+      color: $text-light;
+    }
+  }
+
+  // --- Tab Navigation ---
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  &__tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    &--active {
+      background: linear-gradient(to right, $primary-color, $secondary-color);
+      color: white;
+      @include card-shadow;
+      transform: scale(1.05);
+    }
+    &--inactive {
+      background-color: $card-bg;
+      color: $text-color;
+      border-color: $card-border;
+      &:hover {
+        background-color: #f9fafb;
+        transform: translateY(-2px);
+      }
+    }
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  // --- Tab Content ---
+  // Latar belakang tab konten dihapus agar desain lebih terbuka
+
+  // Gaya Umum untuk Konten Tab
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $text-color;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    // ⭐ Tambahkan ini untuk menata ikon dan teks
+    display: flex;
+    align-items: center;
+    justify-content: center; // Pusatkan konten flex
+    gap: 0.75rem; // Beri jarak antara ikon dan teks
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      color: $primary-color;
+    }
+  }
+
+  // --- TAMBAHKAN GAYA BARU UNTUK ALTERNATING FEATURE SECTION ---
+  .profile-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-top: 3rem;
+    padding: 0 1rem;
+  }
+
+  .profile-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    opacity: 0; // Untuk animasi scroll
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    // Animasi saat item muncul
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    // Gaya untuk item genap (ikon di kiri, teks di kanan)
+    &--even {
+      flex-direction: row;
+      text-align: left;
+
+      .profile-icon {
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
+        animation: float-left 3s ease-in-out infinite;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: -3px;
+          border-radius: 22px;
+          background: linear-gradient(135deg, $primary-color, $secondary-color);
+          opacity: 0;
+          z-index: -1;
+          transition: opacity 0.4s ease;
+        }
+
+        &:hover::before {
+          opacity: 0.3;
+          animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+      }
+
+      .profile-text {
+        animation: slide-in-right 0.8s ease-out;
+      }
+    }
+
+    // Gaya untuk item ganjil (ikon di kanan, teks di kiri)
+    &--odd {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      .profile-icon {
+        background: linear-gradient(135deg, $secondary-color, $accent-color);
+        animation: float-right 3s ease-in-out infinite;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: -3px;
+          border-radius: 22px;
+          background: linear-gradient(135deg, $secondary-color, $accent-color);
+          opacity: 0;
+          z-index: -1;
+          transition: opacity 0.4s ease;
+        }
+
+        &:hover::before {
+          opacity: 0.3;
+          animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+      }
+
+      .profile-text {
+        animation: slide-in-left 0.8s ease-out;
+      }
+    }
+
+    // Hover effect pada seluruh item
+    &:hover {
+      .profile-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+
+      .profile-text h3 {
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .profile-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+
+    // Efek shine/glossy
+    &::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+      );
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+    }
+
+    &:hover::after {
+      left: 100%;
+    }
+
+    svg {
+      width: 55px;
+      height: 55px;
+      color: white;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    &:hover svg {
+      transform: scale(1.15) rotate(-5deg);
+    }
+  }
+
+  .profile-text {
+    flex: 1;
+    transition: transform 0.3s ease;
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: $text-color;
+      margin-bottom: 0.75rem;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+
+      // Underline animasi
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        border-radius: 2px;
+        transition: width 0.4s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: $text-light;
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+      transition: color 0.3s ease;
+    }
+
+    &:hover p {
+      color: darken($text-light, 10%);
+    }
+  }
+
+  // Animasi Keyframes
+  @keyframes float-left {
+    0%,
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-10px) translateY(-10px);
+    }
+  }
+
+  @keyframes float-right {
+    0%,
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(10px) translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  // Responsivitas untuk Profile Feature
+  @media (max-width: 1024px) {
+    .profile-feature-item {
+      gap: 3rem;
+    }
+
+    .profile-icon {
+      width: 100px;
+      height: 100px;
+
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    .profile-text h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .profile-feature-list {
+      gap: 3rem;
+      padding: 0;
+    }
+
+    .profile-feature-item {
+      flex-direction: column !important;
+      text-align: center !important;
+      gap: 1.5rem;
+
+      &--even,
+      &--odd {
+        .profile-icon {
+          animation: float-center 3s ease-in-out infinite;
+        }
+
+        .profile-text {
+          animation: fade-in-up 0.8s ease-out;
+        }
+      }
+
+      &:hover .profile-icon {
+        transform: scale(1.1) rotate(0deg);
+      }
+    }
+
+    .profile-icon {
+      width: 90px;
+      height: 90px;
+
+      svg {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .profile-text {
+      h3 {
+        font-size: 1.35rem;
+
+        &::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @keyframes float-center {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .profile-feature-list {
+      gap: 2.5rem;
+    }
+
+    .profile-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .profile-text h3 {
+      font-size: 1.2rem;
+    }
+  }
+// --- History Tab ---
+&__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding-left: 2rem;
+
+  // Garis vertikal timeline
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, $primary-color, $secondary-color, $accent-color);
+    border-radius: 2px;
+  }
+}
+
+&__timeline-item {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border-radius: 1rem;
+  padding: 2rem;
+  border-left: 4px solid $primary-color;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+
+  // Efek glossy overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $primary-color, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateX(10px) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-left-width: 6px;
+
+    &::before {
+      opacity: 1;
+    }
+
+    .timeline-header .year-badge {
+      transform: scale(1.15) rotate(360deg);
+      box-shadow: 0 8px 20px rgba($primary-color, 0.4);
+    }
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .year-badge {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+
+      // Ring effect
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid rgba($primary-color, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: $text-color;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        transition: width 0.4s ease;
+      }
+    }
+  }
+
+  &:hover .timeline-header {
+    .year-badge::before {
+      opacity: 1;
+    }
+
+    h3::after {
+      width: 100%;
+    }
+  }
+
+  p {
+    color: $text-color;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+  }
+}
+
+// --- Vision & Mission Tab ---
+&__vision-content {
+  background: linear-gradient(135deg, #dbeafe, #e9d5ff);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  @include card-shadow;
+  transition: all 0.4s ease;
+  overflow: hidden;
+
+  // Animated border gradient
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.25rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $text-color;
+    line-height: 1.9;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+&__mission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+&__mission-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+
+  // Shine effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+  }
+
+  &:hover {
+    transform: translateX(15px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: $primary-color;
+
+    &::after {
+      right: 100%;
+      opacity: 1;
+    }
+
+    .number-badge {
+      transform: scale(1.2) rotate(360deg);
+      box-shadow: 0 8px 20px rgba($primary-color, 0.4);
+    }
+  }
+
+  .number-badge {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+
+    // Glow effect
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      opacity: 0;
+      filter: blur(8px);
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+  }
+
+  &:hover .number-badge::before {
+    opacity: 0.6;
+  }
+
+  p {
+    color: $text-color;
+    padding-top: 0.5rem;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+  }
+}
+
+// --- Structure Tab ---
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  padding: 40px 20px;
+  overflow-x: auto;
+  position: relative;
+
+  // Animated background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 60px;
+  gap: 2.5rem;
+}
+
+.org-node {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border: 2px solid $card-border;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  min-width: 200px;
+  @include card-shadow;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+
+  // Glossy effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.05);
+    @include card-shadow-hover;
+    border-color: $primary-color;
+
+    &::before {
+      left: 100%;
+    }
+
+    h4 {
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin: 0 0 0.75rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-color, $secondary-color);
+      transition: width 0.3s ease;
+    }
+  }
+
+  &:hover h4::after {
+    width: 80%;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $text-color;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  // Gaya khusus untuk node di level tertentu
+  &.top-level {
+    background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+    border: 2px solid $primary-color;
+    box-shadow: 0 8px 30px rgba($primary-color, 0.2);
+
+    h4 {
+      color: $secondary-color;
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      box-shadow: 0 15px 50px rgba($primary-color, 0.3);
+    }
+  }
+
+  &.department-head {
+    border-left: 5px solid $secondary-color;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 10px;
+      height: 10px;
+      background: $secondary-color;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba($secondary-color, 0.6);
+    }
+  }
+
+  &.staff {
+    background: linear-gradient(135deg, #ffffff, #fafafa);
+    border-style: dashed;
+    border-color: #d1d5db;
+
+    p {
+      font-weight: 400;
+      color: $text-light;
+      font-style: italic;
+    }
+  }
+
+  // Node clickable
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-10px) scale(1.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(-5px) scale(1.03);
+    }
+  }
+}
+
+// --- Garis Penghubung (Connector Lines) dengan animasi ---
+.org-level:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, $primary-color, $secondary-color);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba($primary-color, 0.3);
+}
+
+.org-level:not(:first-child) .org-node {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $primary-color, transparent);
+    border-radius: 2px;
+  }
+}
+
+.org-level {
+  .org-node:first-child::before {
+    left: 50%;
+  }
+  .org-node:last-child::before {
+    right: 50%;
+  }
+}
+
+.org-level:has(> .org-node:only-child) .org-node::before {
+  display: none;
+}
+
+// --- Modal Styling ---
+.member-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.member-modal {
+  background-color: white;
+  border-radius: 1.5rem;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    color: white;
+    z-index: 10;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    &:active {
+      transform: rotate(90deg) scale(0.95);
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: white;
+    border-radius: 1.5rem 1.5rem 0 0;
+    position: relative;
+    overflow: hidden;
+
+    // Animated background pattern
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .member-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      margin-right: 25px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .member-basic-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+
+      h2 {
+        margin: 0 0 10px 0;
+        font-size: 28px;
+        font-weight: 700;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 400;
+        opacity: 0.95;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 2.5rem;
+
+    .info-section {
+      margin-bottom: 30px;
+      animation: fadeInUp 0.6s ease backwards;
+
+      &:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h4 {
+        margin: 0 0 18px 0;
+        color: #1a73e8;
+        font-size: 20px;
+        font-weight: 700;
+        border-bottom: 2px solid #e3f2fd;
+        padding-bottom: 10px;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 50px;
+          height: 2px;
+          background: linear-gradient(90deg, #1a73e8, #4fc3f7);
+        }
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.05rem;
+      }
+
+      .info-item {
+        display: flex;
+        margin-bottom: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid #f5f5f5;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #f9fafb;
+          padding-left: 10px;
+        }
+
+        .info-label {
+          font-weight: 600;
+          width: 140px;
+          color: #555;
+          font-size: 0.95rem;
+        }
+
+        .info-value {
+          flex: 1;
+          color: #333;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+// --- Responsivitas ---
+@media (max-width: 1024px) {
+  &__timeline {
+    padding-left: 1.5rem;
+  }
+
+  .org-node {
+    min-width: 160px;
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  &__timeline {
+    padding-left: 1rem;
+    gap: 1.5rem;
+
+    &::before {
+      width: 2px;
+    }
+  }
+
+  &__timeline-item {
+    padding: 1.5rem;
+
+    &:hover {
+      transform: translateX(5px) translateY(-3px);
+    }
+  }
+
+  &__vision-content {
+    padding: 2rem;
+
+    p {
+      font-size: 1.05rem;
+    }
+  }
+
+  &__mission-item {
+    &:hover {
+      transform: translateX(10px) scale(1.01);
+    }
+  }
+
+  .org-chart {
+    padding: 20px 10px;
+  }
+
+  .org-level {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 2rem;
+  }
+
+  .org-node {
+    width: 90%;
+    max-width: 320px;
+    margin-bottom: 1rem;
+  }
+
+  .org-level::after,
+  .org-node::before {
+    display: none;
+  }
+
+  .member-modal {
+    .modal-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+
+      .member-photo {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 110px;
+        height: 110px;
+      }
+
+      .member-basic-info h2 {
+        font-size: 24px;
+      }
+    }
+
+    .modal-body {
+      padding: 2rem;
+
+      .info-item {
+        flex-direction: column;
+
+        .info-label {
+          width: auto;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  &__timeline-item {
+    padding: 1.25rem;
+
+    .timeline-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &__vision-content {
+    padding: 1.5rem;
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  &__mission-item {
+    padding: 1.25rem;
+    gap: 1rem;
+
+    .number-badge {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  .member-modal {
+    border-radius: 1rem;
+
+    .modal-close-button {
+      width: 35px;
+      height: 35px;
+      top: 15px;
+      right: 15px;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+
+      .info-section h4 {
+        font-size: 18px;
+      }
+    }
+  }
+}
+}

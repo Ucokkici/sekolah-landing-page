@@ -1,0 +1,153 @@
+/* Reset dan gaya global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Variabel warna */
+:root {
+  --primary-color: #4f46e5;
+  --secondary-color: #10b981;
+  --dark-color: #1f2937;
+  --light-color: #f9fafb;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+}
+
+.section-header p {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3730a3;
+}
+
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Profil section */
+.profil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 30px;
+}
+
+.profil-header .contact-info {
+  display: flex;
+  gap: 20px;
+}
+
+.profil-header .contact-info .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.profil-header .social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.profil-header .social-links a {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.profil-header .social-links a:hover {
+  background-color: #3730a3;
+}
+
+.profil-navigation {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.profil-navigation .nav-item {
+  padding: 8px 15px;
+  background-color: white;
+  border-radius: 5px;
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.profil-navigation .nav-item:hover,
+.profil-navigation .nav-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}

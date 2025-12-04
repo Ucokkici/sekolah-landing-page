@@ -1,0 +1,695 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+
+$primary-color: #4e73df;
+$secondary-color: #36b9cc;
+$accent-color: #ff6b6b;
+$text-color: #1e293b;
+$text-light: #64748b;
+$bg-light: #f8fafc;
+$card-bg: #ffffff;
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
+
+.testimonials {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+
+  // Animated background decoration
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 15% 20%,
+        rgba(78, 115, 223, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 85% 80%,
+        rgba(54, 185, 204, 0.05) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+    animation: background-pulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes background-pulse {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  // Floating shapes decoration
+  &::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(
+      135deg,
+      rgba(78, 115, 223, 0.1),
+      rgba(54, 185, 204, 0.1)
+    );
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float-shape 10s ease-in-out infinite;
+  }
+
+  @keyframes float-shape {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-30px, -30px);
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: header-fade-in 1s ease-out;
+
+    @keyframes header-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: $text-color;
+      letter-spacing: -1px;
+      position: relative;
+      display: inline-block;
+
+      // Gradient text effect
+      background: linear-gradient(135deg, $text-color, $primary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        border-radius: 3px;
+        box-shadow: 0 4px 15px rgba(78, 115, 223, 0.4);
+        animation: glow-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes glow-pulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 15px rgba(78, 115, 223, 0.4);
+        }
+        50% {
+          box-shadow: 0 4px 25px rgba(78, 115, 223, 0.7);
+        }
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $text-light;
+      margin-top: 25px;
+      letter-spacing: 0.3px;
+      font-weight: 400;
+    }
+  }
+
+  &__slider {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+
+    .control-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid $primary-color;
+      background: linear-gradient(135deg, $card-bg, $bg-light);
+      color: $primary-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: $shadow-sm;
+      position: relative;
+      overflow: hidden;
+
+      // Ripple effect background
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        border-radius: 50%;
+      }
+
+      svg {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        transform: scale(1.15);
+        border-color: $secondary-color;
+        box-shadow: 0 8px 25px rgba(78, 115, 223, 0.4);
+
+        &::before {
+          opacity: 1;
+        }
+
+        svg {
+          color: white;
+          transform: scale(1.1);
+        }
+      }
+
+      &:active {
+        transform: scale(1.05);
+      }
+
+      &.swiper-button-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+    :global(.swiper-pagination-bullet) {
+      width: 12px;
+      height: 12px;
+      background: $text-light;
+      opacity: 0.3;
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        transition: all 0.4s ease;
+      }
+
+      &:hover {
+        opacity: 0.6;
+        transform: scale(1.2);
+      }
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      opacity: 1;
+      width: 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 15px rgba(78, 115, 223, 0.5);
+
+      &::before {
+        border-color: $primary-color;
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+.testimonial-card {
+  background: linear-gradient(135deg, $card-bg, #fafbff);
+  border-radius: 24px;
+  padding: 50px 40px;
+
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid transparent;
+
+  &__quote {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 60px;
+    color: $primary-color;
+    opacity: 0.15;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+
+    svg {
+      filter: drop-shadow(0 4px 10px rgba(78, 115, 223, 0.3));
+    }
+  }
+
+  &__content {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: $text-color;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    font-style: italic;
+
+    &::before,
+    &::after {
+      content: '"';
+      font-size: 2rem;
+      color: $primary-color;
+      opacity: 0.4;
+      font-family: Georgia, serif;
+    }
+
+    &::before {
+      margin-right: 8px;
+    }
+
+    &::after {
+      margin-left: 8px;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+
+    .author-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid $primary-color;
+      box-shadow: 0 8px 20px rgba(78, 115, 223, 0.3),
+        inset 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+
+      // Glow effect
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
+        opacity: 0;
+        filter: blur(15px);
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      &:hover {
+        transform: scale(1.1) rotate(5deg);
+        border-color: $secondary-color;
+
+        &::before {
+          opacity: 0.7;
+        }
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .author-info {
+      flex: 1;
+
+      h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0 0 6px 0;
+        letter-spacing: -0.3px;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, $primary-color, $secondary-color);
+          transition: width 0.4s ease;
+        }
+      }
+
+      p {
+        font-size: 0.95rem;
+        color: $text-light;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+    }
+  }
+
+  &:hover &__author .author-info h4::after {
+    width: 100%;
+  }
+}
+
+// Swiper customization
+.testimonial-swiper {
+  padding: 20px 0 40px;
+
+  :global(.swiper-slide) {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .testimonials {
+    padding: 80px 0;
+
+    .section-header {
+      margin-bottom: 50px;
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__controls {
+      gap: 25px;
+      margin-top: 40px;
+    }
+  }
+
+  .testimonial-card {
+    padding: 40px 35px;
+
+    &__content {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    &__author {
+      .author-image {
+        width: 65px;
+        height: 65px;
+      }
+
+      .author-info h4 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 60px 0;
+
+    .section-header {
+      margin-bottom: 40px;
+
+      h2 {
+        font-size: 2rem;
+
+        &::after {
+          width: 80px;
+          height: 4px;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        margin-top: 20px;
+      }
+    }
+
+    &__slider {
+      max-width: 100%;
+    }
+
+    &__controls {
+      gap: 20px;
+      margin-top: 35px;
+
+      .control-btn {
+        width: 45px;
+        height: 45px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    &__pagination {
+      gap: 8px;
+
+      :global(.swiper-pagination-bullet) {
+        width: 10px;
+        height: 10px;
+      }
+
+      :global(.swiper-pagination-bullet-active) {
+        width: 25px;
+      }
+    }
+  }
+
+  .testimonial-card {
+    padding: 35px 25px;
+    border-radius: 20px;
+
+    &__quote {
+      font-size: 50px;
+      top: 25px;
+      left: 25px;
+    }
+
+    &__content {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+
+      &::before,
+      &::after {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__author {
+      gap: 15px;
+
+      .author-image {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+      }
+
+      .author-info {
+        h4 {
+          font-size: 1.1rem;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials {
+    padding: 40px 0;
+
+    .section-header {
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 1.75rem;
+
+        &::after {
+          width: 60px;
+          height: 3px;
+          bottom: -10px;
+        }
+      }
+
+      p {
+        font-size: 0.95rem;
+        margin-top: 18px;
+      }
+    }
+
+    &__controls {
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+
+      .control-btn {
+        width: 40px;
+        height: 40px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    &__pagination {
+      width: 100%;
+      order: -1;
+      margin-bottom: 15px;
+
+      :global(.swiper-pagination-bullet) {
+        width: 8px;
+        height: 8px;
+      }
+
+      :global(.swiper-pagination-bullet-active) {
+        width: 20px;
+      }
+    }
+  }
+
+  .testimonial-card {
+    padding: 30px 20px;
+    border-radius: 18px;
+
+    &__quote {
+      font-size: 40px;
+      top: 20px;
+      left: 20px;
+      opacity: 0.1;
+    }
+
+    &__content {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+
+      &::before,
+      &::after {
+        font-size: 1.3rem;
+      }
+
+      &::before {
+        margin-right: 5px;
+      }
+
+      &::after {
+        margin-left: 5px;
+      }
+    }
+
+    &__author {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+
+      .author-image {
+        width: 55px;
+        height: 55px;
+
+        &:hover {
+          transform: scale(1.08) rotate(0deg);
+        }
+      }
+
+      .author-info {
+        h4 {
+          font-size: 1rem;
+          margin-bottom: 4px;
+
+          &::after {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .testimonial-swiper {
+    padding: 15px 0 30px;
+  }
+}

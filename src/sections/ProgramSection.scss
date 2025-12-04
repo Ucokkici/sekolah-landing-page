@@ -1,0 +1,997 @@
+.programs-simple {
+  padding: 100px 0;
+  position: relative;
+
+  // Animated background decoration
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 10% 20%,
+        rgba(78, 115, 223, 0.03) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(54, 185, 204, 0.03) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: #1e293b;
+      position: relative;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+
+      // ❌ HAPUS gradient text
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      background-clip: unset;
+
+      // ✔ Responsif seperti title modern
+      @media (min-width: 768px) {
+        font-size: 3.75rem;
+      }
+
+      // ✔ Tambahkan highlight kalau butuh
+      .highlight {
+        color: #4e73df;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90px;
+        height: 4px;
+
+        background: #4e73df;
+        box-shadow: none;
+        animation: none;
+
+        border-radius: 3px;
+      }
+    }
+  }
+
+  // Layout Flexbox untuk 1 baris dengan 4 kartu
+  .programs-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .program-card-simple {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      width: calc(25% - 1.5rem);
+      min-width: 280px;
+      position: relative;
+      border: 2px solid transparent;
+
+      // Animated border gradient
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 2px;
+        background: linear-gradient(135deg, #4e73df, #36b9cc, #ff6b6b);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      &:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(78, 115, 223, 0.25);
+
+        &::before {
+          opacity: 1;
+        }
+
+        .card-image {
+          &::after {
+            opacity: 0.3;
+          }
+
+          img {
+            transform: scale(1.15) rotate(2deg);
+          }
+        }
+
+        .card-content {
+          .card-icon {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(78, 115, 223, 0.5);
+          }
+
+          h3 {
+            background: linear-gradient(135deg, #4e73df, #36b9cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        }
+      }
+
+      .card-image {
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+
+        // Overlay gradient
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(78, 115, 223, 0.5) 100%
+          );
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+      }
+
+      .card-content {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        // Decorative element
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 30px;
+          right: 30px;
+          height: 3px;
+          background: linear-gradient(90deg, #4e73df, #36b9cc);
+          border-radius: 2px;
+          opacity: 0;
+          transform: scaleX(0);
+          transition: all 0.5s ease;
+        }
+
+        .card-icon {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, #4e73df, #36b9cc);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          box-shadow: 0 8px 20px rgba(78, 115, 223, 0.3);
+          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+
+          // Glow effect
+          &::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4e73df, #36b9cc);
+            opacity: 0;
+            filter: blur(12px);
+            transition: opacity 0.5s ease;
+            z-index: -1;
+          }
+
+          svg {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+          }
+        }
+
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 15px;
+          color: #1e293b;
+          font-weight: 700;
+          transition: all 0.4s ease;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4e73df, #36b9cc);
+            transition: width 0.4s ease;
+          }
+        }
+
+        p {
+          color: #64748b;
+          margin-bottom: 25px;
+          flex-grow: 1;
+          line-height: 1.8;
+          font-size: 1rem;
+          letter-spacing: 0.2px;
+        }
+
+        .card-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #4e73df, #36b9cc);
+          color: white;
+          border: none;
+          padding: 14px 24px;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          z-index: 10;
+          overflow: hidden;
+          box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
+
+          // Shine effect
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.4),
+              transparent
+            );
+            transition: left 0.6s ease;
+          }
+
+          // Ripple effect container
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.6s ease;
+          }
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 115, 223, 0.5);
+
+            &::before {
+              left: 100%;
+            }
+          }
+
+          &:active::after {
+            transform: scale(1);
+            opacity: 1;
+            transition: all 0s;
+          }
+
+          svg {
+            transition: transform 0.3s ease;
+          }
+
+          &:hover svg {
+            transform: translateX(5px);
+          }
+        }
+      }
+
+      // Hover effect untuk card content
+      &:hover .card-content {
+        &::before {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+        .card-icon::before {
+          opacity: 0.6;
+        }
+
+        h3::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Responsive untuk tampilan mobile
+@media (max-width: 1200px) {
+  .programs-simple {
+    padding: 80px 0;
+
+    .container h2 {
+      font-size: 2.4rem;
+    }
+
+    .programs-grid {
+      gap: 1.75rem;
+
+      .program-card-simple {
+        width: calc(33.333% - 1.17rem);
+        min-width: 260px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .programs-simple {
+    .programs-grid {
+      .program-card-simple {
+        width: calc(50% - 1rem);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .programs-simple {
+    padding: 60px 0;
+
+    .container {
+      padding: 0 15px;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    .programs-grid {
+      flex-direction: column;
+      gap: 2rem;
+
+      .program-card-simple {
+        width: 100%;
+        margin-bottom: 0;
+
+        &:hover {
+          transform: translateY(-8px) scale(1.01);
+        }
+      }
+    }
+  }
+}
+
+// Modal styles
+.kompetensi-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .kompetensi-modal {
+    background-color: white;
+    border-radius: 24px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    animation: slideUpModal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    @keyframes slideUpModal {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 0 24px 24px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #4e73df, #36b9cc);
+      border-radius: 4px;
+
+      &:hover {
+        background: linear-gradient(180deg, #3b5bc7, #2a9eb0);
+      }
+    }
+
+    .modal-close-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      cursor: pointer;
+      color: #1e293b;
+      z-index: 10;
+      padding: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 45px;
+      height: 45px;
+
+      &:hover {
+        transform: rotate(90deg) scale(1.1);
+        background: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+      }
+
+      &:active {
+        transform: rotate(90deg) scale(0.95);
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      padding: 40px;
+      background: linear-gradient(135deg, #4e73df, #36b9cc);
+      color: white;
+      border-radius: 24px 24px 0 0;
+      position: relative;
+      overflow: hidden;
+
+      // Animated background pattern
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        animation: pattern-move 20s linear infinite;
+      }
+
+      @keyframes pattern-move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 60px 60px;
+        }
+      }
+
+      .program-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+          transform: scale(1.1) rotate(10deg);
+        }
+
+        svg {
+          width: 40px;
+          height: 40px;
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+        }
+      }
+
+      .program-info {
+        position: relative;
+        z-index: 1;
+
+        h2 {
+          margin: 0 0 10px 0;
+          font-size: 28px;
+          font-weight: 700;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+          margin: 0;
+          opacity: 0.95;
+          font-size: 16px;
+          text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 40px;
+
+      .kompetensi-category {
+        margin-bottom: 35px;
+        animation: fadeInUp 0.6s ease backwards;
+
+        &:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .category-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          color: #4e73df;
+          padding: 12px 0;
+          border-bottom: 2px solid #e2e8f0;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #4e73df, #36b9cc);
+          }
+
+          svg {
+            margin-right: 12px;
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 2px 4px rgba(78, 115, 223, 0.3));
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+
+        .kompetensi-list {
+          .kompetensi-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+
+            // Hover shine effect
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(78, 115, 223, 0.1),
+                transparent
+              );
+              transition: left 0.6s ease;
+            }
+
+            &:hover {
+              transform: translateX(10px);
+              box-shadow: 0 4px 20px rgba(78, 115, 223, 0.15);
+              border-color: #4e73df;
+
+              &::before {
+                left: 100%;
+              }
+
+              .kompetensi-id {
+                background: linear-gradient(135deg, #4e73df, #36b9cc);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+              }
+            }
+
+            .kompetensi-id {
+              font-weight: 700;
+              color: #4e73df;
+              margin-right: 20px;
+              min-width: 150px;
+              font-size: 0.95rem;
+              letter-spacing: 0.3px;
+              transition: all 0.3s ease;
+            }
+
+            .kompetensi-nama {
+              color: #1e293b;
+              line-height: 1.6;
+              font-size: 0.95rem;
+            }
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 30px 40px 40px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border-radius: 0 0 24px 24px;
+
+      .skills-summary {
+        h4 {
+          margin: 0 0 20px 0;
+          color: #1e293b;
+          font-size: 20px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          &::before {
+            content: "";
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #4e73df, #36b9cc);
+            border-radius: 2px;
+          }
+        }
+
+        .skills-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+
+          .skill-tag {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+            &:hover {
+              transform: translateY(-3px) scale(1.05);
+              border-color: #4e73df;
+              box-shadow: 0 6px 20px rgba(78, 115, 223, 0.2);
+              background: linear-gradient(135deg, #f8fafc, #ffffff);
+            }
+
+            svg {
+              color: #4e73df;
+              margin-right: 8px;
+              width: 18px;
+              height: 18px;
+              transition: transform 0.3s ease;
+            }
+
+            &:hover svg {
+              transform: rotate(360deg);
+            }
+
+            span {
+              font-size: 14px;
+              font-weight: 600;
+              color: #1e293b;
+              letter-spacing: 0.2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive untuk modal
+@media (max-width: 768px) {
+  .kompetensi-modal-overlay {
+    padding: 15px;
+  }
+
+  .kompetensi-modal {
+    border-radius: 20px;
+
+    .modal-close-button {
+      width: 40px;
+      height: 40px;
+      top: 15px;
+      right: 15px;
+      padding: 10px;
+    }
+
+    .modal-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
+
+      .program-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 70px;
+        height: 70px;
+
+        svg {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      .program-info {
+        h2 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 30px 20px;
+
+      .kompetensi-category {
+        margin-bottom: 25px;
+
+        .category-header {
+          h3 {
+            font-size: 18px;
+          }
+        }
+
+        .kompetensi-item {
+          flex-direction: column;
+          padding: 12px;
+
+          &:hover {
+            transform: translateX(5px);
+          }
+
+          .kompetensi-id {
+            margin-right: 0;
+            margin-bottom: 8px;
+            min-width: auto;
+          }
+
+          .kompetensi-nama {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 25px 20px 30px;
+
+      .skills-summary {
+        h4 {
+          font-size: 18px;
+        }
+
+        .skills-list {
+          gap: 10px;
+
+          .skill-tag {
+            padding: 8px 14px;
+
+            span {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-simple {
+    padding: 40px 0;
+
+    .container h2 {
+      font-size: 1.75rem;
+      margin-bottom: 30px;
+    }
+
+    .programs-grid {
+      gap: 1.5rem;
+
+      .program-card-simple {
+        min-width: 100%;
+
+        .card-content {
+          padding: 25px;
+
+          .card-icon {
+            width: 55px;
+            height: 55px;
+
+            svg {
+              width: 26px;
+              height: 26px;
+            }
+          }
+
+          h3 {
+            font-size: 1.3rem;
+          }
+
+          p {
+            font-size: 0.95rem;
+          }
+
+          .card-button {
+            padding: 12px 20px;
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+
+  .kompetensi-modal {
+    .modal-header {
+      padding: 25px 15px;
+
+      .program-icon {
+        width: 60px;
+        height: 60px;
+
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .program-info h2 {
+        font-size: 20px;
+      }
+    }
+
+    .modal-body {
+      padding: 25px 15px;
+
+      .kompetensi-category {
+        .category-header h3 {
+          font-size: 16px;
+        }
+
+        .kompetensi-item {
+          padding: 10px;
+          margin-bottom: 12px;
+
+          .kompetensi-id,
+          .kompetensi-nama {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 20px 15px 25px;
+
+      .skills-summary {
+        h4 {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        .skills-list {
+          gap: 8px;
+
+          .skill-tag {
+            padding: 7px 12px;
+
+            svg {
+              width: 16px;
+              height: 16px;
+              margin-right: 6px;
+            }
+
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

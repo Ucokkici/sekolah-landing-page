@@ -1,0 +1,518 @@
+// Variabel Tema Gelap & Kontras
+$bg-primary: #0f172a;
+$bg-secondary: #1e293b;
+$bg-card: #334155;
+$accent-color: #3b82f6;
+$accent-glow: #60a5fa;
+$text-primary: #f1f5f9;
+$text-secondary: #94a3b8;
+$input-bg: #1e293b;
+$input-border: #475569;
+$error-color: #f87171;
+$success-color: #34d399;
+
+// Animasi Keyframes
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contact {
+  color: $text-primary;
+  padding: 6rem 1rem;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: slide-in-left 0.8s ease-out;
+    
+    h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: $text-primary;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #070115, #01070c, #040013);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite, text-glow 2s ease-in-out infinite alternate;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, #3f1ed0, #489dec, #070115);
+    background-size: 200% 200%;
+    border-radius: 10px;
+    animation: gradient-shift 3s ease infinite, pulse-width 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+  
+  // Animasi hover tambahan
+  &:hover {
+    animation: gradient-shift 1s ease infinite, text-glow 1s ease-in-out infinite alternate, text-bounce 0.6s ease;
+    
+    &::after {
+      width: 150px;
+      animation: gradient-shift 1s ease infinite, pulse-width 1s ease-in-out infinite alternate;
+    }
+  }
+}
+
+// Tambahkan keyframes animasi baru
+@keyframes text-glow {
+  0% { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5)); }
+  100% { filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.8)); }
+}
+
+@keyframes pulse-width {
+  0% { width: 100px; }
+  100% { width: 120px; }
+}
+
+@keyframes text-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+    
+    .section-header {
+  // ... style lainnya ...
+
+  p {
+    font-size: 1.2rem;
+    color: $text-secondary; // Sekarang menggunakan warna #6b7280 yang lebih gelap
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    line-height: 1.8;
+    // --- TAMBAHKAN ANIMASI INI ---
+    opacity: 0; // Mulai dari tak terlihat
+    animation: fade-in-up 0.8s ease-out 0.5s forwards; // Animasi fade in dengan jeda 0.5s
+  }
+}
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  // --- Form Section ---
+  &__form {
+    background: rgba(1, 31, 36, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+                0 10px 10px -5px rgba(0, 0, 0, 0.2),
+                inset 0 0 60px rgba(6, 182, 212, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: slide-in-left 0.8s ease-out 0.2s backwards;
+
+    // Floating balls inside card
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(2, 18, 20, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(30px);
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(25px);
+      animation: float 8s ease-in-out infinite reverse;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25),
+                  0 0 0 1px rgba(59, 130, 246, 0.3);
+      border-color: rgba(59, 130, 246, 0.3);
+
+      &::before {
+        left: 100%;
+      }
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      
+      label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: $text-primary;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
+      }
+      
+      input,
+      textarea {
+        background-color: rgba(15, 23, 42, 0.6);
+        border: 2px solid $input-border;
+        border-radius: 12px;
+        padding: 0.875rem 1.25rem;
+        color: $text-primary;
+        font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        
+        &::placeholder {
+          color: $text-secondary;
+          opacity: 0.6;
+        }
+        
+        &:focus {
+          outline: none;
+          border-color: $accent-color;
+          background-color: rgba(15, 23, 42, 0.8);
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15),
+                      0 10px 15px -3px rgba(59, 130, 246, 0.2);
+          transform: translateY(-2px);
+          
+          & + label {
+            color: $accent-color;
+          }
+        }
+        
+        &:hover:not(:focus) {
+          border-color: lighten($input-border, 10%);
+        }
+        
+        &.error {
+          border-color: $error-color;
+          animation: shake 0.4s ease;
+          
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+          }
+        }
+      }
+      
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+      
+      .error-message {
+        color: $error-color;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        animation: slide-in-left 0.3s ease;
+        
+        &::before {
+          content: "⚠";
+        }
+      }
+    }
+    
+    .btn-submit {
+      background: linear-gradient(135deg, $accent-color 0%, $accent-glow 100%);
+      background-size: 200% 200%;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+      
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.5),
+                    0 0 20px rgba(59, 130, 246, 0.4);
+        background-position: 100% 0;
+        
+        &::before {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      
+      &:active {
+        transform: translateY(-1px);
+      }
+      
+      span {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+
+  // --- Info Section ---
+  &__info {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+                0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slide-in-right 0.8s ease-out 0.2s backwards;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25),
+                  0 0 0 1px rgba(99, 102, 241, 0.3);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: $text-primary;
+      background: linear-gradient(135deg, $accent-color, $accent-glow);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    p {
+      color: $text-secondary;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(99, 102, 241, 0.05));
+        border-radius: 12px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      &:hover {
+        transform: translateX(10px);
+        
+        &::before {
+          opacity: 1;
+        }
+        
+        .contact-icon {
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+      }
+      
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
+        color: $accent-color;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+      
+      .contact-text {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+        
+        h4 {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: $text-primary;
+          margin-bottom: 0.25rem;
+          letter-spacing: 0.3px;
+        }
+        
+        p {
+          margin: 0;
+          color: $text-secondary;
+          font-size: 0.95rem;
+        }
+      }
+    }
+    
+    .map {
+      margin-top: 2.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+                  0 0 0 1px rgba(59, 130, 246, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: 16px;
+        background: linear-gradient(135deg, $accent-color, $accent-glow) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4),
+                    0 0 30px rgba(59, 130, 246, 0.3);
+        
+        &::before {
+          opacity: 1;
+        }
+      }
+      
+      iframe {
+        border-radius: 16px;
+        display: block;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 1rem;
+    
+    .section-header h2 {
+      font-size: 2.25rem;
+    }
+    
+    &__form,
+    &__info {
+      padding: 2rem;
+    }
+  }
+}
