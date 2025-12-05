@@ -69,45 +69,31 @@ export const kompetensiData: Record<string, KompetensiDetail> = {
     title: "Rekayasa Perangkat Lunak (RPL)",
     kategori: [
       {
-        nama: "Pemrograman & Software Development",
+        nama: "Pemrograman Junior (Junior Coder)",
         icon: "Code",
         items: [
-          { id: "J.620100.009.02", nama: "Menggunakan Spesifikasi Program" },
-          {
-            id: "J.620100.016.01",
-            nama: "Menulis Kode Sesuai Guidelines & Best Practices",
-          },
-          {
-            id: "J.620100.017.02",
-            nama: "Mengimplementasikan Pemrograman Terstruktur",
-          },
-          {
-            id: "J.620100.018.02",
-            nama: "Mengimplementasikan Pemrograman Berorientasi Objek",
-          },
-          {
-            id: "J.620100.019.02",
-            nama: "Menggunakan Library / Komponen Pre-Existing",
-          },
-        ],
-      },
-      {
-        nama: "Database & Backend",
-        icon: "Target",
-        items: [
-          { id: "J.620100.021.02", nama: "Menerapkan Akses Basis Data" },
-        ],
-      },
-      {
-        nama: "Dokumentasi & Maintenance",
-        icon: "BookOpen",
-        items: [
+          { id: "J.620100.004.02", nama: "Menggunakan Struktur Data" },
+          { id: "J.620100.009.01", nama: "Menggunakan Spesifikasi Program" },
+          { id: "J.620100.010.01", nama: "Menerapkan Perintah Eksekusi Bahasa Pemograman Berbasis Teks, Grafik, dan Multimedia" },
+          { id: "J.620100.016.01", nama: "Menulis Kode dengan Prinsip sesuai Guidelines dan Best Practices" },
+          { id: "J.620100.017.02", nama: "Mengimplementasikan Pemograman Terstruktur" },
           { id: "J.620100.023.02", nama: "Membuat Dokumen Kode Program" },
           { id: "J.620100.025.02", nama: "Melakukan Debugging" },
-          {
-            id: "J.620100.033.02",
-            nama: "Melaksanakan Pengujian Unit Program",
-          },
+          { id: "J.620100.033.02", nama: "Melaksanakan Pengujian Unit Program" },
+        ],
+      },
+      {
+        nama: "Asisten Pemrograman Junior (Junior Assistant Programmer)",
+        icon: "Code",
+        items: [
+          { id: "J.620100.004.02", nama: "Menggunakan Struktur Data" },
+          { id: "J.620100.009.01", nama: "Menggunakan Spesifikasi Program" },
+          { id: "J.620100.010.01", nama: "Menerapkan Perintah Eksekusi Bahasa Pemograman Berbasis Teks, Grafik, dan Multimedia" },
+          { id: "J.620100.011.01", nama: "Melakukan Instalasi Software Tools Pemograman" },
+          { id: "J.620100.012.01", nama: "Melakukan Pengaturan Software Tools Pemograman" },
+          { id: "J.620100.016.01", nama: "Menulis Kode dengan Prinsip sesuai Guidelines dan Best Practices" },
+          { id: "J.620100.017.02", nama: "Mengimplementasikan Pemograman Terstruktur" },
+          { id: "J.620100.025.02", nama: "Melakukan Debugging" },
         ],
       },
     ],
@@ -116,37 +102,16 @@ export const kompetensiData: Record<string, KompetensiDetail> = {
     title: "Akuntansi & Keuangan Lembaga (AKL)",
     kategori: [
       {
-        nama: "Akuntansi & Pembukuan",
+        nama: "Akuntansi & Keuangan Lembaga",
         icon: "Calculator",
         items: [
-          { id: "P.851100.001.02", nama: "Mengelola Buku Jurnal" },
-          { id: "P.851100.002.02", nama: "Menyusun Laporan Keuangan" },
-          { id: "P.851100.004.02", nama: "Melakukan Rekonsiliasi Keuangan" },
-          { id: "P.851100.005.02", nama: "Mengelola Buku Besar" },
-        ],
-      },
-      {
-        nama: "Perpajakan",
-        icon: "Award",
-        items: [
-          {
-            id: "P.853400.001.02",
-            nama: "Menghitung Pajak Penghasilan (PPH)",
-          },
-          {
-            id: "P.853400.002.02",
-            nama: "Menghitung Pajak Pertambahan Nilai (PPN)",
-          },
-        ],
-      },
-      {
-        nama: "Aplikasi Akuntansi",
-        icon: "Target",
-        items: [
-          {
-            id: "P.851100.015.01",
-            nama: "Mengoperasikan Aplikasi Akuntansi (Accurate/Excel)",
-          },
+          { id: "M.692000.001.02", nama: "Menerapkan Prinsip Praktik Profesional dalam Bekerja" },
+          { id: "M.692000.002.02", nama: "Menerapkan Praktik - Praktik Kesehatan dan Keselamatan di Tempat Kerja" },
+          { id: "M.692000.007.02", nama: "Memproses Entry Jurnal" },
+          { id: "M.692000.008.02", nama: "Memproses Buku Besar" },
+          { id: "M.692000.013.02", nama: "Menyusun Laporan Keuangan" },
+          { id: "M.692000.022.02", nama: "Mengoperasikan Paket Program Pengolah Angka/ Spreadsheet" },
+          { id: "M.692000.023.02", nama: "Mengoperasikan Aplikasi Komputer Akuntansi" },
         ],
       },
     ],
@@ -155,33 +120,37 @@ export const kompetensiData: Record<string, KompetensiDetail> = {
     title: "Manajemen Perkantoran / OTKP",
     kategori: [
       {
-        nama: "Administrasi & Dokumen",
-        icon: "BookOpen",
-        items: [
-          { id: "N.411100.001.02", nama: "Mengelola Dokumen Perkantoran" },
-          { id: "N.411100.002.02", nama: "Menyusun Surat Menyurat" },
-          { id: "N.411100.003.02", nama: "Mengarsip Dokumen" },
-        ],
-      },
-      {
-        nama: "Layanan Publik & Komunikasi",
+        nama: "Otomatisasi dan Tata Kelola Perkantoran",
         icon: "Users",
         items: [
-          { id: "N.411100.005.02", nama: "Melakukan Pelayanan Pelanggan" },
-          {
-            id: "N.411100.007.02",
-            nama: "Melakukan Komunikasi Melalui Media Digital",
-          },
-        ],
-      },
-      {
-        nama: "Aplikasi Perkantoran",
-        icon: "Target",
-        items: [
-          {
-            id: "N.411100.010.01",
-            nama: "Mengoperasikan Perangkat Lunak Perkantoran (Microsoft Office)",
-          },
+          { id: "N.821100.001.02", nama: "Menangani Penerimaan/ Pengiriman Surat/ Dokumen" },
+          { id: "N.821100.004.02", nama: "Memproduksi Dokumen" },
+          { id: "N.821100.028.02", nama: "Mengaplikasikan Keterampilan Dasar Komunikasi" },
+          { id: "N.821100.029.02", nama: "Melakukan Komunikasi Melalui Telepon" },
+          { id: "N.821100.030.02", nama: "Melakukan Komunikasi Lisan dengan Kolega/Pelanggan" },
+          { id: "N.821100.032.02", nama: "Melakukan Komunikasi Lisan dalam Bahasa Inggris pada Tingkat Operasional Dasar" },
+          { id: "N.821100.033.02", nama: "Membaca dalam Bahasa Inggris pada Tingkat Operasional Dasar" },
+          { id: "N.821100.053.02", nama: "Memproduksi Dokumen di Komputer" },
+          { id: "N.821100.054.01", nama: "Menggunakan Peralatan Komunikasi" },
+          { id: "N.821100.057.02", nama: "Mengoperasikan Aplikasi Perangkat Lunak" },
+          { id: "N.821100.059.02", nama: "Menggunakan Peralatan dan Sumberdaya Kerja" },
+          { id: "N.821100.067.01", nama: "Melakukan Transaksi Perbankan Sederhana" },
+          { id: "N.821100.073.02", nama: "Mengelola Arsip" },
+          { id: "N.821100.075.02", nama: "Menerapkan Prosedur K3 Perkantoran" },
+          { id: "N.821100.076.02", nama: "Meminimalisir Pencurian" },
+          { id: "N.821100.002.02", nama: "Mengatur Penggandaan/Pengumpulan Surat/Dokumen" },
+          { id: "N.821100.003.02", nama: "Menciptakan Dokumen/Lembar Kerja Sederhana" },
+          { id: "N.821100.007.02", nama: "Mencatat Dikte" },
+          { id: "N.821100.012.01", nama: "Mengelola Jadwal Kegiatan Pimpinan" },
+          { id: "N.821100.013.02", nama: "Mengatur Rapat/Pertemuan" },
+          { id: "N.821100.034.02", nama: "Menulis dalam Bahasa Inggris pada Tingkat Operasional Dasar" },
+          { id: "N.821100.041.01", nama: "Menulis Pesan Singkat dalam Bahasa Inggris" },
+          { id: "N.821100.045.02", nama: "Memberikan Layanan kepada Pelanggan" },
+          { id: "N.821100.049.02", nama: "Memenuhi Kebutuhan Pelanggan" },
+          { id: "N.821100.056.02", nama: "Memelihara Data/File di Komputer" },
+          { id: "N.821100.058.02", nama: "Mengakses Data di Komputer" },
+          { id: "N.821100.060.01", nama: "Membuat Surat/Dokumen Elektronik" },
+          { id: "N.821100.061.01", nama: "Mengakses Informasi melalui Homepage" },
         ],
       },
     ],
@@ -190,40 +159,30 @@ export const kompetensiData: Record<string, KompetensiDetail> = {
     title: "Bisnis Retail (BDP)",
     kategori: [
       {
-        nama: "Operasional Toko & Kasir",
-        icon: "Calculator",
-        items: [
-          {
-            id: "G.532020.001.02",
-            nama: "Mengoperasikan Sistem Kasir (POS)",
-          },
-          { id: "G.532020.003.02", nama: "Melakukan Transaksi Penjualan" },
-        ],
-      },
-      {
-        nama: "Merchandising & Display",
+        nama: "Pramuniaga",
         icon: "ShoppingBag",
         items: [
-          { id: "G.532020.006.02", nama: "Menata Display Produk" },
-          { id: "G.532020.007.02", nama: "Melakukan Visual Merchandising" },
+          { id: "G.46RIT00.001.1", nama: "Merapikan Area Kerja" },
+          { id: "G.46RIT00.002.1", nama: "Menjalankan Tugas dan Tanggung Jawab Pribadi" },
+          { id: "G.46RIT00.003.1", nama: "Mengoperasikan Peralatan Dasar Ritel" },
+          { id: "G.46RIT00.004.1", nama: "Membangun Perilaku Kerja Ritel yang Efektif" },
+          { id: "G.46RIT00.008.1", nama: "Berkomunikasi Aktif dalam Lingkungan Kerja Ritel" },
+          { id: "G.46RIT00.018.1", nama: "Menerapkan Perilaku Kerja Aman di Gerai Ritel" },
+          { id: "G.46RIT00.005.1", nama: "Melakukan Pengemasan Barang Dagang" },
+          { id: "G.46RIT00.026.1", nama: "Membantu Pelaksanaan Perhitungan Stok Barang Dagang" },
+          { id: "G.46RIT00.031.1", nama: "Melakukan Kegiatan Pemajangan Barang Dagang (Display)" },
         ],
       },
       {
-        nama: "Sales & Service",
-        icon: "Users",
+        nama: "Trainee Kasir",
+        icon: "Calculator",
         items: [
-          { id: "G.532020.009.02", nama: "Memberikan Layanan Konsumen" },
-          { id: "G.532020.011.02", nama: "Melakukan Komunikasi Penjualan" },
-        ],
-      },
-      {
-        nama: "Inventory & Stok",
-        icon: "Target",
-        items: [
-          {
-            id: "G.532020.013.02",
-            nama: "Mengelola Persediaan dan Stok Barang",
-          },
+          { id: "G.46RIT00.001.1", nama: "Merapikan Area Kerja" },
+          { id: "G.46RIT00.002.1", nama: "Menjalankan Tugas dan Tanggung Jawab Pribadi" },
+          { id: "G.46RIT00.003.1", nama: "Mengoperasikan Peralatan Dasar Ritel" },
+          { id: "G.46RIT00.004.1", nama: "Membangun Perilaku Kerja Ritel yang Efektif" },
+          { id: "G.46RIT00.008.1", nama: "Berkomunikasi Aktif dalam Lingkungan Kerja Ritel" },
+          { id: "G.46RIT00.018.1", nama: "Menerapkan Perilaku Kerja Aman di Gerai Ritel" },
         ],
       },
     ],

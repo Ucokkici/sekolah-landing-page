@@ -2,6 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Code, Calculator, Users, ShoppingBag, ArrowRight } from "lucide-react";
 import "./ProgramSection.scss";
+import rpl from "../assets/rpl.avif"
+import akl from "../assets/akl.jpg"
+import otkp from "../assets/otkp.avif"
+import br from "../assets/br.avif"
 
 // Interface definitions
 interface Program {
@@ -23,7 +27,7 @@ const ProgramSection = () => {
       description:
         "Program sertifikasi keahlian yang memvalidasi kemampuan siswa dalam pengembangan perangkat lunak, pengujian aplikasi, dan implementasi teknologi digital.",
       image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+        rpl,
       skills: [
         "Pemrograman Berorientasi Objek",
         "Pembuatan Aplikasi Web",
@@ -38,7 +42,7 @@ const ProgramSection = () => {
       description:
         "Sertifikasi kompetensi akuntansi berbasis industri yang memastikan kemampuan dalam pencatatan transaksi, penyusunan laporan keuangan, dan pengelolaan perpajakan.",
       image:
-        "https://osccdn.medcom.id/images/content/2023/12/29/49a1fcc2357e5a8a61d57de3c39f3f14.jpg",
+        akl,
       skills: [
         "Akuntansi Komputer (Accurate / Excel)",
         "Perhitungan Pajak (PPH & PPN)",
@@ -53,7 +57,7 @@ const ProgramSection = () => {
       description:
         "Program sertifikasi administrasi perkantoran untuk menyiapkan tenaga kerja profesional yang kompeten dalam pengelolaan dokumen, pelayanan publik, dan operasional kantor modern.",
       image:
-        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80",
+        otkp,
       skills: [
         "Administrasi Arsip & Dokumen",
         "Layanan Pelanggan (Customer Service)",
@@ -68,7 +72,7 @@ const ProgramSection = () => {
       description:
         "Sertifikasi kompetensi bisnis retail untuk membangun kemampuan operasional toko, promosi produk, pelayanan pelanggan, dan pengelolaan transaksi.",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+        br,
       skills: [
         "Kasir & Point of Sales (POS)",
         "Display & Visual Merchandising",
@@ -89,7 +93,7 @@ const ProgramSection = () => {
     <section id="program" className="programs-simple">
       <div className="container">
         <h2>
-          Program <span className="highlight">Keahlian</span>
+          Skema <span className="highlight">Sertifikasi</span>
         </h2>
 
         {/* Grid untuk menampilkan kartu tanpa Swiper */}

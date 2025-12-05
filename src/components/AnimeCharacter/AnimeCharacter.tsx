@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import "./AnimeCharacter.scss";
 
 // Import gambar dari folder assets
-import animeCharacterImage from "../../assets/Gemini_Generated_Image_3vcg6l3vcg6l3vcg-removebg-preview.png";
+import animeCharacterImage from "../../assets/karakter sertifikat.png";
 
 const AnimeCharacter = () => {
   return (
@@ -17,8 +17,7 @@ const AnimeCharacter = () => {
         delay: 0.8, // Muncul setelah 0.8 detik
       }}
       whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      title="Klik aku!"
+      whileTap={{ scale: 0.95 }}  
     >
       <img
         src={animeCharacterImage}

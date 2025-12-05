@@ -151,7 +151,6 @@ const HomePage = () => {
         <AboutSection />
         <ProgramsSection />
         <FacilitiesSection />
-        <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />

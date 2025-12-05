@@ -9,13 +9,13 @@ import {
   Users,
   GraduationCap,
   Award,
-  Building as BuildingIcon,
   Wrench,
   MapPin,
   Shield,
   Target as TargetIcon,
   TrendingUp,
   X,
+  ChevronDown,
 } from "lucide-react";
 import "./AboutSection.scss";
 import "../App.scss";
@@ -37,14 +37,12 @@ const AboutSection = () => {
   
   // --- 2. GUNAKAN TIPE DATA UNTUK STATE SELECTED MEMBER ---
   const [selectedMember, setSelectedMember] = useState<MemberDetail | null>(null);
+  
+  // --- STATE FOR ACCORDION ---
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
-  // --- DATA PROFIL BARU ---
+  // --- DATA PROFIL BARU (TANPA "NAMA") ---
   const profileData = [
-    {
-      title: "Nama",
-      icon: BuildingIcon,
-      content: "Lembaga Sertifikasi Profesi (LSP) — SMK Negeri 17 Jakarta.",
-    },
     {
       title: "Jenis & Fungsi",
       icon: Wrench,
@@ -220,6 +218,11 @@ const AboutSection = () => {
     setSelectedMember(null);
   };
 
+  // --- FUNGSI UNTUK MENANGANI ACCORDION ---
+  const toggleAccordion = (index: number) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
   return (
     <section id="tentang" className="about-section">
       {/* ... (bagian rings, ken-burns, bubbles, particles tetap sama) ... */}
@@ -393,35 +396,58 @@ const AboutSection = () => {
           transition={{ duration: 0.5 }}
           className="about-section__tab-content"
         >
-          {/* ... (bagian tab profile, history, vision tetap sama) ... */}
+          {/* PROFILE TAB DENGAN ACCORDION */}
           {activeTab === "profile" && (
             <div className="about-section__profile">
               <h2>
                 <School />
-                Profil LSP SMK Negeri 17 Jakarta
+                Lembaga Sertifikasi Profesi SMK Negeri 17 Jakarta
               </h2>
 
-              <div className="profile-feature-list">
+              <div className="profile-accordion">
                 {profileData.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                    className={`profile-feature-item ${
-                      index % 2 === 0
-                        ? "profile-feature-item--even"
-                        : "profile-feature-item--odd"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`accordion-item ${
+                      activeAccordion === index ? "accordion-item--active" : ""
                     }`}
                   >
-                    <div className="profile-icon">
-                      <item.icon />
-                    </div>
-                    <div className="profile-text">
-                      <h3>{item.title}</h3>
-                      <p>{item.content}</p>
-                    </div>
+                    <button
+                      className="accordion-header"
+                      onClick={() => toggleAccordion(index)}
+                    >
+                      <div className="accordion-icon">
+                        <item.icon />
+                      </div>
+                      <h3 className="accordion-title">{item.title}</h3>
+                      <div
+                        className={`accordion-chevron ${
+                          activeAccordion === index ? "accordion-chevron--open" : ""
+                        }`}
+                      >
+                        <ChevronDown />
+                      </div>
+                    </button>
+                    
+                    <AnimatePresence>
+                      {activeAccordion === index && (
+                        <motion.div
+                          className="accordion-content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="accordion-text">
+                            <p>{item.content}</p>
+                                                      </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 ))}
               </div>

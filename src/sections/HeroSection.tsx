@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import gsap from "gsap";
@@ -16,8 +16,17 @@ const HeroSection = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const hero = heroRef.current;
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
@@ -66,7 +75,8 @@ const HeroSection = () => {
     });
 
     // 3. Membuat dan menganimasikan partikel
-    const particleCount = 50;
+    // Reduce particle count on mobile for better performance
+    const particleCount = isMobile ? 20 : 50;
     const particlesArray: HTMLElement[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -122,8 +132,9 @@ const HeroSection = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       particlesArray.forEach((particle) => particle.remove());
+      window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section id="beranda" className="hero" ref={heroRef}>

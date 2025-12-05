@@ -238,372 +238,403 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- TAMBAHKAN GAYA BARU UNTUK ALTERNATING FEATURE SECTION ---
-  .profile-feature-list {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-    margin-top: 3rem;
-    padding: 0 1rem;
+  // Modern Animated Accordion Styles
+// Minimal Modern Accordion Styles
+.profile-accordion {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  .accordion-item {
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(0, 0, 0, 0.02);
+    
+    // Hover effect - subtle and elegant
+    &:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.03);
+    }
+    
+    // Active state - minimal highlight
+    &--active {
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.04);
+      
+      // Subtle top accent
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, 
+          rgba(100, 116, 139, 0.5) 0%, 
+          rgba(148, 163, 184, 0.5) 50%, 
+          rgba(203, 213, 225, 0.3) 100%);
+      }
+    }
   }
-
-  .profile-feature-item {
+  
+  .accordion-header {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    width: 100%;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
     position: relative;
-    opacity: 0; // Untuk animasi scroll
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-    // Animasi saat item muncul
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    // Gaya untuk item genap (ikon di kiri, teks di kanan)
-    &--even {
-      flex-direction: row;
-      text-align: left;
-
-      .profile-icon {
-        background: linear-gradient(135deg, $primary-color, $secondary-color);
-        animation: float-left 3s ease-in-out infinite;
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: -3px;
-          border-radius: 22px;
-          background: linear-gradient(135deg, $primary-color, $secondary-color);
-          opacity: 0;
-          z-index: -1;
-          transition: opacity 0.4s ease;
-        }
-
-        &:hover::before {
-          opacity: 0.3;
-          animation: pulse-glow 1.5s ease-in-out infinite;
-        }
-      }
-
-      .profile-text {
-        animation: slide-in-right 0.8s ease-out;
-      }
-    }
-
-    // Gaya untuk item ganjil (ikon di kanan, teks di kiri)
-    &--odd {
-      flex-direction: row-reverse;
-      text-align: right;
-
-      .profile-icon {
-        background: linear-gradient(135deg, $secondary-color, $accent-color);
-        animation: float-right 3s ease-in-out infinite;
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: -3px;
-          border-radius: 22px;
-          background: linear-gradient(135deg, $secondary-color, $accent-color);
-          opacity: 0;
-          z-index: -1;
-          transition: opacity 0.4s ease;
-        }
-
-        &:hover::before {
-          opacity: 0.3;
-          animation: pulse-glow 1.5s ease-in-out infinite;
-        }
-      }
-
-      .profile-text {
-        animation: slide-in-left 0.8s ease-out;
-      }
-    }
-
-    // Hover effect pada seluruh item
+    transition: all 0.3s ease;
+    
     &:hover {
-      .profile-icon {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      .accordion-icon {
+        transform: translateX(2px);
+        background: rgba(241, 245, 249, 0.8);
       }
-
-      .profile-text h3 {
-        background: linear-gradient(135deg, $primary-color, $secondary-color);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      
+      .accordion-chevron {
+        background: rgba(241, 245, 249, 0.8);
+      }
+    }
+    
+    &:focus {
+      outline: none;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 12px;
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        animation: focusRing 2s ease-in-out infinite;
       }
     }
   }
-
-  .profile-icon {
-    position: relative;
-    flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 24px;
+  
+  .accordion-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-
-    // Efek shine/glossy
-    &::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.3) 50%,
-        transparent 70%
-      );
-      transform: rotate(45deg);
-      transition: all 0.6s ease;
-    }
-
-    &:hover::after {
-      left: 100%;
-    }
-
+    width: 48px;
+    height: 48px;
+    background: rgba(248, 250, 252, 0.6);
+    border-radius: 12px;
+    margin-right: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    
     svg {
-      width: 55px;
-      height: 55px;
-      color: white;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-      transition: transform 0.3s ease;
-      z-index: 1;
-    }
-
-    &:hover svg {
-      transform: scale(1.15) rotate(-5deg);
-    }
-  }
-
-  .profile-text {
-    flex: 1;
-    transition: transform 0.3s ease;
-
-    h3 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: $text-color;
-      margin-bottom: 0.75rem;
-      position: relative;
-      display: inline-block;
+      color: #64748b;
+      width: 24px;
+      height: 24px;
       transition: all 0.3s ease;
-
-      // Underline animasi
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, $primary-color, $secondary-color);
-        border-radius: 2px;
-        transition: width 0.4s ease;
-      }
-
-      &:hover::after {
-        width: 100%;
-      }
     }
-
+  }
+  
+  // Active icon state
+  .accordion-item--active .accordion-icon {
+    background: rgba(241, 245, 249, 0.8);
+    border-color: rgba(203, 213, 225, 0.9);
+    
+    svg {
+      color: #475569;
+      animation: iconSlide 0.5s ease;
+    }
+  }
+  
+  .accordion-title {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #334155;
+    margin: 0;
+    transition: all 0.3s ease;
+    letter-spacing: -0.01em;
+  }
+  
+  .accordion-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(248, 250, 252, 0.6);
+    border-radius: 8px;
+    color: #64748b;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    
+    &--open {
+      transform: rotate(180deg);
+      background: rgba(241, 245, 249, 0.8);
+    }
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  .accordion-content {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .accordion-text {
+    padding: 0 24px 20px 88px;
+    position: relative;
+    
+    // Minimal decorative line
+    &::before {
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, 
+        rgba(203, 213, 225, 0.4) 0%, 
+        rgba(203, 213, 225, 0) 100%);
+      border-radius: 1px;
+    }
+    
     p {
-      font-size: 1.05rem;
-      color: $text-light;
-      line-height: 1.8;
-      letter-spacing: 0.3px;
-      transition: color 0.3s ease;
-    }
-
-    &:hover p {
-      color: darken($text-light, 10%);
+      margin: 0;
+      color: #64748b;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      animation: fadeInUp 0.4s ease;
     }
   }
+}
 
-  // Animasi Keyframes
-  @keyframes float-left {
-    0%,
-    100% {
-      transform: translateX(0) translateY(0);
-    }
-    50% {
-      transform: translateX(-10px) translateY(-10px);
-    }
+// Keyframe Animations - subtle and smooth
+@keyframes focusRing {
+  0%, 100% {
+    opacity: 1;
   }
-
-  @keyframes float-right {
-    0%,
-    100% {
-      transform: translateX(0) translateY(0);
-    }
-    50% {
-      transform: translateX(10px) translateY(-10px);
-    }
+  50% {
+    opacity: 0.5;
   }
+}
 
-  @keyframes pulse-glow {
-    0%,
-    100% {
-      transform: scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 0.5;
-    }
+@keyframes iconSlide {
+  0% {
+    transform: translateX(0);
   }
-
-  @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  50% {
+    transform: translateX(4px);
   }
-
-  @keyframes slide-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  100% {
+    transform: translateX(0);
   }
+}
 
-  // Responsivitas untuk Profile Feature
-  @media (max-width: 1024px) {
-    .profile-feature-item {
-      gap: 3rem;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .profile-accordion {
+    margin-top: 30px;
+    gap: 12px;
+    
+    .accordion-header {
+      padding: 16px 20px;
     }
-
-    .profile-icon {
-      width: 100px;
-      height: 100px;
-
+    
+    .accordion-icon {
+      width: 44px;
+      height: 44px;
+      margin-right: 14px;
+      border-radius: 10px;
+      
       svg {
-        width: 50px;
-        height: 50px;
+        width: 22px;
+        height: 22px;
       }
     }
-
-    .profile-text h3 {
-      font-size: 1.5rem;
+    
+    .accordion-title {
+      font-size: 1rem;
     }
-  }
-
-  @media (max-width: 768px) {
-    .profile-feature-list {
-      gap: 3rem;
-      padding: 0;
-    }
-
-    .profile-feature-item {
-      flex-direction: column !important;
-      text-align: center !important;
-      gap: 1.5rem;
-
-      &--even,
-      &--odd {
-        .profile-icon {
-          animation: float-center 3s ease-in-out infinite;
-        }
-
-        .profile-text {
-          animation: fade-in-up 0.8s ease-out;
-        }
-      }
-
-      &:hover .profile-icon {
-        transform: scale(1.1) rotate(0deg);
-      }
-    }
-
-    .profile-icon {
-      width: 90px;
-      height: 90px;
-
+    
+    .accordion-chevron {
+      width: 28px;
+      height: 28px;
+      
       svg {
-        width: 45px;
-        height: 45px;
+        width: 16px;
+        height: 16px;
       }
     }
-
-    .profile-text {
-      h3 {
-        font-size: 1.35rem;
-
-        &::after {
-          left: 50%;
-          transform: translateX(-50%);
-        }
+    
+    .accordion-text {
+      padding: 0 20px 16px 78px;
+      
+      &::before {
+        left: 32px;
       }
-
+      
       p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        line-height: 1.65;
       }
     }
   }
+}
 
-  @keyframes float-center {
-    0%,
-    100% {
-      transform: translateY(0);
+@media (max-width: 480px) {
+  .profile-accordion {
+    gap: 10px;
+    
+    .accordion-item {
+      border-radius: 14px;
     }
-    50% {
-      transform: translateY(-10px);
+    
+    .accordion-header {
+      padding: 14px 16px;
     }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .profile-feature-list {
-      gap: 2.5rem;
-    }
-
-    .profile-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-
+    
+    .accordion-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+      border-radius: 10px;
+      
       svg {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
       }
     }
-
-    .profile-text h3 {
-      font-size: 1.2rem;
+    
+    .accordion-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    
+    .accordion-chevron {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    
+    .accordion-text {
+      padding: 0 16px 14px 68px;
+      
+      &::before {
+        left: 28px;
+        width: 1.5px;
+      }
+      
+      p {
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
     }
   }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .profile-accordion {
+    .accordion-item {
+      background: rgba(30, 41, 59, 0.5);
+      border-color: rgba(71, 85, 105, 0.5);
+      box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        background: rgba(30, 41, 59, 0.6);
+      }
+      
+      &--active {
+        background: rgba(30, 41, 59, 0.65);
+        
+        &::before {
+          background: linear-gradient(90deg, 
+            rgba(148, 163, 184, 0.4) 0%, 
+            rgba(203, 213, 225, 0.3) 50%, 
+            rgba(226, 232, 240, 0.2) 100%);
+        }
+      }
+    }
+    
+    .accordion-icon {
+      background: rgba(51, 65, 85, 0.5);
+      border-color: rgba(71, 85, 105, 0.6);
+      
+      svg {
+        color: #94a3b8;
+      }
+    }
+    
+    .accordion-item--active .accordion-icon {
+      background: rgba(51, 65, 85, 0.7);
+      
+      svg {
+        color: #cbd5e1;
+      }
+    }
+    
+    .accordion-title {
+      color: #e2e8f0;
+    }
+    
+    .accordion-chevron {
+      background: rgba(51, 65, 85, 0.5);
+      border-color: rgba(71, 85, 105, 0.6);
+      color: #94a3b8;
+      
+      &--open {
+        background: rgba(51, 65, 85, 0.7);
+      }
+    }
+    
+    .accordion-text {
+      &::before {
+        background: linear-gradient(180deg, 
+          rgba(100, 116, 139, 0.3) 0%, 
+          rgba(100, 116, 139, 0) 100%);
+      }
+      
+      p {
+        color: #94a3b8;
+      }
+    }
+  }
+}
 // --- History Tab ---
 &__timeline {
   display: flex;
@@ -1458,7 +1489,6 @@ $card-border: #e5e7eb;
 
     .modal-body {
       padding: 1.5rem;
-
       .info-section h4 {
         font-size: 18px;
       }

@@ -16,7 +16,7 @@ import {
 import "./Header.scss";
 
 // 1. Impor file logo Anda
-import logo from "../../assets/lsp-removebg-preview.png";
+import logo from "../../assets/lsp logo.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,30 +106,25 @@ const Header = () => {
                 animate={{ opacity: 1 }}
                 transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
               >
-                {[
-                  "Beranda",
-                  "Tentang",
-                  "Program",
-                  "Fasilitas",
-                  "Testimoni",
-                  "Kontak",
-                ].map((item) => (
-                  <motion.li
-                    key={item}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Link
-                      to={item.toLowerCase()}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                      onClick={closeMenu}
+                {["Beranda", "Tentang", "Program", "Fasilitas", "Kontak"].map(
+                  (item) => (
+                    <motion.li
+                      key={item}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {item}
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link
+                        to={item.toLowerCase()}
+                        spy={true}
+                        smooth={true}
+                        duration={500}
+                        onClick={closeMenu}
+                      >
+                        {item}
+                      </Link>
+                    </motion.li>
+                  )
+                )}
               </motion.ul>
             </nav>
 

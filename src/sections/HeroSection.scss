@@ -3,10 +3,12 @@
   background-color: #463557; // Ungu muda yang sangat pucat
 
   position: relative;
+  // Ganti height dengan min-height untuk mobile-friendly
   height: 100vh;
+  min-height: 650px; // Minimum height untuk mobile
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden; // Pastikan overflow hidden
 
   // --- KONTAINER UNTUK LINGKARAN (PALING BELAKANG) ---
   &__rings {
@@ -20,35 +22,40 @@
     background-image: radial-gradient(
         circle at 65% 80%,
         transparent 25px,
-        rgba(196, 181, 253, 0.4) 26px, // Ungu muda
+        rgba(196, 181, 253, 0.4) 26px,
+        // Ungu muda
         rgba(196, 181, 253, 0.4) 45px,
         transparent 46px
       ),
       radial-gradient(
         circle at 30% 33%,
         transparent 20px,
-        rgba(216, 180, 254, 0.7) 21px, // Ungu sedikit lebih tua
+        rgba(216, 180, 254, 0.7) 21px,
+        // Ungu sedikit lebih tua
         rgba(216, 180, 254, 0.7) 35px,
         transparent 36px
       ),
       radial-gradient(
         circle at 95% 25%,
         transparent 10px,
-        rgba(233, 213, 255, 0.6) 11px, // Ungu paling muda
+        rgba(233, 213, 255, 0.6) 11px,
+        // Ungu paling muda
         rgba(233, 213, 255, 0.6) 20px,
         transparent 21px
       ),
       radial-gradient(
         circle at 30% 80%,
         transparent 30px,
-        rgba(196, 181, 253, 0.3) 31px, // Ungu muda
+        rgba(196, 181, 253, 0.3) 31px,
+        // Ungu muda
         rgba(196, 181, 253, 0.3) 50px,
         transparent 51px
       ),
       radial-gradient(
         circle at 50% 80%,
         transparent 12px,
-        rgba(216, 180, 254, 0.5) 13px, // Ungu sedikit lebih tua
+        rgba(216, 180, 254, 0.5) 13px,
+        // Ungu sedikit lebih tua
         rgba(216, 180, 254, 0.5) 22px,
         transparent 23px
       );
@@ -81,7 +88,8 @@
       background: radial-gradient(
         circle,
         transparent 20%,
-        rgba(196, 181, 253, 0.734) 55%, // Ungu muda
+        rgba(196, 181, 253, 0.734) 55%,
+        // Ungu muda
         rgba(196, 181, 253, 0.337) 60%,
         transparent 85%
       );
@@ -97,7 +105,8 @@
       background: radial-gradient(
         circle,
         transparent 20%,
-        rgba(233, 213, 255, 0.6) 55%, // Ungu paling muda
+        rgba(233, 213, 255, 0.6) 55%,
+        // Ungu paling muda
         rgba(233, 213, 255, 0.3) 70%,
         transparent 85%
       );
@@ -133,6 +142,9 @@
     position: relative;
     z-index: 5;
     width: 100%;
+    // Tambahkan padding vertikal untuk mobile
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   &__content {
@@ -177,7 +189,7 @@
   // --- PERUBAHAN WARNA AKSEN TEKS DAN TOMBOL MENJADI UNGU UNTUK KONSISTENSI ---
   h1 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: #d9d0e9; 
+    color: #d9d0e9;
     margin-bottom: 20px;
     font-weight: 700;
     position: relative;
@@ -193,8 +205,9 @@
       // --- GRADASI UNGU ---
       background: linear-gradient(
         90deg,
-        #a855f7, // Ungu medium
-        #c4b5fd  // Ungu muda
+        #a855f7,
+        // Ungu medium
+        #c4b5fd // Ungu muda
       );
       border-radius: 2px;
       animation: pulse 2s infinite;
@@ -268,30 +281,137 @@
     }
   }
 
+  // Media query untuk tablet
+  @media (max-width: 1024px) {
+    &__content {
+      gap: 40px;
+    }
+
+    &__text-wrapper {
+      max-width: 50%;
+    }
+
+    .anime-character {
+      width: 45%;
+      right: -10%;
+    }
+  }
+
+  // Media query untuk mobile - PERBAIKAN UTAMA
   @media (max-width: 768px) {
+    // Perbaikan untuk masalah viewport di mobile
+    height: auto;
+    min-height: 100vh;
+    // Menggunakan tinggi yang lebih realistis untuk mobile
+    min-height: -webkit-fill-available;
+    padding: 60px 0; // Tambahkan padding vertikal
+
     &__content {
       flex-direction: column;
       text-align: center;
-      gap: 20px;
+      gap: 30px;
+      justify-content: center;
+      // Tambahkan padding untuk memastikan tidak terpotong
+      padding: 20px 0;
     }
 
     &__text-wrapper {
       max-width: 100%;
+      order: 2; // Text setelah karakter
+      // Tambahkan padding untuk memastikan tidak terpotong
+      padding-bottom: 20px;
     }
 
     .anime-character {
+      position: relative;
+      top: auto;
+      right: auto;
       width: 70%;
-      max-width: 300px;
+      max-width: 280px; // Kurangi ukuran maksimal
+      margin: 0 auto;
+      order: 1; // Karakter pertama
+      // Tambahkan margin atas untuk memberikan ruang
+      margin-top: 20px;
     }
 
     &__cta {
       flex-direction: column;
       align-items: center;
+      gap: 15px;
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 20px;
+        text-align: center;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 6vw, 2.2rem); // Kurangi ukuran font
+      margin-bottom: 15px;
+      line-height: 1.2; // Tambahkan line-height
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    p {
+      font-size: 0.95rem; // Kurangi ukuran font
+      margin-bottom: 25px;
+      line-height: 1.5; // Tambahkan line-height
+    }
+
+    // Kurangi intensitas animasi untuk performa lebih baik
+    &__rings {
+      animation-duration: 40s;
+    }
+
+    &__bubbles {
+      &::before,
+      &::after {
+        animation-duration: 30s;
+      }
+    }
+  }
+
+  // Media query untuk mobile kecil
+  @media (max-width: 480px) {
+    // Tambahkan padding lebih banyak untuk mobile kecil
+    padding: 40px 0;
+
+    .container {
+      padding: 0 15px;
+    }
+
+    &__content {
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 7vw, 2rem);
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    .anime-character {
+      width: 80%;
+      max-width: 240px; // Kurangi ukuran maksimal
+    }
+
+    &__cta {
+      .btn {
+        max-width: 240px;
+      }
     }
   }
 }
 
-// --- KEYFRAMES ANIMASI (TIDAK PERLU DIUBAH) ---
+// --- KEYFRAMES ANIMASI ---
 @keyframes float {
   0%,
   100% {
