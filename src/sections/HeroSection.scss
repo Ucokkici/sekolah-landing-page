@@ -8,7 +8,8 @@
   min-height: 650px; // Minimum height untuk mobile
   display: flex;
   align-items: center;
-  overflow: hidden; // Pastikan overflow hidden
+  // PERBAIKAN: Ganti dari overflow: hidden ke overflow: visible untuk desktop
+  overflow: visible; // Diubah untuk mencegah clipping
 
   // --- KONTAINER UNTUK LINGKARAN (PALING BELAKANG) ---
   &__rings {
@@ -145,6 +146,8 @@
     // Tambahkan padding vertikal untuk mobile
     padding-top: 20px;
     padding-bottom: 20px;
+    // PERBAIKAN: Pastikan container tidak memotong konten
+    overflow: visible !important;
   }
 
   &__content {
@@ -153,6 +156,9 @@
     justify-content: flex-start;
     width: 100%;
     gap: 80px;
+    // PERBAIKAN: Pastikan konten bisa overflow dengan aman
+    position: relative;
+    z-index: 10;
   }
 
   &__text-wrapper {
@@ -171,6 +177,8 @@
     margin-left: auto;
     align-self: flex-end;
     z-index: 6;
+    // PERBAIKAN: Tambahkan untuk mencegah clipping di viewport kecil
+    max-height: 90vh;
 
     img {
       width: 100%;
@@ -179,6 +187,8 @@
       display: block;
       filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
       transition: filter 0.3s ease;
+      // PERBAIKAN: Pastikan gambar tidak melebihi karakter
+      max-height: inherit;
     }
 
     &:hover img {
@@ -299,6 +309,9 @@
 
   // Media query untuk mobile - PERBAIKAN UTAMA
   @media (max-width: 768px) {
+    // PERBAIKAN: Kembali ke overflow hidden di mobile untuk menghindari scroll horizontal
+    overflow: hidden;
+    
     // Perbaikan untuk masalah viewport di mobile
     height: auto;
     min-height: 100vh;
@@ -332,6 +345,8 @@
       order: 1; // Karakter pertama
       // Tambahkan margin atas untuk memberikan ruang
       margin-top: 20px;
+      // PERBAIKAN: Reset max-height di mobile
+      max-height: none;
     }
 
     &__cta {
@@ -407,6 +422,26 @@
       .btn {
         max-width: 240px;
       }
+    }
+  }
+}
+
+// PERBAIKAN: Tambahkan media query untuk desktop besar
+@media (min-width: 1400px) {
+  .hero {
+    .anime-character {
+      right: -12%; // Kurangi nilai negatif untuk layar lebih besar
+      width: 48%; // Sedikit kurangi lebar
+    }
+  }
+}
+
+// PERBAIKAN: Untuk layar sangat lebar
+@media (min-width: 1600px) {
+  .hero {
+    .anime-character {
+      right: -8%; // Kurangi lagi untuk layar sangat lebar
+      width: 45%;
     }
   }
 }
