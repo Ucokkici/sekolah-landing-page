@@ -13,7 +13,6 @@ import HeroSection from "./sections/HeroSection.tsx";
 import AboutSection from "./sections/AboutSection.tsx";
 import ProgramsSection from "./sections/ProgramSection.tsx";
 import FacilitiesSection from "./sections/FacilitiesSection.tsx";
-import TestimonialsSection from "./sections/TestimonialsSection.tsx";
 import ContactSection from "./sections/ContactSection.tsx";
 import KompetensiDetail from "./pages/KompetensiDetail.tsx";
 
