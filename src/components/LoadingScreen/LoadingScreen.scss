@@ -4,26 +4,187 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow: hidden;
 
-  .loading-content {
-    text-align: center;
+  // Animated background particles
+  &__particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
 
-    .loader {
-      width: 80px;
-      height: 80px;
-      background-color: white;
-      margin: 0 auto 20px;
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // Corner decorations
+  .corner-decoration {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    filter: blur(75px);
+
+    &--top {
+      top: 0;
+      right: 0;
     }
 
-    h2 {
-      color: white;
-      font-size: 2rem;
-      font-weight: 700;
+    &--bottom {
+      bottom: 0;
+      left: 0;
     }
+  }
+}
+
+.loading-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Loader container
+.loader-container {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  margin-bottom: 3rem;
+}
+
+// Loader rings
+.loader-ring {
+  position: absolute;
+  inset: 0;
+
+  &--outer {
+    svg {
+      opacity: 0.3;
+    }
+  }
+
+  &--middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pulsing-circle {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  &--inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .morphing-shape {
+      width: 5rem;
+      height: 5rem;
+      background: linear-gradient(to bottom right, #ffffff, rgba(255, 255, 255, 0.7));
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+// Orbiting dots
+.orbiting-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+// Loading text
+.loading-text {
+  text-align: center;
+}
+
+.loading-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.loading-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.loading-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+// Progress bar
+.progress-bar {
+  width: 16rem;
+  height: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 2rem;
+
+  &__fill {
+    height: 100%;
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.7));
+    border-radius: 9999px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .loading-title {
+    font-size: 2.5rem;
+  }
+
+  .loader-container {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .loader-ring--middle .pulsing-circle {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .loader-ring--inner .morphing-shape {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .progress-bar {
+    width: 12rem;
   }
 }
