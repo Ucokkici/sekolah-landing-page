@@ -1,4 +1,5 @@
-// --- VARIABEL ---
+@use "sass:color";
+
 $primary-color: #0056b3;
 $secondary-color: #d9d6cc;
 $text-color: #333;
@@ -413,7 +414,7 @@ $breakpoint-tablet-plus: 769px;
             background: linear-gradient(
               90deg,
               $primary-color,
-              lighten($primary-color, 15%)
+              color.adjust($primary-color, $lightness: 15%)
             );
             opacity: 0.1;
             transition: width $transition-speed ease;
@@ -547,7 +548,7 @@ $breakpoint-tablet-plus: 769px;
         background: linear-gradient(
           135deg,
           $primary-color,
-          darken($primary-color, 10%)
+          color.adjust($primary-color, $lightness: -10%)
         );
         color: $white;
       }

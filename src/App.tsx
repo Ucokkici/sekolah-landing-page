@@ -4,7 +4,9 @@ import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { scroller } from "react-scroll";
+
+// --- HAPUS IMPORT REACT-SCROLL ---
+// Tidak ada lagi import dari react-scroll
 
 // Import Komponen
 import Header from "./components/Header/Header.tsx";
@@ -65,23 +67,29 @@ const HomePage = () => {
     };
   }, []); // Dependency array kosong agar hanya dijalankan sekali
 
-  // --- useEffect untuk menangani hash ---
+  // --- PERUBAHAN: Gunakan JavaScript Native untuk scroll ---
   useEffect(() => {
-    // Jika ada hash di URL (misal: /#program)
     if (location.hash) {
-      // Hapus tanda '#' untuk mendapatkan ID elemen
       const elementId = location.hash.substring(1);
 
-      // Berikan sedikit jeda agar halaman sempurna dimuat
       setTimeout(() => {
-        scroller.scrollTo(elementId, {
-          duration: 500,
-          smooth: true,
-          offset: -80, // Sesuaikan ini dengan tinggi header Anda agar tidak tertutup
-        });
+        const element = document.getElementById(elementId);
+        if (element) {
+          // --- SOLUSI TERBAIK: Hitung posisi offset secara manual ---
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 80; // Ambil tinggi header, fallback ke 80px
+          
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth" // Animasi smooth
+          });
+        }
       }, 100);
     }
-  }, [location]); // Efek ini akan berjalan saat lokasi berubah
+  }, [location]);
 
   return (
     <>
