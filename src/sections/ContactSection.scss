@@ -12,6 +12,11 @@ $input-border: #475569;
 $error-color: #f87171;
 $success-color: #34d399;
 
+// Breakpoints
+$breakpoint-desktop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
+
 // Animasi Keyframes
 @keyframes float {
   0%,
@@ -67,23 +72,96 @@ $success-color: #34d399;
   }
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-glow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.8));
+  }
+}
+
+@keyframes pulse-width {
+  0% {
+    width: 100px;
+  }
+  100% {
+    width: 120px;
+  }
+}
+
+@keyframes text-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
 .contact {
   color: $text-primary;
   padding: 6rem 1rem;
   position: relative;
   overflow: hidden;
 
+  @media (max-width: $breakpoint-tablet) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 3rem 0.75rem;
+  }
+
   .container {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    padding: 0 1rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 0 0.5rem;
+    }
   }
 
   .section-header {
     text-align: center;
     margin-bottom: 4rem;
     animation: slide-in-left 0.8s ease-out;
+
+    @media (max-width: $breakpoint-tablet) {
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-bottom: 2.5rem;
+    }
 
     h2 {
       font-size: 3rem;
@@ -100,6 +178,14 @@ $success-color: #34d399;
       animation: gradient-shift 3s ease infinite,
         text-glow 2s ease-in-out infinite alternate;
 
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 2.25rem;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1.875rem;
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -114,9 +200,20 @@ $success-color: #34d399;
         animation: gradient-shift 3s ease infinite,
           pulse-width 2s ease-in-out infinite alternate;
         box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+
+        @media (max-width: $breakpoint-tablet) {
+          width: 80px;
+          height: 4px;
+          bottom: -8px;
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+          width: 60px;
+          height: 3px;
+          bottom: -6px;
+        }
       }
 
-      // Animasi hover tambahan
       &:hover {
         animation: gradient-shift 1s ease infinite,
           text-glow 1s ease-in-out infinite alternate, text-bounce 0.6s ease;
@@ -125,51 +222,37 @@ $success-color: #34d399;
           width: 150px;
           animation: gradient-shift 1s ease infinite,
             pulse-width 1s ease-in-out infinite alternate;
+
+          @media (max-width: $breakpoint-tablet) {
+            width: 120px;
+          }
+
+          @media (max-width: $breakpoint-mobile) {
+            width: 90px;
+          }
         }
       }
     }
 
-    // Tambahkan keyframes animasi baru
-    @keyframes text-glow {
-      0% {
-        filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5));
-      }
-      100% {
-        filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.8));
-      }
-    }
+    p {
+      font-size: 1.2rem;
+      color: $text-secondary;
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fade-in-up 0.8s ease-out 0.5s forwards;
 
-    @keyframes pulse-width {
-      0% {
-        width: 100px;
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 1.1rem;
+        margin: 1.25rem auto 0;
       }
-      100% {
-        width: 120px;
-      }
-    }
 
-    @keyframes text-bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    .section-header {
-      // ... style lainnya ...
-
-      p {
-        font-size: 1.2rem;
-        color: $text-secondary; // Sekarang menggunakan warna #6b7280 yang lebih gelap
-        max-width: 600px;
-        margin: 1.5rem auto 0;
-        line-height: 1.8;
-        // --- TAMBAHKAN ANIMASI INI ---
-        opacity: 0; // Mulai dari tak terlihat
-        animation: fade-in-up 0.8s ease-out 0.5s forwards; // Animasi fade in dengan jeda 0.5s
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1rem;
+        margin: 1rem auto 0;
+        line-height: 1.6;
+        padding: 0 1rem;
       }
     }
   }
@@ -179,8 +262,16 @@ $success-color: #34d399;
     grid-template-columns: 1fr;
     gap: 3rem;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $breakpoint-desktop) {
       grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      gap: 2.5rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 2rem;
     }
   }
 
@@ -199,6 +290,17 @@ $success-color: #34d399;
     overflow: hidden;
     animation: slide-in-left 0.8s ease-out 0.2s backwards;
 
+    @media (max-width: $breakpoint-tablet) {
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-width: 1px;
+    }
+
     // Floating balls inside card
     &::before {
       content: "";
@@ -216,6 +318,11 @@ $success-color: #34d399;
       filter: blur(30px);
       animation: float 6s ease-in-out infinite;
       pointer-events: none;
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 80px;
+        height: 80px;
+      }
     }
 
     &::after {
@@ -234,6 +341,11 @@ $success-color: #34d399;
       filter: blur(25px);
       animation: float 8s ease-in-out infinite reverse;
       pointer-events: none;
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 70px;
+        height: 70px;
+      }
     }
 
     &:hover {
@@ -241,6 +353,10 @@ $success-color: #34d399;
       box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25),
         0 0 0 1px rgba(59, 130, 246, 0.3);
       border-color: rgba(59, 130, 246, 0.3);
+
+      @media (max-width: $breakpoint-mobile) {
+        transform: translateY(-3px);
+      }
 
       &::before {
         left: 100%;
@@ -253,6 +369,10 @@ $success-color: #34d399;
       gap: 1.5rem;
       position: relative;
       z-index: 1;
+
+      @media (max-width: $breakpoint-mobile) {
+        gap: 1.25rem;
+      }
     }
 
     .form-group {
@@ -267,6 +387,11 @@ $success-color: #34d399;
         font-size: 0.95rem;
         letter-spacing: 0.3px;
         transition: color 0.3s ease;
+
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 0.875rem;
+          margin-bottom: 0.4rem;
+        }
       }
 
       input,
@@ -279,6 +404,13 @@ $success-color: #34d399;
         font-size: 1rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        width: 100%;
+
+        @media (max-width: $breakpoint-mobile) {
+          padding: 0.75rem 1rem;
+          font-size: 0.9375rem;
+          border-radius: 10px;
+        }
 
         &::placeholder {
           color: $text-secondary;
@@ -293,6 +425,12 @@ $success-color: #34d399;
             0 10px 15px -3px rgba(59, 130, 246, 0.2);
           transform: translateY(-2px);
 
+          @media (max-width: $breakpoint-mobile) {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15),
+              0 5px 10px -3px rgba(59, 130, 246, 0.2);
+            transform: translateY(-1px);
+          }
+
           & + label {
             color: $accent-color;
           }
@@ -305,25 +443,16 @@ $success-color: #34d399;
         &.error {
           border-color: $error-color;
           animation: shake 0.4s ease;
-
-          @keyframes shake {
-            0%,
-            100% {
-              transform: translateX(0);
-            }
-            25% {
-              transform: translateX(-10px);
-            }
-            75% {
-              transform: translateX(10px);
-            }
-          }
         }
       }
 
       textarea {
         min-height: 140px;
         resize: vertical;
+
+        @media (max-width: $breakpoint-mobile) {
+          min-height: 120px;
+        }
       }
 
       .error-message {
@@ -334,6 +463,10 @@ $success-color: #34d399;
         align-items: center;
         gap: 0.25rem;
         animation: slide-in-left 0.3s ease;
+
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 0.8125rem;
+        }
 
         &::before {
           content: "⚠";
@@ -362,6 +495,15 @@ $success-color: #34d399;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+      width: 100%;
+
+      @media (max-width: $breakpoint-mobile) {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+        border-radius: 10px;
+        margin-top: 0.5rem;
+        letter-spacing: 0.3px;
+      }
 
       &::before {
         content: "";
@@ -382,6 +524,10 @@ $success-color: #34d399;
           0 0 20px rgba(59, 130, 246, 0.4);
         background-position: 100% 0;
 
+        @media (max-width: $breakpoint-mobile) {
+          transform: translateY(-2px);
+        }
+
         &::before {
           width: 300px;
           height: 300px;
@@ -390,6 +536,10 @@ $success-color: #34d399;
 
       &:active {
         transform: translateY(-1px);
+
+        @media (max-width: $breakpoint-mobile) {
+          transform: translateY(0);
+        }
       }
 
       span {
@@ -415,11 +565,25 @@ $success-color: #34d399;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     animation: slide-in-right 0.8s ease-out 0.2s backwards;
 
+    @media (max-width: $breakpoint-tablet) {
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25),
         0 0 0 1px rgba(99, 102, 241, 0.3);
       border-color: rgba(99, 102, 241, 0.3);
+
+      @media (max-width: $breakpoint-mobile) {
+        transform: translateY(-3px);
+      }
     }
 
     h3 {
@@ -431,12 +595,32 @@ $success-color: #34d399;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 1.75rem;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
     }
 
     p {
       color: $text-secondary;
       margin-bottom: 2rem;
       line-height: 1.8;
+
+      @media (max-width: $breakpoint-tablet) {
+        margin-bottom: 1.75rem;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
     }
 
     .contact-item {
@@ -448,6 +632,13 @@ $success-color: #34d399;
       border-radius: 12px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+
+      @media (max-width: $breakpoint-mobile) {
+        gap: 1rem;
+        padding: 0.875rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+      }
 
       &::before {
         content: "";
@@ -461,10 +652,18 @@ $success-color: #34d399;
         border-radius: 12px;
         opacity: 0;
         transition: opacity 0.3s ease;
+
+        @media (max-width: $breakpoint-mobile) {
+          border-radius: 10px;
+        }
       }
 
       &:hover {
         transform: translateX(10px);
+
+        @media (max-width: $breakpoint-mobile) {
+          transform: translateX(5px);
+        }
 
         &::before {
           opacity: 1;
@@ -495,12 +694,20 @@ $success-color: #34d399;
         box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
         position: relative;
         z-index: 1;
+
+        @media (max-width: $breakpoint-mobile) {
+          width: 45px;
+          height: 45px;
+          font-size: 1.125rem;
+          border-radius: 10px;
+        }
       }
 
       .contact-text {
         flex: 1;
         position: relative;
         z-index: 1;
+        min-width: 0;
 
         h4 {
           font-size: 1.15rem;
@@ -508,12 +715,23 @@ $success-color: #34d399;
           color: $text-primary;
           margin-bottom: 0.25rem;
           letter-spacing: 0.3px;
+
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+          }
         }
 
         p {
           margin: 0;
           color: $text-secondary;
           font-size: 0.95rem;
+          word-break: break-word;
+
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 0.875rem;
+            line-height: 1.5;
+          }
         }
       }
     }
@@ -526,6 +744,18 @@ $success-color: #34d399;
         0 0 0 1px rgba(59, 130, 246, 0.2);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+      height: 300px;
+
+      @media (max-width: $breakpoint-tablet) {
+        margin-top: 2rem;
+        height: 250px;
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        margin-top: 1.5rem;
+        border-radius: 12px;
+        height: 200px;
+      }
 
       &::before {
         content: "";
@@ -543,12 +773,20 @@ $success-color: #34d399;
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;
+
+        @media (max-width: $breakpoint-mobile) {
+          border-radius: 12px;
+        }
       }
 
       &:hover {
         transform: scale(1.02);
         box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4),
           0 0 30px rgba(59, 130, 246, 0.3);
+
+        @media (max-width: $breakpoint-mobile) {
+          transform: scale(1.01);
+        }
 
         &::before {
           opacity: 1;
@@ -558,23 +796,115 @@ $success-color: #34d399;
       iframe {
         border-radius: 16px;
         display: block;
+        width: 100%;
+        height: 100%;
+
+        @media (max-width: $breakpoint-mobile) {
+          border-radius: 12px;
+        }
       }
     }
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
+// Landscape mode untuk tablet/mobile
+@media (max-width: $breakpoint-tablet) and (orientation: landscape) {
   .contact {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
 
-    .section-header h2 {
-      font-size: 2.25rem;
+    .section-header {
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+        margin: 1rem auto 0;
+      }
+    }
+
+    &__content {
+      gap: 2rem;
     }
 
     &__form,
     &__info {
-      padding: 2rem;
+      padding: 1.75rem;
+    }
+
+    &__info .map {
+      height: 220px;
+    }
+  }
+}
+
+// Very small devices
+@media (max-width: 360px) {
+  .contact {
+    padding: 2.5rem 0.5rem;
+
+    .section-header {
+      h2 {
+        font-size: 1.625rem;
+      }
+
+      p {
+        font-size: 0.875rem;
+        padding: 0 0.5rem;
+      }
+    }
+
+    &__form,
+    &__info {
+      padding: 1.25rem;
+    }
+
+    &__form {
+      .form-group {
+        input,
+        textarea {
+          padding: 0.625rem 0.875rem;
+          font-size: 0.875rem;
+        }
+
+        textarea {
+          min-height: 100px;
+        }
+      }
+
+      .btn-submit {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    &__info {
+      .contact-item {
+        gap: 0.75rem;
+        padding: 0.75rem;
+
+        .contact-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+
+        .contact-text {
+          h4 {
+            font-size: 0.9375rem;
+          }
+
+          p {
+            font-size: 0.8125rem;
+          }
+        }
+      }
+
+      .map {
+        height: 180px;
+      }
     }
   }
 }

@@ -422,7 +422,7 @@ const AboutSection = () => {
             <div className="about-section__profile">
               <h2>
                 <School />
-                Lembaga Sertifikasi Profesi SMK Negeri 17 Jakarta
+               Profil LSP SMKN 17
               </h2>
 
               <div className="profile-accordion">

@@ -15,9 +15,14 @@ $shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
 $shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 
 // Breakpoints
+$breakpoint-desktop-large: 1440px;
+$breakpoint-desktop: 1200px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet-large: 900px;
 $breakpoint-tablet: 768px;
+$breakpoint-mobile-large: 640px;
 $breakpoint-mobile: 480px;
-$breakpoint-tablet-plus: 769px;
+$breakpoint-mobile-small: 375px;
 
 // --- PEMBUKUS UTAMA ---
 .header-wrapper {
@@ -61,6 +66,10 @@ $breakpoint-tablet-plus: 769px;
     position: relative;
     z-index: 1;
 
+    @media (max-width: $breakpoint-tablet) {
+      padding: 0 1.5rem;
+    }
+
     @media (max-width: $breakpoint-mobile) {
       padding: 0 1rem;
     }
@@ -72,6 +81,12 @@ $breakpoint-tablet-plus: 769px;
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+
+    @media (max-width: $breakpoint-mobile-large) {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.25rem 0;
+    }
   }
 
   &__left,
@@ -80,8 +95,14 @@ $breakpoint-tablet-plus: 769px;
     align-items: center;
     gap: 1.5rem;
 
+    @media (max-width: $breakpoint-tablet) {
+      gap: 1.2rem;
+    }
+
     @media (max-width: $breakpoint-mobile) {
       gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 
@@ -93,6 +114,10 @@ $breakpoint-tablet-plus: 769px;
     cursor: pointer;
     font-size: 0.85rem;
 
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 0.8rem;
+    }
+
     @media (max-width: $breakpoint-mobile) {
       font-size: 0.75rem;
     }
@@ -101,6 +126,10 @@ $breakpoint-tablet-plus: 769px;
       margin-right: 0.5rem;
       animation: pulse 2s ease-in-out infinite;
       flex-shrink: 0;
+
+      @media (max-width: $breakpoint-mobile) {
+        margin-right: 0.35rem;
+      }
     }
 
     &:hover {
@@ -114,7 +143,7 @@ $breakpoint-tablet-plus: 769px;
     align-items: center;
 
     @media (max-width: $breakpoint-mobile) {
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     svg {
@@ -125,6 +154,7 @@ $breakpoint-tablet-plus: 769px;
 
       @media (max-width: $breakpoint-mobile) {
         font-size: 0.9rem;
+        padding: 0.2rem;
       }
 
       &:hover {
@@ -157,6 +187,10 @@ $breakpoint-tablet-plus: 769px;
     padding: 0 2rem;
 
     @media (max-width: $breakpoint-tablet) {
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
       padding: 0 1rem;
     }
   }
@@ -174,6 +208,11 @@ $breakpoint-tablet-plus: 769px;
   margin-top: 0.25rem;
   margin-right: 3rem;
   flex-shrink: 0;
+
+  @media (max-width: $breakpoint-laptop) {
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
 
   @media (max-width: $breakpoint-tablet) {
     margin-left: 0;
@@ -197,6 +236,12 @@ $breakpoint-tablet-plus: 769px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     animation: float 3s ease-in-out infinite;
 
+    @media (max-width: $breakpoint-tablet-large) {
+      width: 90px;
+      height: 44px;
+      margin-right: 0.875rem;
+    }
+
     @media (max-width: $breakpoint-tablet) {
       width: 80px;
       height: 40px;
@@ -207,6 +252,12 @@ $breakpoint-tablet-plus: 769px;
       width: 60px;
       height: 32px;
       margin-right: 0.5rem;
+    }
+
+    @media (max-width: $breakpoint-mobile-small) {
+      width: 50px;
+      height: 28px;
+      margin-right: 0.4rem;
     }
   }
 
@@ -219,12 +270,20 @@ $breakpoint-tablet-plus: 769px;
       line-height: 1.2;
       transition: all $transition-speed ease;
 
+      @media (max-width: $breakpoint-laptop) {
+        font-size: 1.6rem;
+      }
+
       @media (max-width: $breakpoint-tablet) {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
 
       @media (max-width: $breakpoint-mobile) {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: $breakpoint-mobile-small) {
+        font-size: 1rem;
       }
     }
 
@@ -234,12 +293,20 @@ $breakpoint-tablet-plus: 769px;
       margin: 0;
       color: $text-color;
 
+      @media (max-width: $breakpoint-laptop) {
+        font-size: 0.95rem;
+      }
+
       @media (max-width: $breakpoint-tablet) {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
 
       @media (max-width: $breakpoint-mobile) {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: $breakpoint-mobile-small) {
+        display: none;
       }
     }
   }
@@ -253,7 +320,7 @@ $breakpoint-tablet-plus: 769px;
   }
 }
 
-// --- NAVIGASI ---
+// --- NAVIGASI DESKTOP ---
 .nav {
   margin-left: auto;
 
@@ -265,8 +332,16 @@ $breakpoint-tablet-plus: 769px;
     gap: 2rem;
     align-items: center;
 
-    @media (max-width: 1024px) {
+    @media (max-width: $breakpoint-desktop) {
+      gap: 1.75rem;
+    }
+
+    @media (max-width: $breakpoint-laptop) {
       gap: 1.5rem;
+    }
+
+    @media (max-width: $breakpoint-tablet-large) {
+      gap: 1.25rem;
     }
   }
 
@@ -284,8 +359,12 @@ $breakpoint-tablet-plus: 769px;
     transition: all $transition-speed ease;
     white-space: nowrap;
 
-    @media (max-width: 1024px) {
+    @media (max-width: $breakpoint-laptop) {
       font-size: 0.95rem;
+    }
+
+    @media (max-width: $breakpoint-tablet-large) {
+      font-size: 0.9rem;
     }
 
     &::after {
@@ -335,8 +414,14 @@ $breakpoint-tablet-plus: 769px;
       position: relative;
       white-space: nowrap;
 
-      @media (max-width: 1024px) {
+      @media (max-width: $breakpoint-laptop) {
         font-size: 0.95rem;
+        gap: 0.4rem;
+      }
+
+      @media (max-width: $breakpoint-tablet-large) {
+        font-size: 0.9rem;
+        gap: 0.35rem;
       }
 
       &::after {
@@ -362,6 +447,10 @@ $breakpoint-tablet-plus: 769px;
         transition: transform $transition-speed ease;
         font-size: 0.75rem;
 
+        @media (max-width: $breakpoint-laptop) {
+          font-size: 0.7rem;
+        }
+
         &.open {
           transform: rotate(180deg);
         }
@@ -383,10 +472,43 @@ $breakpoint-tablet-plus: 769px;
       transition: all $transition-speed ease;
       z-index: 100;
 
+      @media (max-width: $breakpoint-laptop) {
+        min-width: 200px;
+        border-radius: 10px;
+      }
+
+      @media (max-width: $breakpoint-tablet-large) {
+        min-width: 180px;
+        border-radius: 8px;
+        top: calc(100% + 0.75rem);
+      }
+
       &.open {
         opacity: 1;
         visibility: visible;
         transform: translateX(-50%) translateY(0);
+      }
+
+      // Prevent dropdown from going off-screen on smaller desktops
+      @media (max-width: $breakpoint-laptop) {
+        &[data-align="right"] {
+          left: auto;
+          right: 0;
+          transform: translateY(-10px);
+
+          &.open {
+            transform: translateY(0);
+          }
+        }
+
+        &[data-align="left"] {
+          left: 0;
+          transform: translateY(-10px);
+
+          &.open {
+            transform: translateY(0);
+          }
+        }
       }
 
       li {
@@ -403,6 +525,17 @@ $breakpoint-tablet-plus: 769px;
           position: relative;
           overflow: hidden;
           white-space: normal;
+          line-height: 1.5;
+
+          @media (max-width: $breakpoint-laptop) {
+            padding: 0.875rem 1.25rem;
+            font-size: 0.9rem;
+          }
+
+          @media (max-width: $breakpoint-tablet-large) {
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+          }
 
           &::before {
             content: "";
@@ -427,6 +560,14 @@ $breakpoint-tablet-plus: 769px;
           &:hover {
             color: $primary-color;
             padding-left: 2rem;
+
+            @media (max-width: $breakpoint-laptop) {
+              padding-left: 1.75rem;
+            }
+
+            @media (max-width: $breakpoint-tablet-large) {
+              padding-left: 1.5rem;
+            }
 
             &::before {
               width: 100%;
@@ -455,10 +596,18 @@ $breakpoint-tablet-plus: 769px;
   border-radius: 8px;
   transition: all $transition-speed ease;
   flex-shrink: 0;
+  z-index: 1001;
 
   @media (max-width: $breakpoint-mobile) {
     font-size: 1.3rem;
     padding: 0.4rem;
+    margin-left: 0.75rem;
+  }
+
+  @media (max-width: $breakpoint-mobile-small) {
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    margin-left: 0.5rem;
   }
 
   &:hover {
@@ -474,7 +623,9 @@ $breakpoint-tablet-plus: 769px;
 // --- RESPONSIVE DESIGN ---
 @media (max-width: $breakpoint-tablet) {
   .top-bar {
-    display: none;
+    &__content {
+      font-size: 0.8rem;
+    }
   }
 
   .menu-toggle {
@@ -491,14 +642,29 @@ $breakpoint-tablet-plus: 769px;
     background-color: $white;
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     transition: right $transition-speed ease;
-    z-index: 999;
+    z-index: 1000;
     margin-left: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 5rem 0 2rem;
+    -webkit-overflow-scrolling: touch;
+
+    @media (max-width: $breakpoint-mobile-large) {
+      width: 85%;
+      max-width: 350px;
+      padding: 4.5rem 0 2rem;
+    }
 
     @media (max-width: $breakpoint-mobile) {
-      width: 85%;
+      width: 90%;
+      max-width: 320px;
       padding: 4rem 0 2rem;
+    }
+
+    @media (max-width: $breakpoint-mobile-small) {
+      width: 95%;
+      max-width: 300px;
+      padding: 3.5rem 0 1.5rem;
     }
 
     &.open {
@@ -507,16 +673,28 @@ $breakpoint-tablet-plus: 769px;
 
     ul {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0;
       padding: 0 1.5rem;
+      overflow: visible;
 
       @media (max-width: $breakpoint-mobile) {
         padding: 0 1rem;
+      }
+
+      @media (max-width: $breakpoint-mobile-small) {
+        padding: 0 0.75rem;
       }
     }
 
     li {
       width: 100%;
+      margin-bottom: 0.5rem;
+      overflow: visible;
+      position: relative;
+
+      @media (max-width: $breakpoint-mobile-small) {
+        margin-bottom: 0.35rem;
+      }
     }
 
     a {
@@ -526,9 +704,20 @@ $breakpoint-tablet-plus: 769px;
       font-size: 1.125rem;
       border-radius: 12px;
 
+      @media (max-width: $breakpoint-mobile-large) {
+        padding: 0.95rem 1.35rem;
+        font-size: 1.075rem;
+      }
+
       @media (max-width: $breakpoint-mobile) {
         padding: 0.875rem 1.25rem;
         font-size: 1rem;
+      }
+
+      @media (max-width: $breakpoint-mobile-small) {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
       }
 
       &::after {
@@ -539,8 +728,16 @@ $breakpoint-tablet-plus: 769px;
         background: rgba(0, 86, 179, 0.05);
         padding-left: 2rem;
 
+        @media (max-width: $breakpoint-mobile-large) {
+          padding-left: 1.85rem;
+        }
+
         @media (max-width: $breakpoint-mobile) {
           padding-left: 1.75rem;
+        }
+
+        @media (max-width: $breakpoint-mobile-small) {
+          padding-left: 1.5rem;
         }
       }
 
@@ -556,16 +753,31 @@ $breakpoint-tablet-plus: 769px;
 
     // --- DROPDOWN MOBILE ---
     .nav-item-dropdown {
+      overflow: visible;
+      position: relative;
+
       .dropdown-toggle {
         display: flex;
         width: 100%;
         padding: 1rem 1.5rem;
         justify-content: space-between;
         border-radius: 12px;
+        font-size: 1.125rem;
+
+        @media (max-width: $breakpoint-mobile-large) {
+          padding: 0.95rem 1.35rem;
+          font-size: 1.075rem;
+        }
 
         @media (max-width: $breakpoint-mobile) {
           padding: 0.875rem 1.25rem;
           font-size: 1rem;
+        }
+
+        @media (max-width: $breakpoint-mobile-small) {
+          padding: 0.75rem 1rem;
+          font-size: 0.95rem;
+          border-radius: 8px;
         }
 
         &::after {
@@ -576,52 +788,141 @@ $breakpoint-tablet-plus: 769px;
           background: rgba(0, 86, 179, 0.05);
         }
 
+        &:active {
+          background: rgba(0, 86, 179, 0.1);
+        }
+
         .dropdown-icon {
           margin-left: auto;
+          font-size: 0.875rem;
+          flex-shrink: 0;
+
+          @media (max-width: $breakpoint-mobile-small) {
+            font-size: 0.8rem;
+          }
         }
       }
 
       .dropdown-menu {
-        position: static;
+        position: relative;
         box-shadow: none;
-        background: rgba(0, 86, 179, 0.05);
-        margin: 0.5rem 0 0.5rem 1rem;
+        background: rgba(0, 86, 179, 0.04);
+        margin: 0.5rem 0 0 1rem;
         border-radius: 12px;
         max-height: 0;
-        overflow: hidden;
         opacity: 0;
         transform: none;
-        transition: all $transition-speed ease;
+        transition: max-height 0.4s ease, opacity 0.3s ease,
+          margin-bottom 0.3s ease;
+        border-left: 3px solid rgba(0, 86, 179, 0.2);
+        overflow: hidden;
+        will-change: max-height;
+
+        @media (max-width: $breakpoint-mobile-large) {
+          margin: 0.5rem 0 0 0.75rem;
+          border-radius: 10px;
+        }
 
         @media (max-width: $breakpoint-mobile) {
-          margin: 0.5rem 0 0.5rem 0.5rem;
+          margin: 0.5rem 0 0 0.5rem;
+        }
+
+        @media (max-width: $breakpoint-mobile-small) {
+          margin: 0.35rem 0 0 0.35rem;
+          border-radius: 8px;
+          border-left-width: 2px;
         }
 
         &.open {
-          max-height: 500px;
+          max-height: 2000px;
           opacity: 1;
+          margin-bottom: 1rem;
+
+          @media (max-width: $breakpoint-mobile-small) {
+            margin-bottom: 0.75rem;
+          }
         }
 
-        li a {
-          font-size: 1rem;
-          padding: 0.875rem 1.5rem;
+        li {
+          margin-bottom: 0;
 
-          @media (max-width: $breakpoint-mobile) {
-            font-size: 0.95rem;
-            padding: 0.75rem 1.25rem;
-          }
-
-          &:hover {
-            padding-left: 2rem;
+          &:first-child a {
+            padding-top: 1rem;
 
             @media (max-width: $breakpoint-mobile) {
-              padding-left: 1.75rem;
+              padding-top: 0.875rem;
+            }
+
+            @media (max-width: $breakpoint-mobile-small) {
+              padding-top: 0.75rem;
             }
           }
 
-          &.active {
-            background: transparent;
-            color: $primary-color;
+          &:last-child a {
+            padding-bottom: 1rem;
+
+            @media (max-width: $breakpoint-mobile) {
+              padding-bottom: 0.875rem;
+            }
+
+            @media (max-width: $breakpoint-mobile-small) {
+              padding-bottom: 0.75rem;
+            }
+          }
+
+          a {
+            font-size: 1rem;
+            padding: 0.875rem 1.5rem;
+            border-radius: 0;
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-word;
+            line-height: 1.5;
+            display: block;
+
+            @media (max-width: $breakpoint-mobile-large) {
+              font-size: 0.975rem;
+              padding: 0.825rem 1.35rem;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 0.95rem;
+              padding: 0.75rem 1.25rem;
+              line-height: 1.6;
+            }
+
+            @media (max-width: $breakpoint-mobile-small) {
+              font-size: 0.875rem;
+              padding: 0.65rem 1rem;
+              line-height: 1.7;
+            }
+
+            &:hover {
+              padding-left: 2rem;
+              background: rgba(0, 86, 179, 0.08);
+
+              @media (max-width: $breakpoint-mobile-large) {
+                padding-left: 1.85rem;
+              }
+
+              @media (max-width: $breakpoint-mobile) {
+                padding-left: 1.75rem;
+              }
+
+              @media (max-width: $breakpoint-mobile-small) {
+                padding-left: 1.5rem;
+              }
+            }
+
+            &.active {
+              background: rgba(0, 86, 179, 0.1);
+              color: $primary-color;
+              font-weight: 600;
+            }
+          }
+
+          &:not(:last-child) a {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
           }
         }
       }
@@ -629,10 +930,25 @@ $breakpoint-tablet-plus: 769px;
   }
 }
 
-// Landscape mode untuk mobile
+// Landscape mode untuk mobile dan tablet
 @media (max-width: $breakpoint-tablet) and (orientation: landscape) {
   .nav {
-    padding: 3rem 0 2rem;
+    padding: 3rem 0 1.5rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 2.5rem 0 1rem;
+    }
+  }
+
+  .top-bar {
+    display: none;
+  }
+}
+
+// Tablet landscape specific
+@media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) and (orientation: landscape) {
+  .nav ul {
+    padding: 0 2rem;
   }
 }
 
@@ -647,8 +963,9 @@ $breakpoint-tablet-plus: 769px;
   opacity: 0;
   visibility: hidden;
   transition: all $transition-speed ease;
-  z-index: 998;
+  z-index: 999;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: none;
 
   &.open {
@@ -698,8 +1015,44 @@ html {
 
 body.menu-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 
-  @media (min-width: $breakpoint-tablet-plus) {
+  @media (min-width: calc($breakpoint-tablet + 1px)) {
     overflow: auto;
+    position: static;
+  }
+}
+
+// --- ACCESSIBILITY & TOUCH IMPROVEMENTS ---
+@media (hover: none) and (pointer: coarse) {
+  .nav a,
+  .nav .dropdown-toggle {
+    -webkit-tap-highlight-color: rgba(0, 86, 179, 0.1);
+    -webkit-text-fill-color: rgba(0, 86, 179, 0.1);
+  }
+
+  .menu-toggle {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+// High DPI screens
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo__img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
