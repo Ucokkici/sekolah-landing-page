@@ -20,6 +20,16 @@ import {
 import "./AboutSection.scss";
 import "../App.scss";
 
+import syaiful from "../assets/syaiful.jpeg";
+import dian from "../assets/dian.jpeg";
+import elmy from "../assets/elmy.jpeg";
+import perday from "../assets/perday.jpeg";
+import handoko from "../assets/handoko.jpeg";
+import herni from "../assets/herni.jpeg";
+import ulfah from "../assets/ulfah.jpeg";
+import rumiyati from "../assets/rumiyati.jpeg";
+import murfidah from "../assets/mufidah.jpeg";
+
 // --- 1. DEFINISIKAN TIPE DATA UNTUK ANGGOTA ---
 interface MemberDetail {
   id: string;
@@ -34,10 +44,12 @@ interface MemberDetail {
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("profile");
-  
+
   // --- 2. GUNAKAN TIPE DATA UNTUK STATE SELECTED MEMBER ---
-  const [selectedMember, setSelectedMember] = useState<MemberDetail | null>(null);
-  
+  const [selectedMember, setSelectedMember] = useState<MemberDetail | null>(
+    null
+  );
+
   // --- STATE FOR ACCORDION ---
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
@@ -109,101 +121,110 @@ const AboutSection = () => {
       id: "sahri",
       name: "Sahri, M.Pd.",
       position: "Dewan Pengarah",
-      birthDate: "15 Maret 1970",
-      education: "S2 Pendidikan Teknologi Informasi - Universitas Negeri Jakarta",
-      experience: "20 tahun pengalaman di bidang pendidikan vokasional",
-      email: "sahri@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=sahri", // Gambar dari online
+      birthDate: "Jepara, 16 Juni 1973",
+      education: "S2",
+      experience: "5 Tahun",
+      email: "sahriyohanes@gmail.com",
+      image: "https://i.pravatar.cc/150?u=sahri",
     },
+
     "Syaiful Bachri, S.T.": {
       id: "syaiful",
       name: "Syaiful Bachri, S.T.",
       position: "Ketua LSP",
-      birthDate: "22 Juni 1975",
-      education: "S1 Teknik Elektro - Institut Teknologi Bandung",
-      experience: "15 tahun pengalaman di bidang sertifikasi profesi",
-      email: "syaiful@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=syaiful", // Gambar dari online
+      birthDate: "7 Januari 1980",
+      education: "S1-Teknik Informatika",
+      experience: "7 Tahun",
+      email: "syaifulbachri091213@gmail.com",
+      image: syaiful,
     },
+
     "Dian Yunita, S.Pd.": {
       id: "dian",
       name: "Dian Yunita, S.Pd.",
       position: "Bendahara",
-      birthDate: "8 Januari 1980",
-      education: "S1 Pendidikan Akuntansi - Universitas Negeri Jakarta",
-      experience: "12 tahun pengalaman di bidang keuangan pendidikan",
-      email: "dian@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=dian", // Gambar dari online
+      birthDate: "15 Juni 1995",
+      education: "S1 - Pendidikan Akuntansi",
+      experience: "5 tahun",
+      email: "dianyunita56@guru.smk.belajar.id",
+      image: dian,
     },
+
     "Elmy Vianty, S.Pd.": {
       id: "elmy",
       name: "Elmy Vianty, S.Pd.",
       position: "Komite Skema",
-      birthDate: "5 September 1978",
-      education: "S1 Pendidikan Administrasi Perkantoran - Universitas Negeri Jakarta",
-      experience: "14 tahun pengalaman di bidang administrasi perkantoran",
-      email: "elmy@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=elmy", // Gambar dari online
+      birthDate: "14 Januari 1994",
+      education: "S1 - Pendidikan Ekonomi Tata Niaga",
+      experience: "7 tahun",
+      email: "elmyvianty23@gmail.com",
+      image: elmy,
     },
+
     "Rumiyati, S.Pd.": {
       id: "rumiyati",
       name: "Rumiyati, S.Pd.",
       position: "Manajemen Mutu",
-      birthDate: "12 November 1976",
-      education: "S1 Pendidikan Manajemen - Universitas Negeri Jakarta",
-      experience: "16 tahun pengalaman di bidang manajemen mutu",
-      email: "rumiyati@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=rumiyati", // Gambar dari online
+      birthDate: "24 September 1993",
+      education: "S1 - Pendidikan Administrasi Perkantoran",
+      experience: "5 Tahun",
+      email: "rumiyati49@guru.smk.belajar.id",
+      image: rumiyati,
     },
+
     "Handoko, M.Kom.": {
       id: "handoko",
       name: "Handoko, M.Kom.",
       position: "Sertifikasi",
-      birthDate: "3 April 1979",
-      education: "S2 Teknik Informatika - Universitas Indonesia",
-      experience: "13 tahun pengalaman di bidang sertifikasi TI",
-      email: "handoko@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=handoko", // Gambar dari online
+      birthDate: "08 Juni 1989",
+      education: "S2 - Teknologi Informasi",
+      experience: "5 Tahun",
+      email: "aanhandokodoko@gmail.com",
+      image: handoko,
     },
+
     "Feri Supriyadi, S.Pd.": {
       id: "feri",
       name: "Feri Supriyadi, S.Pd.",
-      position: "Administrasi",
-      birthDate: "17 Juli 1982",
-      education: "S1 Pendidikan Ekonomi - Universitas Negeri Jakarta",
-      experience: "10 tahun pengalaman di bidang administrasi",
-      email: "feri@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=feri", // Gambar dari online
+      position: "Kabid Administrasi",
+      birthDate: "29 Agustus 1990",
+      education: "S1",
+      experience: "5 Tahun",
+      email: "ferisupriyadi29@gmail.com",
+      image: perday,
     },
+
     "Maria Ulfah, S.Sos.": {
       id: "maria",
       name: "Maria Ulfah, S.Sos.",
-      position: "Staf Administrasi",
-      birthDate: "25 Oktober 1985",
-      education: "S1 Ilmu Sosial - Universitas Indonesia",
-      experience: "8 tahun pengalaman di bidang administrasi",
-      email: "maria@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=maria", // Gambar dari online
+      position: "Staff Manajemen Mutu",
+      birthDate: "Jakarta, 6 September 1986",
+      education: "S1 - Sastra Jepang",
+      experience: "1 Tahun",
+      email: "maria.ulfah1655@guru.smk.belajar.id",
+      image: ulfah,
     },
+
     "Mufidah, S.Pd.": {
       id: "mufidah",
-      name: "Mufidah, S.Pd.",
-      position: "Staf Sertifikasi",
-      birthDate: "14 Februari 1984",
-      education: "S1 Pendidikan Bahasa Inggris - Universitas Negeri Jakarta",
-      experience: "9 tahun pengalaman di bidang sertifikasi",
-      email: "mufidah@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=mufidah", // Gambar dari online
+      name: "Mufidah, S.E",
+      position: "Staff Sertifikasi",
+      birthDate: "Jakarta, 03 Oktober 1982",
+      education: "S1",
+      experience: "1 Tahun",
+      email: "fidafarid1982@gmail.com",
+      image: murfidah,
     },
+
     "Herni Murniasih, S.E.I.": {
       id: "herni",
       name: "Herni Murniasih, S.E.I.",
-      position: "Staf Keuangan",
-      birthDate: "30 Mei 1983",
-      education: "S1 Ekonomi Islam - Universitas Islam Negeri Syarif Hidayatullah",
-      experience: "11 tahun pengalaman di bidang keuangan",
-      email: "herni@smkn17jakarta.sch.id",
-      image: "https://i.pravatar.cc/150?u=herni", // Gambar dari online
+      position: "Staff Administrasi",
+      birthDate: "21 Mei 1979",
+      education: "S1",
+      experience: "2 tahun",
+      email: "hernimurniasih.05@gmail.com",
+      image: herni,
     },
   };
 
@@ -426,13 +447,15 @@ const AboutSection = () => {
                       <h3 className="accordion-title">{item.title}</h3>
                       <div
                         className={`accordion-chevron ${
-                          activeAccordion === index ? "accordion-chevron--open" : ""
+                          activeAccordion === index
+                            ? "accordion-chevron--open"
+                            : ""
                         }`}
                       >
                         <ChevronDown />
                       </div>
                     </button>
-                    
+
                     <AnimatePresence>
                       {activeAccordion === index && (
                         <motion.div
@@ -444,7 +467,7 @@ const AboutSection = () => {
                         >
                           <div className="accordion-text">
                             <p>{item.content}</p>
-                                                      </div>
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -456,54 +479,109 @@ const AboutSection = () => {
 
           {activeTab === "history" && (
             <div className="about-section__history">
-              <h2>
-                <History />
-                Sejarah LSP SMK Negeri 17 Jakarta
-              </h2>
+              <h2>Sejarah LSP SMKN 17 Jakarta</h2>
+
               <div className="about-section__timeline">
+                {/* SECTION 1 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">1969</div>
-                    <h3>Awal Berdiri</h3>
+                    <div className="year-badge">2018</div>
+                    <h3>Pendirian LSP</h3>
                   </div>
                   <p>
-                    SMK Negeri 17 Jakarta didirikan dengan nama STM Pembangunan
-                    Jakarta. Pada awalnya, sekolah ini hanya memiliki beberapa
-                    program keahlian dasar.
+                    Lembaga Sertifikasi Profesi (LSP) SMKN 17 Jakarta didirikan
+                    pada bulan Oktober 2018 oleh Kepala SMKN 17 Jakarta periode
+                    2016–2020, Bapak Drs. Bimo Suciono, M.M., yang sekaligus
+                    menjadi Dewan Pengarah pertama. LSP memperoleh SK Lisensi
+                    Nomor Kep. 1275/BNSP/XII/2018 dengan Nomor Lisensi
+                    BNSP-LSP-1412-ID. Pada periode 2018–2020, LSP dipimpin oleh
+                    Ibu Santi Yuliana, M.Pd. sebagai Ketua. Kantor LSP sejak
+                    awal berada di SMKN 17 Jakarta, Jl. G1 Slipi Palmerah
+                    Jakarta Barat.
                   </p>
                 </div>
+
+                {/* SECTION 2 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">1997</div>
-                    <h3>Perubahan Nama</h3>
+                    <div className="year-badge">2019–2025</div>
+                    <h3>Pelaksanaan Sertifikasi</h3>
                   </div>
                   <p>
-                    STM Pembangunan Jakarta berubah nama menjadi SMK Negeri 17
-                    Jakarta. Perubahan ini sejalan dengan perkembangan kebijakan
-                    pendidikan di Indonesia.
+                    Sejak tahun 2019 hingga 2025, LSP SMKN 17 Jakarta telah
+                    melaksanakan Uji Sertifikasi Kompetensi bagi peserta didik
+                    SMK dengan total 4.228 asesi, terdiri atas 2.961 asesi
+                    dinyatakan kompeten dan 1.267 asesi belum kompeten.
                   </p>
                 </div>
+
+                {/* SECTION 3 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">2015</div>
-                    <h3>Berdirinya LSP</h3>
+                    <div className="year-badge">Skema</div>
+                    <h3>Skema Sertifikasi</h3>
                   </div>
                   <p>
-                    LSP SMK Negeri 17 Jakarta didirikan sebagai lembaga
-                    sertifikasi kompetensi yang terlisensi BNSP. Tujuannya untuk
-                    meningkatkan kualitas lulusan agar siap kerja dan bersaing
-                    di dunia industri.
+                    LSP SMKN 17 Jakarta memiliki 6 skema sertifikasi kompetensi,
+                    meliputi:
+                    <br />
+                    1. KKNI Level II Akuntansi dan Keuangan Lembaga
+                    <br />
+                    2. KKNI Level II Otomatisasi dan Tata Kelola Perkantoran
+                    <br />
+                    3. Okupasi Pramuniaga
+                    <br />
+                    4. Okupasi Kasir
+                    <br />
+                    5. Okupasi Asisten Pemrogram Junior
+                    <br />
+                    6. Okupasi Pemrogram Junior
                   </p>
                 </div>
+
+                {/* SECTION 4 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">2020</div>
-                    <h3>Ekspansi Program</h3>
+                    <div className="year-badge">Kemitraan</div>
+                    <h3>Jejaring Kerja Sama</h3>
                   </div>
                   <p>
-                    LSP SMK Negeri 17 Jakarta menambah skema sertifikasi baru
-                    untuk memenuhi kebutuhan industri yang terus berkembang.
-                    Total skema sertifikasi yang tersedia mencapai 15 skema.
+                    LSP SMKN 17 Jakarta bekerja sama dengan 13 satuan pendidikan
+                    di wilayah Jakarta Barat, yaitu: SMKN 17 Jakarta, SMK Islam
+                    Perti, SMK Islam Fatahilah, SMK Kristen Rahmani, SMK Strada,
+                    SMK Santo Leo, SMK Putra Mandiri, SMK Tanjung, SMK Tri
+                    Ratna, SMK Tomang Raya, SMK Yadika 2, SKB Negeri 05, dan SKB
+                    Negeri 24.
+                  </p>
+                </div>
+
+                {/* SECTION 5 */}
+                <div className="about-section__timeline-item">
+                  <div className="timeline-header">
+                    <div className="year-badge">2024</div>
+                    <h3>Relisensi</h3>
+                  </div>
+                  <p>
+                    Pada tanggal 23 Februari 2024, LSP SMKN 17 Jakarta
+                    melaksanakan proses relisensi dan memperoleh SK Lisensi
+                    terbaru di bawah pembinaan Dewan Pengarah Bapak Sahri,
+                    M.Pd., dan dipimpin oleh Ketua LSP, Bapak Syaiful Bachri,
+                    S.T. SK tersebut bernomor Kep. 0475/BNSP/II/2024 dan Nomor
+                    Lisensi BNSP-LSP-1412-ID.
+                  </p>
+                </div>
+
+                {/* SECTION 6 */}
+                <div className="about-section__timeline-item">
+                  <div className="timeline-header">
+                    <div className="year-badge">Kini</div>
+                    <h3>Komitmen</h3>
+                  </div>
+                  <p>
+                    Hingga saat ini, LSP SMKN 17 Jakarta tetap berkomitmen untuk
+                    menyelenggarakan layanan Uji Sertifikasi Kompetensi secara
+                    profesional, akuntabel, dan berkelanjutan bagi peserta didik
+                    Sekolah Menengah Kejuruan.
                   </p>
                 </div>
               </div>
@@ -692,7 +770,9 @@ const AboutSection = () => {
                   <h4>Informasi Pribadi</h4>
                   <div className="info-item">
                     <span className="info-label">Tanggal Lahir:</span>
-                    <span className="info-value">{selectedMember.birthDate}</span>
+                    <span className="info-value">
+                      {selectedMember.birthDate}
+                    </span>
                   </div>
                 </div>
 

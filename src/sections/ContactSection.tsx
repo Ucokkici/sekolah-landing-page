@@ -123,18 +123,6 @@ const ContactSection = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            {/* Floating Balls untuk Form Card */}
-            <motion.div
-              className="floating-ball floating-ball-1"
-              variants={floatingBallVariants}
-              animate="animate"
-            />
-            <motion.div
-              className="floating-ball floating-ball-2"
-              variants={floatingBallVariants2}
-              animate="animate"
-            />
-
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Nama Lengkap</label>
@@ -226,13 +214,13 @@ const ContactSection = () => {
               className="floating-ball floating-ball-3"
               variants={floatingBallVariants}
               animate="animate"
-              style={{ animationDelay: '1s' }}
+              style={{ animationDelay: "1s" }}
             />
             <motion.div
               className="floating-ball floating-ball-4"
               variants={floatingBallVariants2}
               animate="animate"
-              style={{ animationDelay: '0.5s' }}
+              style={{ animationDelay: "0.5s" }}
             />
 
             <h3>Informasi Kontak</h3>
@@ -247,9 +235,7 @@ const ContactSection = () => {
               </div>
               <div className="contact-text">
                 <h4>Alamat</h4>
-                <p>
-                  Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12345
-                </p>
+                <p>Jl. G. Slipi, Palmerah, Jakarta Barat 11410</p>
               </div>
             </div>
 
@@ -259,7 +245,7 @@ const ContactSection = () => {
               </div>
               <div className="contact-text">
                 <h4>Telepon</h4>
-                <p>(021) 1234-5678</p>
+                <p> (021) 5484134</p>
               </div>
             </div>
 
@@ -269,7 +255,7 @@ const ContactSection = () => {
               </div>
               <div className="contact-text">
                 <h4>Email</h4>
-                <p>info@smkcool.sch.id</p>
+                <p>lspsmkn17jakarta@gmail.com</p>
               </div>
             </div>
 

@@ -142,62 +142,64 @@
         }
       }
 
-      .back-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 2.5rem;
-        padding: 0.875rem 1.75rem;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(20px);
-        color: white;
-        text-decoration: none;
-        border-radius: 60px;
-        font-weight: 600;
-        font-size: 1rem;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        transition: var(--transition-base);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
-        
-        // Shine effect
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          transition: left 0.6s ease;
-        }
+    .back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: fixed; // Mengubah dari relative ke fixed agar tetap di posisi yang sama saat scroll
+  top: 2rem; // Menambah jarak dari atas
+  left: 2rem; // Menambah jarak dari kiri
+  padding: 0.875rem 1.75rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  color: rgb(162, 210, 203);
+  text-decoration: none;
+  border-radius: 60px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: var(--transition-base);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000; // Memastikan tombol tetap di atas elemen lain
+  
+  // Shine effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
 
-        &:hover {
-          background: rgba(255, 255, 255, 0.25);
-          border-color: rgba(255, 255, 255, 0.5);
-          transform: translateX(-8px) scale(1.05);
-          box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-          
-          &::before {
-            left: 100%;
-          }
-          
-          svg {
-            transform: translateX(-5px);
-          }
-        }
-        
-        &:active {
-          transform: translateX(-5px) scale(1.02);
-        }
-        
-        svg {
-          transition: transform 0.3s ease;
-          width: 20px;
-          height: 20px;
-        }
-      }
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-8px) scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+    
+    &::before {
+      left: 100%;
+    }
+    
+    svg {
+      transform: translateX(-5px);
+    }
+  }
+  
+  &:active {
+    transform: translateX(-5px) scale(1.02);
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+    width: 20px;
+    height: 20px;
+  }
+}
 
       .program-info-hero {
         text-align: center;

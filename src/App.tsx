@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scroller } from "react-scroll";
 
 // Import Komponen
 import Header from "./components/Header/Header.tsx";
@@ -15,6 +16,10 @@ import ProgramsSection from "./sections/ProgramSection.tsx";
 import FacilitiesSection from "./sections/FacilitiesSection.tsx";
 import ContactSection from "./sections/ContactSection.tsx";
 import KompetensiDetail from "./pages/KompetensiDetail.tsx";
+import ProfilPage from "./pages/ProfilPage";
+import SejarahPage from "./pages/SejarahPage";
+import VisiMisiPage from "./pages/VisiMisiPage";
+import StructurePage from "./pages/StructurePage";
 
 import "./App.scss";
 
@@ -23,6 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Komponen untuk halaman utama dengan semua section
 const HomePage = () => {
+  const location = useLocation();
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -59,8 +65,26 @@ const HomePage = () => {
     };
   }, []); // Dependency array kosong agar hanya dijalankan sekali
 
+  // --- useEffect untuk menangani hash ---
+  useEffect(() => {
+    // Jika ada hash di URL (misal: /#program)
+    if (location.hash) {
+      // Hapus tanda '#' untuk mendapatkan ID elemen
+      const elementId = location.hash.substring(1);
+
+      // Berikan sedikit jeda agar halaman sempurna dimuat
+      setTimeout(() => {
+        scroller.scrollTo(elementId, {
+          duration: 500,
+          smooth: true,
+          offset: -80, // Sesuaikan ini dengan tinggi header Anda agar tidak tertutup
+        });
+      }, 100);
+    }
+  }, [location]); // Efek ini akan berjalan saat lokasi berubah
+
   return (
-    <div className="app">
+    <>
       {/* --- BACKGROUND ANIMASI BARU --- */}
       <div className="background">
         <div className="ball"></div>
@@ -144,7 +168,7 @@ const HomePage = () => {
         ))}
       </div>
 
-      <Header />
+      {/* Konten Utama Homepage tanpa Header/Footer */}
       <main ref={mainRef}>
         <HeroSection />
         <AboutSection />
@@ -152,8 +176,7 @@ const HomePage = () => {
         <FacilitiesSection />
         <ContactSection />
       </main>
-      <Footer />
-    </div>
+    </>
   );
 };
 
@@ -171,11 +194,25 @@ function App() {
   return (
     <Router>
       <AnimatePresence>{isLoading && <LoadingScreen />}</AnimatePresence>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/program" element={<HomePage />} />
-        <Route path="/kompetensi/:id" element={<KompetensiDetail />} />
-      </Routes>
+      
+      {/* Header dan Footer ada di sini, membungkus Routes */}
+      <div className="app">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/program" element={<HomePage />} />
+            <Route path="/kompetensi/:id" element={<KompetensiDetail />} />
+            
+            {/* --- RUTE UNTUK SUBMENU "TENTANG" --- */}
+            <Route path="/tentang/profil" element={<ProfilPage />} />
+            <Route path="/tentang/sejarah" element={<SejarahPage />} />
+            <Route path="/tentang/visi-misi" element={<VisiMisiPage />} />
+            <Route path="/tentang/struktur" element={<StructurePage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }

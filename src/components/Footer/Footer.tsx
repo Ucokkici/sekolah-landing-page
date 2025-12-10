@@ -19,7 +19,6 @@ const Footer = () => {
     { name: "Tentang", target: "tentang" },
     { name: "Program", target: "program" },
     { name: "Fasilitas", target: "fasilitas" },
-    { name: "Testimoni", target: "testimoni" },
     { name: "Kontak", target: "kontak" },
   ];
 
@@ -34,7 +33,7 @@ const Footer = () => {
               transition={{ duration: 0.3 }}
             >
               <Link to="beranda" spy={true} smooth={true} duration={500}>
-                SMK<span>Cool</span>
+                SMKN<span>17</span>
               </Link>
             </motion.div>
             <p>
@@ -100,24 +99,25 @@ const Footer = () => {
             <div className="footer__contact">
               <div className="contact-item">
                 <FaMapMarkerAlt />
-                <p>
-                  Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12345
-                </p>
+                <p>Jl. G. Slipi, Palmerah, Jakarta Barat 11410</p>
               </div>
               <div className="contact-item">
                 <FaPhone />
-                <p>(021) 1234-5678</p>
+                <p> (021) 5484134</p>
               </div>
               <div className="contact-item">
                 <FaEnvelope />
-                <p>info@smkcool.sch.id</p>
+                <p> lspsmkn17jakarta@gmail.com</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; {currentYear} SMK Cool. All rights reserved.</p>
+          <p>
+            © {currentYear} <strong>Ahmad Akbar</strong>. All rights reserved. —
+            <strong>IG: @akbarsayangmamah</strong>
+          </p>
         </div>
       </div>
     </footer>
