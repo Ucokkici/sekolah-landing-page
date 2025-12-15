@@ -1,6 +1,5 @@
-// ✅ PERBAIKAN: Pisahkan import nilai dan import tipe
-import { motion, useInView, AnimatePresence } from "framer-motion"; // Import untuk NILAI (fungsi)
-import type { Variants } from "framer-motion"; // Import untuk TIPE
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import {
   X,
@@ -24,7 +23,6 @@ import putraMandiriImg from "../assets/putra mandiri.png";
 import yadika2Img from "../assets/yadika 2.png";
 import smkn17Img from "../assets/smk17.png";
 
-// Interface disederhanakan, hanya menyisakan properti yang dibutuhkan
 interface Facility {
   id: number;
   name: string;
@@ -39,13 +37,11 @@ const FacilitiesSection = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Jumlah item per halaman
   const itemsPerPage = 4;
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  // Data fasilitas ditambah menjadi 13
   const facilities: Facility[] = [
     {
       id: 1,
@@ -173,18 +169,14 @@ const FacilitiesSection = () => {
     },
   ];
 
-  // Menghitung total halaman
   const totalPages = Math.ceil(facilities.length / itemsPerPage);
 
-  // Menghitung indeks awal dan akhir untuk halaman saat ini
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentFacilities = facilities.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Fungsi untuk mengubah halaman
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  // Fungsi untuk navigasi halaman
   const goToPrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -194,7 +186,6 @@ const FacilitiesSection = () => {
   };
 
   const openImage = (facility: Facility, index: number) => {
-    // Menghitung indeks asli dalam array facilities
     const originalIndex = indexOfFirstItem + index;
     setSelectedImage(facility);
     setImageIndex(originalIndex);
@@ -217,14 +208,12 @@ const FacilitiesSection = () => {
     setImageIndex(newIndex);
     setSelectedImage(facilities[newIndex]);
 
-    // Memperbarui halaman saat navigasi gambar
     const newPage = Math.floor(newIndex / itemsPerPage) + 1;
     if (newPage !== currentPage) {
       setCurrentPage(newPage);
     }
   };
 
-  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedImage) return;
@@ -266,7 +255,6 @@ const FacilitiesSection = () => {
 
   return (
     <section id="fasilitas" className="facilities" ref={ref}>
-      {/* Background decorations */}
       <div className="facilities__bg-decoration">
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
@@ -274,7 +262,6 @@ const FacilitiesSection = () => {
       </div>
 
       <div className="facilities__container">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -289,12 +276,6 @@ const FacilitiesSection = () => {
             <span className="text-black">Sekolah</span>{" "}
             <span className="facilities__title-highlight text-blue-dark">
               Jejaring
-              <motion.div
-                className="facilities__title-underline"
-                initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : {}}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              />
             </span>
           </motion.h2>
 
@@ -312,7 +293,6 @@ const FacilitiesSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Gallery Grid */}
         <motion.div
           className="facilities__gallery"
           variants={containerVariants}
@@ -328,12 +308,9 @@ const FacilitiesSection = () => {
               onClick={() => openImage(facility, index)}
               className="polaroid-card"
             >
-              {/* Polaroid Frame */}
               <div className="polaroid-card__frame">
-                {/* Pin decoration */}
                 <div className="polaroid-card__pin"></div>
 
-                {/* Image container */}
                 <div className="polaroid-card__photo">
                   <img
                     src={facility.image}
@@ -345,7 +322,6 @@ const FacilitiesSection = () => {
                   </div>
                 </div>
 
-                {/* Caption area (white bottom part of polaroid) */}
                 <div className="polaroid-card__caption">
                   <h3 className="polaroid-card__title">{facility.name}</h3>
                   <div className="polaroid-card__tags">
@@ -362,14 +338,12 @@ const FacilitiesSection = () => {
                   </div>
                 </div>
 
-                {/* Tape effect */}
                 <div className="polaroid-card__tape"></div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Pagination */}
         <motion.div
           className="facilities__pagination"
           initial={{ opacity: 0, y: 20 }}
@@ -416,7 +390,6 @@ const FacilitiesSection = () => {
         </motion.div>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
@@ -434,7 +407,6 @@ const FacilitiesSection = () => {
               onClick={(e) => e.stopPropagation()}
               className="modal__content"
             >
-              {/* Close button */}
               <motion.button
                 onClick={closeImage}
                 whileHover={{ scale: 1.1, rotate: 90 }}
@@ -444,7 +416,6 @@ const FacilitiesSection = () => {
                 <X size={24} />
               </motion.button>
 
-              {/* Navigation buttons */}
               <motion.button
                 onClick={() => navigateImage("prev")}
                 className="modal__nav modal__nav--prev"
@@ -459,15 +430,11 @@ const FacilitiesSection = () => {
                 <ChevronRight size={28} />
               </motion.button>
 
-              {/* Polaroid Style Modal Content */}
               <div className="modal__polaroid">
-                {/* Polaroid Frame */}
                 <div className="modal__frame">
-                  {/* Decorative tape */}
                   <div className="modal__tape modal__tape--left"></div>
                   <div className="modal__tape modal__tape--right"></div>
 
-                  {/* Image */}
                   <div className="modal__photo">
                     <img
                       src={selectedImage.image}
@@ -476,7 +443,6 @@ const FacilitiesSection = () => {
                     />
                   </div>
 
-                  {/* Caption */}
                   <div className="modal__caption">
                     <div className="modal__header">
                       <h3 className="modal__title">{selectedImage.name}</h3>

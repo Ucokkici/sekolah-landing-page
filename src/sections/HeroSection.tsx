@@ -6,11 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimeCharacter from "../components/AnimeCharacter/AnimeCharacter";
 import "./HeroSection.scss";
 
-// Mendaftarkan plugin ScrollTrigger dari GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
-  // Refs untuk elemen-elemen yang akan dianimasikan
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -19,7 +17,6 @@ const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if device is mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -35,9 +32,6 @@ const HeroSection = () => {
 
     if (!hero || !title || !subtitle || !cta || !particles) return;
 
-    // --- ANIMASI GSAP ---
-
-    // 1. Efek Parallax untuk background saat scroll
     gsap.to(hero.querySelector(".hero__background"), {
       yPercent: -30,
       ease: "none",
@@ -49,7 +43,6 @@ const HeroSection = () => {
       },
     });
 
-    // 2. Animasi teks masuk dari bawah dengan efek fade-in
     gsap.from(title, {
       opacity: 0,
       y: 50,
@@ -74,8 +67,6 @@ const HeroSection = () => {
       ease: "power3.out",
     });
 
-    // 3. Membuat dan menganimasikan partikel
-    // Reduce particle count on mobile for better performance
     const particleCount = isMobile ? 20 : 50;
     const particlesArray: HTMLElement[] = [];
 
@@ -107,7 +98,6 @@ const HeroSection = () => {
       });
     });
 
-    // 4. Efek hover pada tombol CTA
     const buttons = cta.querySelectorAll("a");
     buttons.forEach((button) => {
       const buttonEl = button as HTMLElement;
@@ -128,7 +118,6 @@ const HeroSection = () => {
       });
     });
 
-    // --- CLEANUP FUNCTION ---
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       particlesArray.forEach((particle) => particle.remove());
@@ -141,14 +130,10 @@ const HeroSection = () => {
       <div className="hero__rings"></div>
       <div className="hero__background"></div>
       <div className="hero__particles" ref={particlesRef}></div>
-
-      {/* --- TAMBAHKAN KOMPONEN GELEMBUNG UNGU --- */}
       <div className="hero__bubbles"></div>
 
       <div className="container">
-        {/* Container utama dengan layout flexbox */}
         <div className="hero__content">
-          {/* Wrapper untuk teks di sebelah kiri */}
           <div className="hero__text-wrapper">
             <motion.h1
               ref={titleRef}
@@ -173,7 +158,6 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              {/* DIKEMBALIKAN: Teks dan link tombol CTA ke versi asli */}
               <Link
                 to="kontak"
                 spy={true}
@@ -195,7 +179,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Komponen gambar di sebelah kanan */}
           <AnimeCharacter />
         </div>
       </div>

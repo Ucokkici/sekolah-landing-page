@@ -1,15 +1,13 @@
-// Variabel Warna & Tema
 $primary-color: #3b82f6;
 $secondary-color: #9333ea;
 $accent-color: #ec4899;
 $text-color: #1f2937;
 $text-light: #6b7280;
-$bg-gradient-start: #fdf2f8; // Pink muda
-$bg-gradient-end: #e0e7ff; // Biru muda
+$bg-gradient-start: #fdf2f8;
+$bg-gradient-end: #e0e7ff;
 $card-bg: rgba(255, 255, 255, 0.95);
 $card-border: #e5e7eb;
 
-// Mixins untuk Efek
 @mixin card-shadow {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -19,46 +17,10 @@ $card-border: #e5e7eb;
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-// Komponen Utama
 .about-section {
   position: relative;
   overflow: hidden;
-  // Latar belakang statis yang elegan
-
   padding: 5rem 1rem;
-
-  &__rings {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  &__bubbles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-  }
-
-  &__bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-  }
-
-  &__bubble--1 {
-    width: 300px;
-    height: 300px;
-    top: -150px;
-    left: -150px;
-  }
 
   &__particles {
     position: absolute;
@@ -69,12 +31,6 @@ $card-border: #e5e7eb;
     z-index: 3;
   }
 
-  &__particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-  }
-
   &__content {
     position: relative;
     z-index: 10;
@@ -82,7 +38,6 @@ $card-border: #e5e7eb;
     margin: 0 auto;
   }
 
-  // --- Hero Header ---
   &__hero {
     text-align: center;
     margin-bottom: 4rem;
@@ -118,7 +73,7 @@ $card-border: #e5e7eb;
         font-size: 3.75rem;
       }
       .highlight {
-        color: $primary-color;
+        color: #fff;
       }
     }
     &-description {
@@ -129,7 +84,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Stats Grid ---
   &__stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -169,7 +123,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Tab Navigation ---
   &__tabs {
     display: flex;
     flex-wrap: wrap;
@@ -208,21 +161,16 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Tab Content ---
-  // Latar belakang tab konten dihapus agar desain lebih terbuka
-
-  // Gaya Umum untuk Konten Tab
   h2 {
     font-size: 1.875rem;
     font-weight: 700;
     color: $text-color;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-    // ⭐ Tambahkan ini untuk menata ikon dan teks
     display: flex;
     align-items: center;
-    justify-content: center; // Pusatkan konten flex
-    gap: 0.75rem; // Beri jarak antara ikon dan teks
+    justify-content: center;
+    gap: 0.75rem;
 
     svg {
       width: 2rem;
@@ -231,8 +179,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // Modern Animated Accordion Styles
-  // Minimal Modern Accordion Styles
   .profile-accordion {
     margin-top: 40px;
     display: flex;
@@ -250,7 +196,6 @@ $card-border: #e5e7eb;
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
 
-      // Hover effect - subtle and elegant
       &:hover {
         transform: translateY(-2px);
         background: rgba(255, 255, 255, 0.7);
@@ -258,12 +203,10 @@ $card-border: #e5e7eb;
           0 0 0 1px rgba(0, 0, 0, 0.03);
       }
 
-      // Active state - minimal highlight
       &--active {
         background: rgba(255, 255, 255, 0.75);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.04);
 
-        // Subtle top accent
         &::before {
           content: "";
           position: absolute;
@@ -338,7 +281,6 @@ $card-border: #e5e7eb;
       }
     }
 
-    // Active icon state
     .accordion-item--active .accordion-icon {
       background: rgba(241, 245, 249, 0.8);
       border-color: rgba(203, 213, 225, 0.9);
@@ -391,7 +333,6 @@ $card-border: #e5e7eb;
       padding: 0 24px 20px 88px;
       position: relative;
 
-      // Minimal decorative line
       &::before {
         content: "";
         position: absolute;
@@ -417,7 +358,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // Keyframe Animations - subtle and smooth
   @keyframes focusRing {
     0%,
     100% {
@@ -451,8 +391,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // Responsive Design
-  // Tambahkan ini ke dalam media query @media (max-width: 768px)
   @media (max-width: 768px) {
     .profile-accordion {
       margin-top: 30px;
@@ -467,14 +405,14 @@ $card-border: #e5e7eb;
         height: 44px;
         margin-right: 14px;
         border-radius: 10px;
-        flex-shrink: 0; // ⭐ PENTING: Mencegah icon mengecil
-        min-width: 44px; // ⭐ Ukuran minimum
-        min-height: 44px; // ⭐ Ukuran minimum
+        flex-shrink: 0;
+        min-width: 44px;
+        min-height: 44px;
 
         svg {
           width: 22px;
           height: 22px;
-          flex-shrink: 0; // ⭐ Mencegah SVG mengecil
+          flex-shrink: 0;
           min-width: 22px;
           min-height: 22px;
         }
@@ -482,14 +420,14 @@ $card-border: #e5e7eb;
 
       .accordion-title {
         font-size: 1rem;
-        flex: 1; // Biarkan title yang flex, bukan icon
-        min-width: 0; // Prevent overflow
+        flex: 1;
+        min-width: 0;
       }
 
       .accordion-chevron {
         width: 28px;
         height: 28px;
-        flex-shrink: 0; // ⭐ Mencegah chevron mengecil
+        flex-shrink: 0;
         min-width: 28px;
         min-height: 28px;
 
@@ -517,7 +455,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // Tambahkan ini ke dalam media query @media (max-width: 480px)
   @media (max-width: 480px) {
     .profile-accordion {
       gap: 10px;
@@ -530,7 +467,7 @@ $card-border: #e5e7eb;
         padding: 14px 16px;
         display: flex;
         align-items: center;
-        gap: 12px; // ⭐ Pastikan ada gap yang cukup
+        gap: 12px;
       }
 
       .accordion-icon {
@@ -538,17 +475,17 @@ $card-border: #e5e7eb;
         height: 40px;
         margin-right: 12px;
         border-radius: 10px;
-        flex-shrink: 0; // ⭐ SANGAT PENTING di mobile
-        min-width: 40px; // ⭐ Ukuran minimum tetap
-        min-height: 40px; // ⭐ Ukuran minimum tetap
+        flex-shrink: 0;
+        min-width: 40px;
+        min-height: 40px;
 
         svg {
           width: 20px;
           height: 20px;
-          flex-shrink: 0; // ⭐ Mencegah SVG mengecil
+          flex-shrink: 0;
           min-width: 20px;
           min-height: 20px;
-          display: block; // Pastikan SVG ditampilkan dengan benar
+          display: block;
         }
       }
 
@@ -565,7 +502,7 @@ $card-border: #e5e7eb;
         width: 26px;
         height: 26px;
         border-radius: 7px;
-        flex-shrink: 0; // ⭐ Mencegah chevron mengecil
+        flex-shrink: 0;
         min-width: 26px;
         min-height: 26px;
 
@@ -594,18 +531,14 @@ $card-border: #e5e7eb;
       }
     }
 
-    // ⭐ FIX KHUSUS: Pastikan accordion header tidak membuat icon mengecil
     .about-section {
       .profile-accordion {
         .accordion-header {
-          // Override apapun yang bisa membuat flex item mengecil
           > * {
             &:first-child {
-              // Icon biasanya elemen pertama
               flex-shrink: 0 !important;
             }
             &:last-child {
-              // Chevron biasanya elemen terakhir
               flex-shrink: 0 !important;
             }
           }
@@ -614,7 +547,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // ⭐ TAMBAHAN: Fix untuk very small devices (320px - 360px)
   @media (max-width: 360px) {
     .profile-accordion {
       .accordion-icon {
@@ -654,18 +586,14 @@ $card-border: #e5e7eb;
     }
   }
 
-  // ⭐ GLOBAL FIX untuk semua icon di about section mobile
   @media (max-width: 768px) {
     .about-section {
-      // Pastikan semua icon container tidak mengecil
       .accordion-icon,
       .icon-container,
       .icon-wrapper,
       [class*="icon"] {
         flex-shrink: 0 !important;
       }
-
-      // Pastikan semua SVG tidak mengecil
       svg,
       i,
       .icon,
@@ -676,7 +604,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // Dark mode support
   @media (prefers-color-scheme: dark) {
     .profile-accordion {
       .accordion-item {
@@ -748,7 +675,6 @@ $card-border: #e5e7eb;
       }
     }
   }
-  // --- History Tab ---
   &__timeline {
     display: flex;
     flex-direction: column;
@@ -756,7 +682,6 @@ $card-border: #e5e7eb;
     position: relative;
     padding-left: 2rem;
 
-    // Garis vertikal timeline
     &::before {
       content: "";
       position: absolute;
@@ -784,7 +709,6 @@ $card-border: #e5e7eb;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
 
-    // Efek glossy overlay
     &::before {
       content: "";
       position: absolute;
@@ -838,7 +762,6 @@ $card-border: #e5e7eb;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
 
-        // Ring effect
         &::before {
           content: "";
           position: absolute;
@@ -888,7 +811,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Vision & Mission Tab ---
   &__vision-content {
     background: linear-gradient(135deg, #dbeafe, #e9d5ff);
     border-radius: 1.25rem;
@@ -900,7 +822,6 @@ $card-border: #e5e7eb;
     transition: all 0.4s ease;
     overflow: hidden;
 
-    // Animated border gradient
     &::before {
       content: "";
       position: absolute;
@@ -956,7 +877,6 @@ $card-border: #e5e7eb;
     position: relative;
     overflow: hidden;
 
-    // Shine effect
     &::after {
       content: "";
       position: absolute;
@@ -1007,7 +927,6 @@ $card-border: #e5e7eb;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
 
-      // Glow effect
       &::before {
         content: "";
         position: absolute;
@@ -1034,7 +953,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Structure Tab ---
   .org-chart {
     display: flex;
     flex-direction: column;
@@ -1044,7 +962,6 @@ $card-border: #e5e7eb;
     overflow-x: auto;
     position: relative;
 
-    // Animated background
     &::before {
       content: "";
       position: absolute;
@@ -1084,7 +1001,6 @@ $card-border: #e5e7eb;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
 
-    // Glossy effect
     &::before {
       content: "";
       position: absolute;
@@ -1151,7 +1067,6 @@ $card-border: #e5e7eb;
       letter-spacing: 0.2px;
     }
 
-    // Gaya khusus untuk node di level tertentu
     &.top-level {
       background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
       border: 2px solid $primary-color;
@@ -1196,7 +1111,6 @@ $card-border: #e5e7eb;
       }
     }
 
-    // Node clickable
     &.clickable {
       cursor: pointer;
 
@@ -1211,7 +1125,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Garis Penghubung (Connector Lines) dengan animasi ---
   .org-level:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -1256,7 +1169,6 @@ $card-border: #e5e7eb;
     display: none;
   }
 
-  // --- Modal Styling ---
   .member-modal-overlay {
     position: fixed;
     top: 0;
@@ -1342,7 +1254,6 @@ $card-border: #e5e7eb;
       position: relative;
       overflow: hidden;
 
-      // Animated background pattern
       &::before {
         content: "";
         position: absolute;
@@ -1479,7 +1390,6 @@ $card-border: #e5e7eb;
     }
   }
 
-  // --- Responsivitas ---
   @media (max-width: 1024px) {
     &__timeline {
       padding-left: 1.5rem;

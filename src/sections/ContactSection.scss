@@ -12,12 +12,10 @@ $input-border: #475569;
 $error-color: #f87171;
 $success-color: #34d399;
 
-// Breakpoints
 $breakpoint-desktop: 1024px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
 
-// Animasi Keyframes
 @keyframes float {
   0%,
   100% {
@@ -163,21 +161,25 @@ $breakpoint-mobile: 480px;
       margin-bottom: 2.5rem;
     }
 
-    h2 {
-      font-size: 3rem;
+    .section-header__title {
+      // Menggunakan Flexbox untuk mengatur spasi antar elemen
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem; // Spasi antara "Hubungi" dan "Kami"
+
+      font-size: 4rem;
       font-weight: 800;
-      color: $text-primary;
+      color: #000000; // Warna default (hitam) untuk "Hubungi"
       margin-bottom: 0.5rem;
       position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #070115, #01070c, #040013);
-      background-size: 200% 200%;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient-shift 3s ease infinite,
-        text-glow 2s ease-in-out infinite alternate;
 
+      // Warna untuk teks yang di-highlight
+      .highlight {
+        color: #fff; // Warna biru tua untuk "Kami"
+      }
+
+      // --- Responsive untuk ukuran font ---
       @media (max-width: $breakpoint-tablet) {
         font-size: 2.25rem;
       }
@@ -185,58 +187,14 @@ $breakpoint-mobile: 480px;
       @media (max-width: $breakpoint-mobile) {
         font-size: 1.875rem;
       }
-
       &::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(90deg, #3f1ed0, #489dec, #070115);
-        background-size: 200% 200%;
-        border-radius: 10px;
-        animation: gradient-shift 3s ease infinite,
-          pulse-width 2s ease-in-out infinite alternate;
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-
-        @media (max-width: $breakpoint-tablet) {
-          width: 80px;
-          height: 4px;
-          bottom: -8px;
-        }
-
-        @media (max-width: $breakpoint-mobile) {
-          width: 60px;
-          height: 3px;
-          bottom: -6px;
-        }
-      }
-
-      &:hover {
-        animation: gradient-shift 1s ease infinite,
-          text-glow 1s ease-in-out infinite alternate, text-bounce 0.6s ease;
-
-        &::after {
-          width: 150px;
-          animation: gradient-shift 1s ease infinite,
-            pulse-width 1s ease-in-out infinite alternate;
-
-          @media (max-width: $breakpoint-tablet) {
-            width: 120px;
-          }
-
-          @media (max-width: $breakpoint-mobile) {
-            width: 90px;
-          }
-        }
+        display: none;
       }
     }
 
     p {
       font-size: 1.2rem;
-      color: $text-secondary;
+      color: #000000;
       max-width: 600px;
       margin: 1.5rem auto 0;
       line-height: 1.8;
@@ -275,7 +233,6 @@ $breakpoint-mobile: 480px;
     }
   }
 
-  // --- Form Section ---
   &__form {
     background: rgba(1, 31, 36, 0.15);
     backdrop-filter: blur(20px);
@@ -301,7 +258,6 @@ $breakpoint-mobile: 480px;
       border-width: 1px;
     }
 
-    // Floating balls inside card
     &::before {
       content: "";
       position: absolute;
@@ -549,7 +505,6 @@ $breakpoint-mobile: 480px;
     }
   }
 
-  // --- Info Section ---
   &__info {
     background: linear-gradient(
       135deg,
@@ -807,7 +762,6 @@ $breakpoint-mobile: 480px;
   }
 }
 
-// Landscape mode untuk tablet/mobile
 @media (max-width: $breakpoint-tablet) and (orientation: landscape) {
   .contact {
     padding: 3rem 1rem;
@@ -840,7 +794,6 @@ $breakpoint-mobile: 480px;
   }
 }
 
-// Very small devices
 @media (max-width: 360px) {
   .contact {
     padding: 2.5rem 0.5rem;

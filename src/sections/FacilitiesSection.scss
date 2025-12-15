@@ -98,13 +98,12 @@ $shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.3);
   &__title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
-    margin-bottom: 1rem;
     .text-black {
       color: #000;
     }
 
     .text-blue-dark {
-      color: #1e3a8a; // biru tua (Tailwind blue-900)
+      color: #fff; // biru tua (Tailwind blue-900)
     }
 
     position: relative;
@@ -116,21 +115,9 @@ $shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.3);
     display: inline-block;
   }
 
-  &__title-underline {
-    position: absolute;
-    width: 100%;
-    bottom: -0.5rem;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, $color-primary, $color-secondary);
-    border-radius: 2px;
-    transform-origin: left;
-  }
-
   &__description {
     font-size: clamp(1rem, 2vw, 1.25rem);
-    color: $color-gray-700;
+    color: #000;
     max-width: 48rem;
     margin: 1.5rem auto 0;
     line-height: 1.8;

@@ -2,7 +2,6 @@
   padding: 100px 0;
   position: relative;
 
-  // Animated background decoration
   &::before {
     content: "";
     position: absolute;
@@ -34,52 +33,33 @@
       text-align: center;
       font-size: 2.8rem;
       margin-bottom: 60px;
-      color: #1e293b;
+      color: #000;
       position: relative;
       font-weight: 800;
       letter-spacing: -0.5px;
 
-      // ❌ HAPUS gradient text
       background: none;
       -webkit-background-clip: unset;
       -webkit-text-fill-color: unset;
       background-clip: unset;
 
-      // ✔ Responsif seperti title modern
       @media (min-width: 768px) {
         font-size: 3.75rem;
       }
 
-      // ✔ Tambahkan highlight kalau butuh
       .highlight {
-        color: #4e73df;
+        color: #fff;
       }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90px;
-        height: 4px;
-
-        background: #4e73df;
-        box-shadow: none;
-        animation: none;
-
-        border-radius: 3px;
-      }
+      
     }
   }
 
-  // Layout Flexbox untuk 1 baris dengan 4 kartu
   .programs-grid {
     display: flex;
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: stretch; // Tambahkan ini untuk memastikan semua card memiliki tinggi yang sama
+    align-items: stretch;
 
     .program-card-simple {
       background: white;
@@ -93,9 +73,6 @@
       min-width: 280px;
       position: relative;
       border: 2px solid transparent;
-      // Hapus height: 100% karena tidak diperlukan dengan align-items: stretch
-
-      // Animated border gradient
       &::before {
         content: "";
         position: absolute;
@@ -150,7 +127,6 @@
         overflow: hidden;
         position: relative;
 
-        // Overlay gradient
         &::after {
           content: "";
           position: absolute;
@@ -179,7 +155,6 @@
         flex-direction: column;
         position: relative;
 
-        // Decorative element
         &::before {
           content: "";
           position: absolute;
@@ -208,7 +183,6 @@
           transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
 
-          // Glow effect
           &::before {
             content: "";
             position: absolute;
@@ -251,7 +225,7 @@
         p {
           color: #64748b;
           margin-bottom: 25px;
-          flex-grow: 1; // Ini sudah benar untuk membuat paragraf mengisi ruang yang tersedia
+          flex-grow: 1;
           line-height: 1.8;
           font-size: 1rem;
           letter-spacing: 0.2px;
@@ -275,9 +249,8 @@
           z-index: 10;
           overflow: hidden;
           box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
-          margin-top: auto; // Tambahkan ini untuk memastikan tombol selalu di bagian bawah card
+          margin-top: auto;
 
-          // Shine effect
           &::before {
             content: "";
             position: absolute;
@@ -294,7 +267,6 @@
             transition: left 0.6s ease;
           }
 
-          // Ripple effect container
           &::after {
             content: "";
             position: absolute;
@@ -331,7 +303,6 @@
         }
       }
 
-      // Hover effect untuk card content
       &:hover .card-content {
         &::before {
           opacity: 1;
@@ -350,7 +321,6 @@
   }
 }
 
-// Responsive untuk tampilan mobile
 @media (max-width: 1200px) {
   .programs-simple {
     padding: 80px 0;
@@ -409,7 +379,6 @@
   }
 }
 
-// Modal styles
 .kompetensi-modal-overlay {
   position: fixed;
   top: 0;
@@ -456,7 +425,6 @@
       }
     }
 
-    // Custom scrollbar
     &::-webkit-scrollbar {
       width: 8px;
     }
@@ -520,7 +488,6 @@
       position: relative;
       overflow: hidden;
 
-      // Animated background pattern
       &::before {
         content: "";
         position: absolute;
@@ -655,7 +622,6 @@
             position: relative;
             overflow: hidden;
 
-            // Hover shine effect
             &::before {
               content: "";
               position: absolute;
@@ -780,7 +746,6 @@
   }
 }
 
-// Responsive untuk modal
 @media (max-width: 768px) {
   .kompetensi-modal-overlay {
     padding: 15px;

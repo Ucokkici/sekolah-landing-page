@@ -7,7 +7,6 @@ import akl from "../assets/akl.jpg"
 import otkp from "../assets/otkp.avif"
 import br from "../assets/br.avif"
 
-// Interface definitions
 interface Program {
   id: number;
   title: string;
@@ -18,7 +17,7 @@ interface Program {
 }
 
 const ProgramSection = () => {
-  const navigate = useNavigate(); // Hook untuk navigasi programmatic
+  const navigate = useNavigate();
 
   const programs: Program[] = [
     {
@@ -83,9 +82,8 @@ const ProgramSection = () => {
     },
   ];
 
-  // Handler untuk navigasi ke halaman kompetensi
   const handleNavigateToKompetensi = (programId: number) => {
-    console.log(`Navigating to kompetensi/${programId}`); // Debugging
+    console.log(`Navigating to kompetensi/${programId}`);
     navigate(`/kompetensi/${programId}`);
   };
 
@@ -96,7 +94,6 @@ const ProgramSection = () => {
           Skema <span className="highlight">Sertifikasi</span>
         </h2>
 
-        {/* Grid untuk menampilkan kartu tanpa Swiper */}
         <div className="programs-grid">
           {programs.map((program) => (
             <div key={program.id} className="program-card-simple">
@@ -108,7 +105,6 @@ const ProgramSection = () => {
                 <h3>{program.title}</h3>
                 <p>{program.description}</p>
 
-                {/* TOMBOL NAVIGASI */}
                 <div className="button-container">
                   <button
                     className="card-button"

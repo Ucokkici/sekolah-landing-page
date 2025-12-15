@@ -27,7 +27,6 @@ const TestimonialsSection = () => {
 
     if (!section || !title) return;
 
-    // Title animation
     gsap.from(title, {
       opacity: 0,
       y: 30,

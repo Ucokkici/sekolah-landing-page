@@ -30,7 +30,6 @@ import ulfah from "../assets/ulfah.jpeg";
 import rumiyati from "../assets/rumiyati.jpeg";
 import murfidah from "../assets/mufidah.jpeg";
 
-// --- 1. DEFINISIKAN TIPE DATA UNTUK ANGGOTA ---
 interface MemberDetail {
   id: string;
   name: string;
@@ -45,15 +44,12 @@ interface MemberDetail {
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("profile");
 
-  // --- 2. GUNAKAN TIPE DATA UNTUK STATE SELECTED MEMBER ---
   const [selectedMember, setSelectedMember] = useState<MemberDetail | null>(
     null
   );
 
-  // --- STATE FOR ACCORDION ---
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
-  // --- DATA PROFIL BARU (TANPA "NAMA") ---
   const profileData = [
     {
       title: "Jenis & Fungsi",
@@ -94,10 +90,10 @@ const AboutSection = () => {
   ];
 
   const stats = [
-    { icon: Users, value: "1000+", label: "Siswa Aktif" },
-    { icon: GraduationCap, value: "80+", label: "Tenaga Pendidik" },
-    { icon: Award, value: "50+", label: "Prestasi" },
-    { icon: Building2, value: "4", label: "Kompetensi Keahlian" },
+    { icon: Users, value: "4228", label: "Asesi" },
+    { icon: GraduationCap, value: "20+", label: "Asesor" },
+    { icon: Award, value: "2961", label: "Sertifikat Terbit" }, 
+    { icon: Building2, value: "6", label: "Skema Sertifikasi" },
   ];
 
   const lspMissions = [
@@ -115,7 +111,6 @@ const AboutSection = () => {
     { id: "structure", label: "Struktur Organisasi", icon: Building2 },
   ];
 
-  // --- 3. DATA DETAIL ANGGOTA DENGAN TIPE YANG JELAS ---
   const memberDetails: Record<string, MemberDetail> = {
     "Sahri, M.Pd.": {
       id: "sahri",
@@ -228,7 +223,6 @@ const AboutSection = () => {
     },
   };
 
-  // --- 4. TAMBAHKAN TIPE PADA PARAMETER FUNGSI ---
   const handleMemberClick = (memberName: string) => {
     if (memberDetails[memberName]) {
       setSelectedMember(memberDetails[memberName]);
@@ -239,7 +233,6 @@ const AboutSection = () => {
     setSelectedMember(null);
   };
 
-  // --- FUNGSI UNTUK MENANGANI ACCORDION ---
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
@@ -417,12 +410,11 @@ const AboutSection = () => {
           transition={{ duration: 0.5 }}
           className="about-section__tab-content"
         >
-          {/* PROFILE TAB DENGAN ACCORDION */}
           {activeTab === "profile" && (
             <div className="about-section__profile">
               <h2>
                 <School />
-               Profil LSP SMKN 17
+                Profil LSP SMKN 17
               </h2>
 
               <div className="profile-accordion">
@@ -547,12 +539,23 @@ const AboutSection = () => {
                   </div>
                   <p>
                     LSP SMKN 17 Jakarta bekerja sama dengan 13 satuan pendidikan
-                    di wilayah Jakarta Barat, yaitu: SMKN 17 Jakarta, SMK Islam
-                    Perti, SMK Islam Fatahilah, SMK Kristen Rahmani, SMK Strada,
-                    SMK Santo Leo, SMK Putra Mandiri, SMK Tanjung, SMK Tri
-                    Ratna, SMK Tomang Raya, SMK Yadika 2, SKB Negeri 05, dan SKB
-                    Negeri 24.
+                    di wilayah Jakarta Barat, yaitu:
                   </p>
+                  <ol className="styled-numbered-list">
+                    <li>1. SMKN 17 Jakarta</li>
+                    <li>2. SMK Islam Perti</li>
+                    <li>3. SMK Islam Fatahilah</li>
+                    <li>4. SMK Kristen Rahmani</li>
+                    <li>5. SMK Strada</li>
+                    <li>6. SMK Santo Leo</li>
+                    <li>7. SMK Putra Mandiri</li>
+                    <li>8. SMK Tanjung</li>
+                    <li>9. SMK Tri Ratna</li>
+                    <li>10. SMK Tomang Raya</li>
+                    <li>11. SMK Yadika 2</li>
+                    <li>12. SKB Negeri 05</li>
+                    <li>13. SKB Negeri 24</li>
+                  </ol>
                 </div>
 
                 {/* SECTION 5 */}

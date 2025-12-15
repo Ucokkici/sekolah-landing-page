@@ -19,7 +19,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 
-  // Animated background decoration
   &::before {
     content: "";
     position: absolute;
@@ -50,7 +49,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
     }
   }
 
-  // Floating shapes decoration
   &::after {
     content: "";
     position: absolute;
@@ -111,7 +109,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
       position: relative;
       display: inline-block;
 
-      // Gradient text effect
       background: linear-gradient(135deg, $text-color, $primary-color);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -180,7 +177,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
 
-      // Ripple effect background
       &::before {
         content: "";
         position: absolute;
@@ -341,7 +337,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
 
-      // Glow effect
       &::before {
         content: "";
         position: absolute;
@@ -414,7 +409,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
   }
 }
 
-// Swiper customization
 .testimonial-swiper {
   padding: 20px 0 40px;
 
@@ -425,7 +419,6 @@ $shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.2);
   }
 }
 
-// Responsive Design
 @media (max-width: 1024px) {
   .testimonials {
     padding: 80px 0;

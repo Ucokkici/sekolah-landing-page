@@ -47,7 +47,6 @@ const ContactSection = () => {
     },
   });
 
-  // Variabel animasi untuk container
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,7 +57,6 @@ const ContactSection = () => {
     },
   };
 
-  // Variabel animasi untuk item
   const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
@@ -67,29 +65,6 @@ const ContactSection = () => {
       transition: {
         duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1.0],
-      },
-    },
-  };
-
-  // Variabel animasi untuk floating balls
-  const floatingBallVariants: Variants = {
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const floatingBallVariants2: Variants = {
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
       },
     },
   };
@@ -108,7 +83,9 @@ const ContactSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <h2>Hubungi Kami</h2>
+          <h2 className="section-header__title">
+            Hubungi <span className="highlight">Kami</span>
+          </h2>
           <p>Informasi lebih lanjut atau pendaftaran siswa baru</p>
         </motion.div>
 
@@ -209,19 +186,6 @@ const ContactSection = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            {/* Floating Balls untuk Info Card */}
-            <motion.div
-              className="floating-ball floating-ball-3"
-              variants={floatingBallVariants}
-              animate="animate"
-              style={{ animationDelay: "1s" }}
-            />
-            <motion.div
-              className="floating-ball floating-ball-4"
-              variants={floatingBallVariants2}
-              animate="animate"
-              style={{ animationDelay: "0.5s" }}
-            />
 
             <h3>Informasi Kontak</h3>
             <p>
