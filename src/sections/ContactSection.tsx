@@ -10,6 +10,7 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 import "./ContactSection.scss";
+import { MailOpen } from "lucide-react";
 
 interface FormValues {
   name: string;
@@ -83,6 +84,18 @@ const ContactSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="contact__hero-icon"
+          >
+            <div className="icon-container">
+              <MailOpen />
+            </div>
+          </motion.div>
+
           <h2 className="section-header__title">
             Hubungi <span className="highlight">Kami</span>
           </h2>
@@ -186,7 +199,6 @@ const ContactSection = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-
             <h3>Informasi Kontak</h3>
             <p>
               Hubungi kami untuk informasi lebih lanjut tentang pendaftaran dan
@@ -225,14 +237,15 @@ const ContactSection = () => {
 
             <div className="map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5212609228336!2d106.81656231476838!3d-6.194741495515438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sJakarta!5e0!3m2!1sen!2sid!4v1627999999999!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.545977120131!2d106.79695397499003!3d-6.191451193796126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f693c75dbed3%3A0xc6569c9cca3d85fc!2sSMK%20Negeri%2017%20Jakarta!5e0!3m2!1sen!2sid!4v1766007355959!5m2!1sen!2sid"
                 width="100%"
                 height="200"
                 style={{ border: 0 }}
-                allowFullScreen={true}
+                allowFullScreen
                 loading="lazy"
-                title="Map"
-              ></iframe>
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Map SMKN 17 Jakarta"
+              />
             </div>
           </motion.div>
         </motion.div>

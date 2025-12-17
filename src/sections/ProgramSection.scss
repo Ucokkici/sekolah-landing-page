@@ -1,26 +1,23 @@
+$primary-color: #3b82f6;
+$secondary-color: #9333ea;
+$accent-color: #ec4899;
+$text-color: #1f2937;
+$text-light: #6b7280;
+$bg-gradient-start: #fdf2f8;
+$bg-gradient-end: #e0e7ff;
+$card-bg: rgba(255, 255, 255, 0.95);
+$card-border: #e5e7eb;
+@mixin card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@mixin card-shadow-hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
 .programs-simple {
   padding: 100px 0;
   position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-        circle at 10% 20%,
-        rgba(78, 115, 223, 0.03) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 90% 80%,
-        rgba(54, 185, 204, 0.03) 0%,
-        transparent 50%
-      );
-    pointer-events: none;
-  }
 
   .container {
     max-width: 1400px;
@@ -29,34 +26,102 @@
     position: relative;
     z-index: 1;
 
+    // ============================================
+    // TAMBAHKAN GAYA UNTUK IKON AWARD
+    // ============================================
+    .programs-simple__hero-icon {
+      display: flex;
+      justify-content: center; // Menengahkan ikon secara horizontal
+      margin-bottom: 1.5rem; // Jarak antara ikon dan judul (h2)
+
+      .icon-container {
+        width: 6rem;
+        height: 6rem;
+        background: linear-gradient(
+          to bottom right,
+          $primary-color,
+          $secondary-color
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          width: 3rem;
+          height: 3rem;
+          color: white;
+        }
+      }
+    }
+
     h2 {
       text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 60px;
-      color: #000;
-      position: relative;
+      font-size: clamp(2.9rem, 5vw, 4rem);
       font-weight: 800;
+      color: $text-color;
+      margin-bottom: 2rem;
       letter-spacing: -0.5px;
 
-      background: none;
-      -webkit-background-clip: unset;
-      -webkit-text-fill-color: unset;
-      background-clip: unset;
-
-      @media (min-width: 768px) {
-        font-size: 3.75rem;
+      @media (max-width: 768px) {
+        line-height: 1.2;
       }
 
       .highlight {
         color: #fff;
       }
-      
+    }
+  }
+
+  // ... sisanya tidak berubah
+
+  .scheme-section {
+    .description-card {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 2rem 2.5rem;
+      margin: 0 auto 4rem auto;
+      max-width: 42rem;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(180deg, #3b82f6, #60a5fa);
+      }
+    }
+
+    &__description {
+      color: $text-color;
+      max-width: 48rem; // batasi lebar agar enak dibaca
+
+      margin: 0 auto; // ⬅️ ini yang memusatkan blok
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        padding: 0 1rem; // aman biar tidak mepet layar
+      }
     }
   }
 
   .programs-grid {
     display: flex;
     gap: 2rem;
+    margin-top: 4rem;
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
@@ -325,10 +390,6 @@
   .programs-simple {
     padding: 80px 0;
 
-    .container h2 {
-      font-size: 2.4rem;
-    }
-
     .programs-grid {
       gap: 1.75rem;
 
@@ -356,11 +417,6 @@
 
     .container {
       padding: 0 15px;
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 40px;
-      }
     }
 
     .programs-grid {
@@ -851,11 +907,6 @@
 @media (max-width: 480px) {
   .programs-simple {
     padding: 40px 0;
-
-    .container h2 {
-      font-size: 1.75rem;
-      margin-bottom: 30px;
-    }
 
     .programs-grid {
       gap: 1.5rem;

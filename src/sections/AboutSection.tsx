@@ -4,7 +4,6 @@ import {
   School,
   History,
   Eye,
-  Target,
   Building2,
   Users,
   GraduationCap,
@@ -92,7 +91,7 @@ const AboutSection = () => {
   const stats = [
     { icon: Users, value: "4228", label: "Asesi" },
     { icon: GraduationCap, value: "20+", label: "Asesor" },
-    { icon: Award, value: "2961", label: "Sertifikat Terbit" }, 
+    { icon: Award, value: "2961", label: "Sertifikat Terbit" },
     { icon: Building2, value: "6", label: "Skema Sertifikasi" },
   ];
 
@@ -412,11 +411,6 @@ const AboutSection = () => {
         >
           {activeTab === "profile" && (
             <div className="about-section__profile">
-              <h2>
-                <School />
-                Profil LSP SMKN 17
-              </h2>
-
               <div className="profile-accordion">
                 {profileData.map((item, index) => (
                   <motion.div
@@ -471,8 +465,6 @@ const AboutSection = () => {
 
           {activeTab === "history" && (
             <div className="about-section__history">
-              <h2>Sejarah LSP SMKN 17 Jakarta</h2>
-
               <div className="about-section__timeline">
                 {/* SECTION 1 */}
                 <div className="about-section__timeline-item">
@@ -496,7 +488,7 @@ const AboutSection = () => {
                 {/* SECTION 2 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">2019–2025</div>
+                    <div className="year-badge">Masa</div>
                     <h3>Pelaksanaan Sertifikasi</h3>
                   </div>
                   <p>
@@ -534,7 +526,7 @@ const AboutSection = () => {
                 {/* SECTION 4 */}
                 <div className="about-section__timeline-item">
                   <div className="timeline-header">
-                    <div className="year-badge">Kemitraan</div>
+                    <div className="year-badge">Mitra</div>
                     <h3>Jejaring Kerja Sama</h3>
                   </div>
                   <p>
@@ -599,10 +591,7 @@ const AboutSection = () => {
                 transition={{ delay: 0.2 }}
                 className="about-section__vision"
               >
-                <h2>
-                  <Eye />
-                  Visi
-                </h2>
+                <h2>Visi</h2>
                 <div className="about-section__vision-content">
                   <p>
                     Terwujudnya Lembaga Sertifikasi Profesi yang menjamin
@@ -619,10 +608,7 @@ const AboutSection = () => {
                 transition={{ delay: 0.4 }}
                 className="about-section__mission"
               >
-                <h2>
-                  <Target />
-                  Misi
-                </h2>
+                <h2>Misi</h2>
                 <div className="about-section__mission-list">
                   {lspMissions.map((mission, index) => (
                     <motion.div
@@ -644,10 +630,6 @@ const AboutSection = () => {
 
           {activeTab === "structure" && (
             <div className="about-section__structure">
-              <h2>
-                <Building2 />
-                Struktur Organisasi LSP
-              </h2>
               <div className="org-chart">
                 <div className="org-level">
                   <div

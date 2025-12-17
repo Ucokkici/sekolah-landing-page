@@ -1,5 +1,7 @@
 @use "sass:color";
 
+$icon-primary: #3b82f6;
+$icon-secondary: #9333ea;
 $bg-primary: #0f172a;
 $bg-secondary: #1e293b;
 $bg-card: #334155;
@@ -119,6 +121,32 @@ $breakpoint-mobile: 480px;
   }
   75% {
     transform: translateX(10px);
+  }
+}
+
+.contact__hero-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  .icon-container {
+    width: 6rem;
+    height: 6rem;
+    background: linear-gradient(
+      to bottom right,
+      $icon-primary,
+      $icon-secondary
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: white;
+    }
   }
 }
 

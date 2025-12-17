@@ -57,7 +57,7 @@ const Header = () => {
                 <FaPhone /> (021) 5484134
               </p>
               <p>
-                <FaEnvelope /> info@smkn17jkt.sch.id
+                <FaEnvelope /> lspsmkn17jakarta@gmail.com
               </p>
             </div>
             <div className="top-bar__right">
@@ -114,17 +114,28 @@ const Header = () => {
                     Beranda
                   </RouterLink>
                 </motion.li>
-                
+
                 <motion.li
                   className="nav-item-dropdown"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="dropdown-toggle" onClick={toggleAboutDropdown}>
+                  <div
+                    className="dropdown-toggle"
+                    onClick={toggleAboutDropdown}
+                  >
                     <span>Tentang</span>
-                    <FaChevronDown className={`dropdown-icon ${aboutDropdownOpen ? 'open' : ''}`} />
+                    <FaChevronDown
+                      className={`dropdown-icon ${
+                        aboutDropdownOpen ? "open" : ""
+                      }`}
+                    />
                   </div>
-                  <ul className={`dropdown-menu ${aboutDropdownOpen ? 'open' : ''}`}>
+                  <ul
+                    className={`dropdown-menu ${
+                      aboutDropdownOpen ? "open" : ""
+                    }`}
+                  >
                     <li>
                       <RouterLink
                         to="/tentang/profil"
@@ -171,7 +182,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </motion.li>
-                
+
                 <motion.li
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -181,7 +192,7 @@ const Header = () => {
                     Program
                   </RouterLink>
                 </motion.li>
-                
+
                 <motion.li
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -191,7 +202,7 @@ const Header = () => {
                     Fasilitas
                   </RouterLink>
                 </motion.li>
-                
+
                 <motion.li
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

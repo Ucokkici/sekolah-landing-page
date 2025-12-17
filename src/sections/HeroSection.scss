@@ -1,51 +1,23 @@
-// Modern Theme Variables (Transparent Background)
+// Modern Theme Variables
 $primary-color: #ffffff;
 $secondary-color: #1e293b;
 $accent-color: #3b82f6;
 $text-color: #f8fafc;
 $text-light: #cbd5e1;
-$border-color: #334155;
 
 // Mixins
-@mixin card-shadow {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
 @mixin transition($property: all, $duration: 0.2s) {
   transition: $property $duration ease;
 }
 
 // Animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+@keyframes blink-cursor {
+  from,
   to {
     opacity: 1;
-    transform: translateY(0);
   }
-}
-
-@keyframes fadeInLeft {
-  from {
+  50% {
     opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -69,11 +41,9 @@ $border-color: #334155;
   }
 }
 
-// ============================================
-// HERO SECTION - TRANSPARENT WITH ANIMATIONS
-// ============================================
+// Hero Section
 .hero {
-  background: transparent; // Uses App.jsx background
+  background: transparent;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -84,12 +54,7 @@ $border-color: #334155;
 
   @media (max-width: 768px) {
     min-height: 100vh;
-    min-height: -webkit-fill-available;
     padding: 4rem 0 3rem;
-  }
-
-  @media (max-width: 480px) {
-    padding: 3rem 0 2rem;
   }
 
   // Container
@@ -104,10 +69,6 @@ $border-color: #334155;
     @media (max-width: 768px) {
       padding: 0 1.5rem;
     }
-
-    @media (max-width: 480px) {
-      padding: 0 1rem;
-    }
   }
 
   // Content Layout
@@ -119,17 +80,11 @@ $border-color: #334155;
     gap: 4rem;
 
     @media (max-width: 1024px) {
-      gap: 3rem;
     }
 
     @media (max-width: 768px) {
       flex-direction: column;
       text-align: center;
-      gap: 2.5rem;
-    }
-
-    @media (max-width: 480px) {
-      gap: 2rem;
     }
   }
 
@@ -137,56 +92,56 @@ $border-color: #334155;
   &__text-wrapper {
     flex: 1;
     max-width: 600px;
-    animation: fadeInLeft 0.8s ease-out;
 
     @media (max-width: 768px) {
       max-width: 100%;
       order: 2;
-      animation: fadeInUp 0.8s ease-out;
     }
   }
-
-  // Heading
+  // Heading dengan animasi kursor
   h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     color: $primary-color;
-    margin-top: 5rem; // Increased spacing
+    margin-top: 5rem;
     font-weight: 700;
     line-height: 1.2;
     position: relative;
-    padding-bottom: 2rem; // Increased spacing
+    padding-bottom: 2rem;
     text-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
-    animation: fadeInUp 0.6s ease-out;
 
     @media (max-width: 768px) {
       font-size: clamp(2rem, 6vw, 2.5rem);
-      margin-bottom: 1.5rem;
       padding-bottom: 1.5rem;
+      margin-top: 0.1rem;
     }
 
-    @media (max-width: 480px) {
-      font-size: clamp(1.75rem, 7vw, 2rem);
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.25rem;
+    // Kursor mengetik
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background-color: black;
+      margin-left: 4px;
+      animation: blink-cursor 0.8s step-end infinite;
+      vertical-align: middle;
     }
 
-    // Glowing underline with animation
+    // Glowing underline
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 80px;
+      width: 350px;
       height: 4px;
-      background: linear-gradient(90deg, $accent-color, #60a5fa);
-      border-radius: 2px;
+      background: linear-gradient(90deg, $accent-color, #000000);
+      border-radius: 3px;
       box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-      animation: fadeInLeft 1s ease-out 0.3s both;
 
       @media (max-width: 768px) {
         left: 50%;
         transform: translateX(-50%);
-        width: 60px;
+        width: 350px;
         height: 3px;
       }
     }
@@ -195,21 +150,14 @@ $border-color: #334155;
   // Paragraph
   p {
     font-size: 1.125rem;
-    color: $text-light;
-    margin-bottom: 2.5rem; // Increased spacing
-    line-height: 1.8; // More spacing between lines
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.8;
 
     @media (max-width: 768px) {
       font-size: 1rem;
       margin-bottom: 2rem;
       line-height: 1.7;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.9375rem;
-      margin-bottom: 1.75rem;
-      line-height: 1.6;
     }
   }
 
@@ -217,17 +165,13 @@ $border-color: #334155;
   &__cta {
     display: flex;
     gap: 1rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
-    animation: fadeInUp 1s ease-out 0.4s both;
 
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
       gap: 0.875rem;
-    }
-
-    @media (max-width: 480px) {
-      gap: 0.75rem;
     }
 
     .btn {
@@ -252,13 +196,7 @@ $border-color: #334155;
         padding: 1rem 2rem;
       }
 
-      @media (max-width: 480px) {
-        max-width: 260px;
-        padding: 0.875rem 1.75rem;
-        font-size: 0.9375rem;
-      }
-
-      // Ripple effect on hover
+      // Ripple effect
       &::before {
         content: "";
         position: absolute;
@@ -293,10 +231,9 @@ $border-color: #334155;
       }
 
       &-outline {
+        background: rgba(59, 130, 246, 0.1);
         background: linear-gradient(135deg, $accent-color 0%, #2563eb 100%);
-        border: 2px solid $accent-color;
         color: white;
-        background-color: rgba(59, 130, 246, 0.1);
 
         &:hover {
           background-color: rgba(59, 130, 246, 0.2);
@@ -308,82 +245,6 @@ $border-color: #334155;
           transform: translateY(0);
         }
       }
-    }
-  }
-
-  // Image/Illustration
-  &__image {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    animation: fadeInRight 0.8s ease-out, float 3s ease-in-out infinite 1s;
-
-    @media (max-width: 1024px) {
-      max-width: 420px;
-    }
-
-    @media (max-width: 768px) {
-      max-width: 320px;
-      order: 1;
-      margin: 0 auto;
-      animation: fadeInUp 0.8s ease-out, float 3s ease-in-out infinite 1s;
-    }
-
-    @media (max-width: 480px) {
-      max-width: 260px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 8px 24px rgba(59, 130, 246, 0.3));
-      @include transition(filter);
-      border-radius: 12px;
-    }
-
-    &:hover img {
-      filter: drop-shadow(0 12px 32px rgba(59, 130, 246, 0.4));
-    }
-  }
-
-  // Decorative elements with glow and animation
-  &::before {
-    content: "";
-    position: absolute;
-    top: -5%;
-    right: -3%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.15) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    filter: blur(40px);
-    animation: pulse 4s ease-in-out infinite;
-
-    @media (max-width: 1024px) {
-      width: 300px;
-      height: 300px;
-    }
-
-    @media (max-width: 768px) {
-      width: 250px;
-      height: 250px;
-      top: 10%;
-      right: -5%;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 480px) {
-      width: 180px;
-      height: 180px;
-      opacity: 0.5;
     }
   }
 
@@ -405,52 +266,10 @@ $border-color: #334155;
     filter: blur(40px);
     animation: pulse 4s ease-in-out infinite 0.5s;
 
-    @media (max-width: 1024px) {
-      width: 280px;
-      height: 280px;
-    }
-
     @media (max-width: 768px) {
       width: 220px;
       height: 220px;
-      bottom: 10%;
-      left: -5%;
       opacity: 0.7;
-    }
-
-    @media (max-width: 480px) {
-      width: 160px;
-      height: 160px;
-      opacity: 0.5;
-    }
-  }
-
-  // Large screens optimization
-  @media (min-width: 1400px) {
-    .container {
-      max-width: 1320px;
-    }
-
-    &__image {
-      max-width: 550px;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    .container {
-      max-width: 1440px;
-    }
-
-    &__image {
-      max-width: 600px;
-    }
-
-    h1 {
-      font-size: 4.5rem;
-    }
-
-    p {
-      font-size: 1.25rem;
     }
   }
 }

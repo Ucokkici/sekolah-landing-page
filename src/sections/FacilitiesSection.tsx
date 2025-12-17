@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
+import { Network } from "lucide-react";
 import {
   X,
   ZoomIn,
@@ -268,6 +269,19 @@ const FacilitiesSection = () => {
           transition={{ duration: 0.8 }}
           className="facilities__header"
         >
+          {/* TAMBAHKAN IKON DI SINI */}
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="facilities__hero-icon"
+          >
+            <div className="icon-container">
+              <Network />
+            </div>
+          </motion.div>
+
           <motion.h2
             className="facilities__title"
             animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
