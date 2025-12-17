@@ -6,64 +6,11 @@ import "../App.scss";
 const SejarahPage = () => {
   return (
     <section className="about-section">
-      <div className="about-section__rings">
-        <motion.div
-          className="absolute inset-0"
-          animate={{ backgroundPosition: ["0% 0%", "10% 10%", "0% 0%"] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
       <motion.div
         className="about-section__ken-burns"
         animate={{ scale: [1, 1.15, 1], x: [0, -20, 0], y: [0, -20, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
-
-      <div className="about-section__bubbles">
-        <motion.div
-          className="about-section__bubble about-section__bubble--1"
-          animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="about-section__bubble about-section__bubble--2"
-          animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut",
-            repeatType: "reverse",
-          }}
-        />
-      </div>
-
-      <div className="about-section__particles">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="about-section__particle"
-            style={{
-              width: `${4 + Math.random() * 8}px`,
-              height: `${4 + Math.random() * 8}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              opacity: [0.3, 0.7, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
 
       <div className="about-section__content">
         <motion.div
@@ -78,6 +25,7 @@ const SejarahPage = () => {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring" }}
+            style={{ marginTop: "100px" }}
             className="about-section__hero-icon"
           >
             <div className="icon-container">
@@ -86,7 +34,10 @@ const SejarahPage = () => {
           </motion.div>
 
           <h1 className="about-section__hero-title">
-            Sejarah <span className="highlight">Kami</span>
+            Sejarah{" "}
+            <span className="highlight" style={{ color: "#2563eb" }}>
+              Kami
+            </span>
           </h1>
           <p className="about-section__hero-description">
             Perjalanan LSP SMK Negeri 17 Jakarta sejak pendirian hingga menjadi

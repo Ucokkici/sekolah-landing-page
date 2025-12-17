@@ -256,6 +256,7 @@ const StrukturPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring" }}
             className="about-section__hero-icon"
+            style={{ marginTop: "100px" }}
           >
             <div className="icon-container">
               <Building2 />
@@ -263,7 +264,10 @@ const StrukturPage = () => {
           </motion.div>
 
           <h1 className="about-section__hero-title">
-            Struktur <span className="highlight">Organisasi</span>
+            Struktur{" "}
+            <span className="highlight" style={{ color: "#2563eb" }}>
+              Organisasi
+            </span>
           </h1>
           <p className="about-section__hero-description">
             Struktur organisasi LSP SMK Negeri 17 Jakarta yang terdiri dari

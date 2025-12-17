@@ -5,67 +5,67 @@ import { motion } from "framer-motion";
 const styles = {
   // Gaya untuk section utama
   profilPage: {
-    backgroundColor: '#f8f9fa',
-    padding: '100px 0',
-    minHeight: '100vh',
+    backgroundColor: "#f8f9fa",
+    padding: "100px 0",
+    minHeight: "100vh",
   },
   profilPage__content: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px',
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "0 20px",
   },
-  
+
   // Gaya untuk Hero Section
   profilPage__hero: {
-    textAlign: 'center' as const,
-    marginBottom: '60px',
+    textAlign: "center" as const,
+    marginBottom: "60px",
   },
   profilPage__hero_title: {
-    fontSize: '2.5rem',
-    marginBottom: '10px',
-    marginTop: '80px',
+    fontSize: "2.5rem",
+    marginBottom: "10px",
+    marginTop: "80px",
   },
   profilPage__hero_description: {
-    fontSize: '1.1rem',
-    maxWidth: '700px',
-    margin: '0 auto',
-    color: '#555',
+    fontSize: "1.1rem",
+    maxWidth: "700px",
+    margin: "0 auto",
+    color: "#555",
   },
 
   // Gaya untuk Grid Kartu
   profilPage__grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-    gap: '30px',
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+    gap: "30px",
   },
   profilPage__card: {
-    backgroundColor: '#ffffff',
-    borderRadius: '12px',
-    padding: '30px',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
-    transition: 'all 0.3s ease',
-    cursor: 'default',
+    backgroundColor: "#ffffff",
+    borderRadius: "12px",
+    padding: "30px",
+    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
+    transition: "all 0.3s ease",
+    cursor: "default",
   },
   // --- PERUBAHAN 2: Hapus gaya untuk ikon yang tidak lagi digunakan ---
   // profilPage__card_icon: { ... }
   // svgIcon: { ... }
-  
+
   profilPage__card_title: {
-    fontSize: '1.25rem',
-    fontWeight: '600',
-    marginBottom: '15px',
-    color: '#333',
+    fontSize: "1.25rem",
+    fontWeight: "600",
+    marginBottom: "15px",
+    color: "#333",
   },
   profilPage__card_content: {
-    fontSize: '1rem',
-    color: '#666',
-    lineHeight: '1.6',
+    fontSize: "1rem",
+    color: "#666",
+    lineHeight: "1.6",
   },
-  
+
   // Gaya untuk highlight
   highlight: {
-    color: '#4f46e5',
-  }
+    color: "#4f46e5",
+  },
 };
 
 // --- KOMPONEN REAKT ---

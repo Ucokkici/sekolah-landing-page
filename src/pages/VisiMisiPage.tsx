@@ -111,6 +111,7 @@ const VisiMisiPage = () => {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring" }}
+            style={{ marginTop: "100px" }}
             className="about-section__hero-icon"
           >
             <div className="icon-container">
@@ -119,10 +120,14 @@ const VisiMisiPage = () => {
           </motion.div>
 
           <h1 className="about-section__hero-title">
-            Visi & <span className="highlight">Misi</span>
+            Visi &{" "}
+            <span className="highlight" style={{ color: "#2563eb" }}>
+              Misi
+            </span>
           </h1>
           <p className="about-section__hero-description">
-            Tujuan dan arah pengembangan LSP SMK Negeri 17 Jakarta untuk masa depan.
+            Tujuan dan arah pengembangan LSP SMK Negeri 17 Jakarta untuk masa
+            depan.
           </p>
         </motion.div>
 
@@ -139,10 +144,10 @@ const VisiMisiPage = () => {
             </h2>
             <div className="about-section__vision-content">
               <p>
-                Terwujudnya Lembaga Sertifikasi Profesi yang menjamin
-                kompetensi tenaga kerja profesional, mampu bersaing di dunia
-                usaha/dunia industri yang berlandaskan iman dan taqwa, ilmu
-                pengetahuan dan teknologi.
+                Terwujudnya Lembaga Sertifikasi Profesi yang menjamin kompetensi
+                tenaga kerja profesional, mampu bersaing di dunia usaha/dunia
+                industri yang berlandaskan iman dan taqwa, ilmu pengetahuan dan
+                teknologi.
               </p>
             </div>
           </motion.div>

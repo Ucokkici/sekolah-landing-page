@@ -20,10 +20,10 @@ const HeroSection = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     const hero = heroRef.current;
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
@@ -121,7 +121,7 @@ const HeroSection = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       particlesArray.forEach((particle) => particle.remove());
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
     };
   }, [isMobile]);
 
@@ -143,13 +143,16 @@ const HeroSection = () => {
             >
               Wujudkan Kompetensi, Raih Sertifikasi Profesional
             </motion.h1>
+            <br />
             <motion.p
               ref={subtitleRef}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              LSP SMKN 17 Jakarta, lembaga sertifikasi resmi berlisensi BNSP, siap membantu Anda membuktikan keahlian dan mendapatkan pengakuan dari industri.
+              LSP SMKN 17 Jakarta, lembaga sertifikasi resmi berlisensi BNSP,
+              siap membantu Anda membuktikan keahlian dan mendapatkan pengakuan
+              dari industri.
             </motion.p>
             <motion.div
               ref={ctaRef}
