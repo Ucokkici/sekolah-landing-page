@@ -1,0 +1,582 @@
+// --- VARIABEL WARNA (COLOR PALETTE) ---
+$primary-color: #4f46e5; // Indigo Modern
+$primary-hover: #4338ca;
+$success-color: #10b981; // Emerald Green
+$warning-color: #f59e0b; // Amber
+$danger-color: #ef4444; // Red
+$info-color: #3b82f6; // Blue
+
+$bg-page: #f8fafc; // Latar belakang halaman (Slate 50)
+$bg-card: #ffffff; // Latar belakang kartu
+$bg-hover: #f1f5f9; // Warna saat hover
+
+$text-main: #1e293b; // Text utama (Slate 800)
+$text-muted: #64748b; // Text sekunder (Slate 500)
+$border-color: #e2e8f0; // Border halus
+
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+$font-family: "Inter", system-ui, -apple-system, sans-serif;
+
+// --- RESET & GLOBAL ---
+.admin-page {
+  margin-top: 7rem;
+  font-family: $font-family;
+  background-color: $bg-page;
+  color: $text-main;
+  padding: 2rem;
+  min-height: 100vh;
+
+  // Loading State
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    color: $text-muted;
+  }
+
+  &__spinner {
+    border: 3px solid $border-color;
+    border-top: 3px solid $primary-color;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  // Error State
+  &__error {
+    padding: 1.5rem;
+    background-color: #fef2f2;
+    color: $danger-color;
+    border: 1px solid #fecaca;
+    border-radius: $radius-md;
+    text-align: center;
+  }
+
+  // Judul Halaman
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $text-main;
+    margin-bottom: 0.25rem;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// --- HEADER SECTION ---
+.admin-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.filter-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #fffbeb;
+  color: $warning-color;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid #fcd34d;
+  margin-top: 0.5rem;
+
+  strong {
+    color: #b45309;
+  }
+}
+
+// --- FILTERS & SEARCH ---
+.admin-page__filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: $bg-card;
+  padding: 1.25rem;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.search-box {
+  flex: 1;
+}
+
+.role-box {
+  width: 200px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.input-search,
+.select-role {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  font-size: 0.875rem;
+  color: $text-main;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  font-family: $font-family;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+// --- BUTTONS ---
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: $radius-md;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  user-select: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Size Variants
+  &.sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  // Style Variants
+  &.reset {
+    background-color: transparent;
+    color: $text-muted;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $bg-hover;
+      color: $text-main;
+    }
+  }
+
+  &.info {
+    background-color: #eff6ff;
+    color: $info-color;
+
+    &:hover {
+      background-color: #dbeafe;
+    }
+  }
+
+  &.approve {
+    background-color: #ecfdf5;
+    color: $success-color;
+
+    &:hover {
+      background-color: #d1fae5;
+    }
+  }
+
+  &.reject {
+    background-color: #fef2f2;
+    color: $danger-color;
+
+    &:hover {
+      background-color: #fee2e2;
+    }
+  }
+}
+
+// --- TABLE SECTION ---
+.admin-page__table-container {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow-x: auto; // 🔥 tambahkan ini untuk scroll horizontal
+  -webkit-overflow-scrolling: touch; // 🔥 smooth scroll di mobile
+  border: 1px solid $border-color;
+  width: 100%; // pastikan full width
+
+  // Optional: tambahkan padding untuk scroll bar agar terlihat lebih rapi
+  padding-bottom: 0.5rem;
+
+  // scroll bar styling tetap bisa dipakai
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+}
+
+.admin-page__table {
+  min-width: 600px; // 🔥 pastikan tabel punya min-width agar scroll muncul
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  thead {
+    background-color: #f8fafc;
+
+    th {
+      text-align: left;
+      padding: 1rem 1.5rem;
+      color: $text-muted;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $border-color;
+      transition: background-color 0.15s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f8fafc;
+      }
+    }
+
+    td {
+      padding: 1rem 1.5rem;
+      color: $text-main;
+      vertical-align: middle;
+    }
+  }
+}
+
+// --- BADGES (STATUS) ---
+.admin-page__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &--pending {
+    background-color: #fffbeb;
+    color: #d97706;
+  }
+
+  &--approved {
+    background-color: #ecfdf5;
+    color: #059669;
+  }
+
+  &--rejected {
+    background-color: #fef2f2;
+    color: #dc2626;
+  }
+}
+
+// --- MODAL STYLING ---
+.modal-overlay {
+  margin-top: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.6); // Backdrop lebih gelap untuk fokus
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px); // Efek blur modern
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// --- PAGINATION STYLES ---
+.admin-page__pagination {
+  display: flex;
+
+  /** 🔥 DIUBAH */
+  justify-content: center;
+
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  /** 🔥 TAMBAHAN */
+  gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pagination-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .btn-secondary {
+    background: white;
+    border: 1px solid $border-color;
+    color: $text-main;
+    min-width: 40px;
+    height: 36px;
+
+    &:hover:not(:disabled) {
+      background-color: $bg-hover;
+      border-color: $text-muted;
+    }
+  }
+
+  .btn-primary {
+    background-color: $primary-color;
+    color: white;
+    border-color: $primary-color;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+}
+
+.modal-container {
+  background: $bg-card;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh; // Agar tidak keluar layar
+  overflow-y: auto;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: $text-main;
+    font-weight: 600;
+  }
+
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $text-muted;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    line-height: 1;
+
+    &:hover {
+      background-color: #f1f5f9;
+      color: $danger-color;
+    }
+  }
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.875rem;
+    color: $text-main;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f5f9;
+  }
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  align-items: flex-start;
+
+  .label {
+    color: $text-muted;
+    width: 40%;
+    font-weight: 500;
+  }
+
+  .value {
+    font-weight: 600;
+    color: $text-main;
+    width: 60%;
+    text-align: right;
+    word-break: break-word;
+  }
+}
+
+// Badge di dalam modal
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  &.badge-role {
+    background: #e2e8f0;
+    color: #475569;
+  }
+  &.badge-pending {
+    background: #fffbeb;
+    color: #b45309;
+  }
+  &.badge-approved {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  &.badge-rejected {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Custom Scrollbar untuk Modal & Table Container
+.modal-container,
+.admin-page__table-container {
+  // Style scrollbar agar lebih cantik di modern browsers
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+}

@@ -1,7 +1,8 @@
+// File: src/components/Header/Header.tsx
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll"; // Dipakai untuk logo
-import { Link as RouterLink } from "react-router-dom"; // Dipakai untuk navigasi utama
+import { motion, AnimatePresence } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
@@ -12,7 +13,11 @@ import {
   FaTiktok,
   FaYoutube,
   FaChevronDown,
+  FaUser,
+  FaSignOutAlt,
+  FaTachometerAlt,
 } from "react-icons/fa";
+import { useAuth } from "../../contexts/AuthContext";
 import "./Header.scss";
 
 import logo from "../../assets/lsp logo.png";
@@ -21,6 +26,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+
+  const { user, logout, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,10 +50,42 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+    setAboutDropdownOpen(false);
+    setUserDropdownOpen(false);
   };
 
   const toggleAboutDropdown = () => {
     setAboutDropdownOpen(!aboutDropdownOpen);
+  };
+
+  const toggleUserDropdown = () => {
+    setUserDropdownOpen(!userDropdownOpen);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    closeMenu();
+    navigate("/");
+  };
+
+  const handleDashboardClick = () => {
+    if (user) {
+      closeMenu();
+      navigate(`/${user.role}/dashboard`);
+    }
+  };
+
+  const getRoleName = (role: string) => {
+    switch (role) {
+      case "admin":
+        return "Admin";
+      case "asesi":
+        return "Asesi";
+      case "asesor":
+        return "Asesor";
+      default:
+        return role;
+    }
   };
 
   return (
@@ -63,12 +104,44 @@ const Header = () => {
             <div className="top-bar__right">
               <span>Follow Us :</span>
               <div className="social-icons">
-                <FaPhone />
-                <FaEnvelope />
-                <FaInstagram />
-                <FaFacebook />
-                <FaTiktok />
-                <FaYoutube />
+                <a href="tel:+622154841134" aria-label="Phone">
+                  <FaPhone />
+                </a>
+                <a href="mailto:lspsmkn17jakarta@gmail.com" aria-label="Email">
+                  <FaEnvelope />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                >
+                  <FaTiktok />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                >
+                  <FaYoutube />
+                </a>
               </div>
             </div>
           </div>
@@ -78,14 +151,14 @@ const Header = () => {
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <div className="header__content">
-            {/* Logo tetap menggunakan ScrollLink untuk scroll ke hero section */}
+            {/* Logo */}
             <motion.div
               className="logo"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <ScrollLink to="hero" spy={true} smooth={true} duration={500}>
+              <RouterLink to="/" onClick={closeMenu}>
                 <img
                   src={logo}
                   alt="SMKN 17 Jakarta Logo"
@@ -95,7 +168,7 @@ const Header = () => {
                   <h1>SMKN 17</h1>
                   <p>JAKARTA</p>
                 </div>
-              </ScrollLink>
+              </RouterLink>
             </motion.div>
 
             {/* Navigasi Utama */}
@@ -109,8 +182,7 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* --- PERUBAHAN: Gunakan RouterLink untuk navigasi halaman --- */}
-                  <RouterLink to="/#" onClick={closeMenu}>
+                  <RouterLink to="/" onClick={closeMenu}>
                     Beranda
                   </RouterLink>
                 </motion.li>
@@ -137,46 +209,22 @@ const Header = () => {
                     }`}
                   >
                     <li>
-                      <RouterLink
-                        to="/tentang/profil"
-                        onClick={() => {
-                          closeMenu();
-                          setAboutDropdownOpen(false);
-                        }}
-                      >
+                      <RouterLink to="/tentang/profil" onClick={closeMenu}>
                         Profil
                       </RouterLink>
                     </li>
                     <li>
-                      <RouterLink
-                        to="/tentang/sejarah"
-                        onClick={() => {
-                          closeMenu();
-                          setAboutDropdownOpen(false);
-                        }}
-                      >
+                      <RouterLink to="/tentang/sejarah" onClick={closeMenu}>
                         Sejarah
                       </RouterLink>
                     </li>
                     <li>
-                      <RouterLink
-                        to="/tentang/visi-misi"
-                        onClick={() => {
-                          closeMenu();
-                          setAboutDropdownOpen(false);
-                        }}
-                      >
+                      <RouterLink to="/tentang/visi-misi" onClick={closeMenu}>
                         Visi & Misi
                       </RouterLink>
                     </li>
                     <li>
-                      <RouterLink
-                        to="/tentang/struktur"
-                        onClick={() => {
-                          closeMenu();
-                          setAboutDropdownOpen(false);
-                        }}
-                      >
+                      <RouterLink to="/tentang/struktur" onClick={closeMenu}>
                         Struktur Organisasi
                       </RouterLink>
                     </li>
@@ -187,7 +235,6 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* --- PERUBAHAN: Gunakan RouterLink dengan hash --- */}
                   <RouterLink to="/#program" onClick={closeMenu}>
                     Program
                   </RouterLink>
@@ -197,7 +244,6 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* --- PERUBAHAN: Gunakan RouterLink dengan hash --- */}
                   <RouterLink to="/#fasilitas" onClick={closeMenu}>
                     Fasilitas
                   </RouterLink>
@@ -207,11 +253,80 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* --- PERUBAHAN: Gunakan RouterLink dengan hash --- */}
                   <RouterLink to="/#kontak" onClick={closeMenu}>
                     Kontak
                   </RouterLink>
                 </motion.li>
+
+                {/* Auth Menu - Desktop & Mobile */}
+                {!isAuthenticated ? (
+                  <>
+                    <motion.li
+                      className="auth-item"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <RouterLink
+                        to="/login"
+                        onClick={closeMenu}
+                        className="btn-login"
+                      >
+                        Login
+                      </RouterLink>
+                    </motion.li>
+                    <motion.li
+                      className="auth-item"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <RouterLink
+                        to="/register"
+                        onClick={closeMenu}
+                        className="btn-register"
+                      >
+                        Register
+                      </RouterLink>
+                    </motion.li>
+                  </>
+                ) : (
+                  <motion.li
+                    className="nav-item-dropdown user-dropdown"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div
+                      className="dropdown-toggle user-toggle"
+                      onClick={toggleUserDropdown}
+                    >
+                      <FaUser className="user-icon" />
+                      <div className="user-info">
+                        <span className="user-name">{user?.nama_lengkap}</span>
+                      </div>
+                      <FaChevronDown
+                        className={`dropdown-icon ${
+                          userDropdownOpen ? "open" : ""
+                        }`}
+                      />
+                    </div>
+                    <ul
+                      className={`dropdown-menu user-menu ${
+                        userDropdownOpen ? "open" : ""
+                      }`}
+                    >
+                      <li>
+                        <button onClick={handleDashboardClick}>
+                          <FaTachometerAlt /> Dashboard
+                        </button>
+                      </li>
+                      <li className="divider"></li>
+                      <li>
+                        <button onClick={handleLogout} className="logout-btn">
+                          <FaSignOutAlt /> Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </motion.li>
+                )}
               </motion.ul>
             </nav>
 

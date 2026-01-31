@@ -1,5 +1,6 @@
 @use "sass:color";
 
+// --- VARIABEL GLOBAL ---
 $primary-color: #0056b3;
 $secondary-color: #d9d6cc;
 $text-color: #333;
@@ -8,9 +9,23 @@ $bg-color: rgba(13, 181, 233, 0.35);
 $scrolled-bg-color: rgba(255, 255, 255, 0.4);
 $white: #ffffff;
 $overlay: rgba(0, 0, 0, 0.5);
+$danger-color: #ef4444;
+$border-color: #e5e7eb; // Dipindahkan ke sini agar global
+
 $transition-speed: 0.3s;
 $shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
 $shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+// Spasi
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+
+// Border Radius
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-full: 9999px;
 
 // Breakpoints
 $breakpoint-laptop: 1024px;
@@ -119,7 +134,7 @@ $breakpoint-mobile: 480px;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 2rem;
 
@@ -540,13 +555,14 @@ $breakpoint-mobile: 480px;
     }
 
     // --- DROPDOWN MOBILE ---
+    // --- DROPDOWN MOBILE (GAYA BARU LEBIH SEDERHANA) ---
     .nav-item-dropdown {
       .dropdown-toggle {
         display: flex;
         width: 100%;
-        padding: 1rem 1.5rem;
+        padding: $spacing-md $spacing-lg;
         justify-content: space-between;
-        border-radius: 12px;
+        border-radius: 0; // Tetap rata di mobile
         font-size: 1.125rem;
 
         @media (max-width: $breakpoint-mobile) {
@@ -559,7 +575,7 @@ $breakpoint-mobile: 480px;
         }
 
         &:hover {
-          background: rgba(0, 86, 179, 0.05);
+          background: rgba(0, 0, 0, 0.02); // Hover effect sangat halus
         }
 
         .dropdown-icon {
@@ -570,32 +586,29 @@ $breakpoint-mobile: 480px;
 
       .dropdown-menu {
         position: relative;
-        box-shadow: none;
-        background: rgba(0, 86, 179, 0.04);
-        margin: 0.5rem 0 0 1rem;
-        border-radius: 12px;
+        box-shadow: $shadow-md; // Tambahkan bayangan untuk efek "mengangkat"
+        background: $white; // Background putih bersih
+        margin: $spacing-sm 0 0 0; // Margin lebih kecil
+        border-radius: $border-radius-md; // Border radius yang konsisten
+        border: 1px solid $border-color; // Border yang jelas namun halus
         max-height: 0;
         opacity: 0;
-        transform: none;
-        transition: max-height 0.4s ease, opacity 0.3s ease;
-        border-left: solid 4px $primary-color;
         overflow: hidden;
-
-        @media (max-width: $breakpoint-mobile) {
-          margin: 0.5rem 0 0 0.5rem;
-        }
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        // HAPUS border-left yang mencolok
+        // border-left: solid 4px $primary-color;
 
         &.open {
           max-height: 2000px;
           opacity: 1;
-          margin-bottom: 1rem;
+          margin-bottom: $spacing-md;
         }
 
         li {
           margin-bottom: 0;
 
           &:first-child a {
-            padding-top: 1rem;
+            padding-top: $spacing-md;
 
             @media (max-width: $breakpoint-mobile) {
               padding-top: 0.875rem;
@@ -603,7 +616,7 @@ $breakpoint-mobile: 480px;
           }
 
           &:last-child a {
-            padding-bottom: 1rem;
+            padding-bottom: $spacing-md;
 
             @media (max-width: $breakpoint-mobile) {
               padding-bottom: 0.875rem;
@@ -612,76 +625,43 @@ $breakpoint-mobile: 480px;
 
           a {
             font-size: 1rem;
-            padding: 0.875rem 1.5rem;
+            padding: 0.875rem $spacing-lg;
             border-radius: 0;
             white-space: normal;
             line-height: 1.5;
+            transition: all 0.2s ease-in-out; // Transisi lebih halus
 
             @media (max-width: $breakpoint-mobile) {
               font-size: 0.95rem;
               padding: 0.75rem 1.25rem;
             }
 
+            // Gaya hover yang lebih sederhana
             &:hover {
-              padding-left: 2rem;
-              background: rgba(0, 86, 179, 0.08);
-
-              @media (max-width: $breakpoint-mobile) {
-                padding-left: 1.75rem;
-              }
+              background-color: rgba(
+                0,
+                86,
+                179,
+                0.05
+              ); // Background warna utama yang sangat transparan
+              color: $primary-color;
+              // HAPUS efek pergeseran padding
+              // padding-left: 2rem;
             }
 
             &.active {
-              background: rgba(0, 86, 179, 0.1);
+              background-color: rgba(0, 86, 179, 0.1);
               color: $primary-color;
               font-weight: 600;
             }
           }
 
+          // Pembatas yang lebih halus
           &:not(:last-child) a {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
           }
         }
       }
     }
-  }
-}
-
-// --- MOBILE OVERLAY ---
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: $overlay;
-  opacity: 0;
-  visibility: hidden;
-  transition: all $transition-speed ease;
-  z-index: 999;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: none;
-
-  &.open {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    display: block;
-  }
-}
-
-// --- SMOOTH SCROLLING ---
-html {
-  scroll-behavior: smooth;
-}
-
-body.menu-open {
-  overflow: hidden;
-
-  @media (min-width: calc($breakpoint-tablet + 1px)) {
-    overflow: auto;
   }
 }

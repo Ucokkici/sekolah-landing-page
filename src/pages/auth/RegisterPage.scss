@@ -1,0 +1,230 @@
+.register-page {
+  margin-top: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 2rem 1rem;
+
+  &__form-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: 1.875rem; // 30px
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+  }
+
+  // Progress Bar Styles
+  &__progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #e5e7eb;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+  }
+
+  &__progress-step {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0 0.5rem;
+    text-align: center;
+    flex: 1;
+
+    &__indicator {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #e5e7eb;
+      color: #9ca3af;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+    }
+
+    &__title {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      transition: color 0.3s;
+    }
+
+    &--active {
+      .register-page__progress-step__indicator {
+        background-color: #3b82f6;
+        color: #ffffff;
+      }
+      .register-page__progress-step__title {
+        color: #3b82f6;
+        font-weight: 600;
+      }
+    }
+
+    &--complete {
+      .register-page__progress-step__indicator {
+        background-color: #10b981;
+        color: #ffffff;
+      }
+      .register-page__progress-step__title {
+        color: #10b981;
+      }
+    }
+  }
+
+  // Form Styles
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__fieldset {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 1.5rem;
+
+    legend {
+      padding: 0 0.5rem;
+      font-weight: 600;
+      color: #374151;
+      font-size: 1.125rem; // 18px
+    }
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem; // 14px
+      font-weight: 500;
+      color: #374151;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.625rem 0.875rem; // 10px 14px
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+
+      &:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+      }
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem; // 24px
+
+      label {
+        display: flex;
+        align-items: center;
+        font-weight: normal;
+        cursor: pointer;
+        margin-bottom: 0;
+
+        input[type="radio"] {
+          width: auto;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+    .erro.password-errors {
+      r-text {
+        margin-top: 0.5rem;
+      }
+
+      color: #dc2626; // Merah
+      font-size: 0.75rem; // 12px
+      margin: 0;
+    }
+  }
+
+  // Confirmation Step Styles
+  &__confirmation-data {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    h4 {
+      margin-bottom: 0.5rem;
+      color: #374151;
+      font-size: 1rem;
+    }
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.875rem;
+      color: #6b7280;
+      strong {
+        color: #374151;
+        min-width: 150px;
+        display: inline-block;
+      }
+    }
+  }
+
+  // Navigation Buttons
+  &__nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+
+  &__button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: none;
+
+    &.register-page__button--primary {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    &.register-page__button--secondary {
+      background-color: #e5e7eb;
+      color: #374151;
+    }
+  }
+}

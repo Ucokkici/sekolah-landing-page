@@ -1,0 +1,479 @@
+// --- VARIABLES ---
+$primary: #3b82f6;
+$primary-light: #dbeafe;
+$success: #10b981;
+$success-light: #d1fae5;
+$warning: #f59e0b;
+$error: #ef4444;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+.pageContainer {
+  margin-top: 8rem;
+  padding: 2rem;
+  background-color: $gray-50;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.contentWrapper {
+  max-width: 90rem;
+  margin: 0 auto;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// --- FILTERS SECTION ---
+.filtersSection {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid $gray-200;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.pageTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-800;
+  margin-bottom: 0;
+}
+
+.controlsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+.searchInputWrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem; // Padding kiri buat ruang icon
+  border: 1px solid $gray-300;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: $gray-700;
+  transition: all 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  &::placeholder {
+    color: $gray-400;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $gray-400;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.filterSelectWrapper {
+  position: relative;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 250px; // Lebar fixed di desktop
+  }
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border: 1px solid $gray-300;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: $gray-700;
+  background-color: white;
+  cursor: pointer;
+  appearance: none; // Hilangkan native arrow
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.filterIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $gray-400;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+// --- LOADING & ERROR ---
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20rem;
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid $gray-200;
+  border-top: 4px solid $primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.loadingText {
+  color: $gray-600;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.errorBox {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.errorMessage {
+  color: #991b1b;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.retryButton {
+  background-color: $error;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+}
+
+// --- TABLE STYLES ---
+.tableContainer {
+  width: 100%;
+  overflow-x: auto; // Responsive scroll
+  background: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tableHead {
+  background-color: $gray-50;
+}
+
+.tableHeaderCell {
+  padding: 1rem;
+  font-weight: 700;
+  color: $gray-600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid $gray-200;
+}
+
+.tableBody {
+  // Reset border untuk body
+  td {
+    border-bottom: 1px solid $gray-200;
+  }
+}
+
+.tableRow {
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f9fafb; // Biru sangat muda saat hover
+  }
+
+  // Zebra striping (Alternatif baris genap/ganjil jika perlu)
+  &:nth-child(even) {
+    background-color: #ffffff;
+  }
+  &:nth-child(odd) {
+    background-color: #fdfdfd;
+  }
+  &:hover {
+    background-color: #f0f9ff !important; // Override zebra saat hover
+  }
+}
+
+.idCell {
+  padding: 1rem;
+  font-weight: 700;
+  color: $gray-700;
+  min-width: 60px;
+}
+
+.asesiCell {
+  padding: 0.75rem 1rem;
+  min-width: 200px;
+
+  .asesiName {
+    font-weight: 600;
+    color: $gray-900;
+    font-size: 0.9rem;
+  }
+  .asesiEmail {
+    color: $gray-500;
+    font-size: 0.8rem;
+  }
+}
+
+.skemaCell {
+  padding: 0.75rem 1rem;
+
+  .skemaName {
+    font-weight: 600;
+    color: $gray-800;
+    font-size: 0.9rem;
+  }
+  .skemaCode {
+    color: $gray-500;
+    font-size: 0.8rem;
+  }
+}
+
+.tableCell {
+  padding: 1rem;
+  color: $gray-600;
+  font-size: 0.875rem;
+}
+
+.statusCell {
+  padding: 1rem;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+
+  &--draft {
+    background-color: $gray-200;
+    color: $gray-600;
+  }
+  &--submitted {
+    background-color: $primary-light;
+    color: #1d4ed8;
+  }
+  &--in-review {
+    background-color: #fef3c7;
+    color: #d97706;
+  }
+  &--approved {
+    background-color: $success-light;
+    color: #065f46;
+  }
+  &--rejected {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+}
+
+.actionsCell {
+  padding: 0.75rem 1rem;
+  min-width: 140px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &--detail {
+    background-color: white;
+    color: $primary;
+    border-color: $primary;
+
+    &:hover {
+      background-color: $primary-light;
+    }
+  }
+
+  &--pdf {
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+      background-color: #2563eb;
+    }
+  }
+}
+
+.emptyState {
+  padding: 4rem;
+  text-align: center;
+  color: $gray-400;
+  font-style: italic;
+  font-size: 1.125rem;
+}
+
+// --- PAGINATION STYLES ---
+.paginationContainer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid $gray-200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $gray-50;
+}
+
+.paginationInfo {
+  font-size: 0.875rem;
+  color: $gray-600;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.paginationButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid $gray-300;
+  background-color: white;
+  color: $gray-700;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: $gray-100;
+  }
+}
+
+.buttonPrimary {
+  background-color: $primary;
+  color: white;
+  border-color: $primary;
+
+  &:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+}
+
+.buttonSecondary {
+  background-color: white;
+  color: $gray-700;
+}
+
+// Responsive Table
+@media (max-width: 768px) {
+  .controlsRow {
+    flex-direction: column;
+  }
+
+  .filtersSection {
+    padding: 1rem;
+  }
+
+  .table {
+    min-width: 60rem; // Force table width agar scrollable
+  }
+
+  .paginationContainer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .paginationControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

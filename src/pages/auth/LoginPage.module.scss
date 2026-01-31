@@ -1,0 +1,239 @@
+// --- VARIABEL TEMA MODERN ---
+$primary-color: #2563eb;
+$primary-hover: #1e40af; // 🔵 blue-800
+$accent-color: #8b5cf6; // violet-500
+$white: #ffffff;
+$text-color: #1f2937; // gray-800
+$muted-text: #6b7280; // gray-500
+$border-color: #e5e7eb; // gray-200
+$bg-color: #f8fafc; // gray-50
+$error-color: #dc2626; // red-600
+
+$shadow-xl:
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-button: 0 4px 14px 0 rgba(20, 184, 166, 0.3);
+
+// --- KOMPONEN HALAMAN LOGIN ---
+.login-page {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  // PERUBAHAN: Background gradien modern
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+  padding: 0 1rem;
+}
+
+// --- FORM CONTAINER ---
+.login-page__form-container {
+  width: 100%;
+  max-width: 28rem;
+  background-color: $white;
+  // PERUBAHAN: Bayangan lebih dalam dan aksen warna
+  box-shadow: $shadow-xl;
+  border-top: 4px solid $primary-color;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  // PERUBAHAN: Tambahkan efek shimmer di belakang
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+.login-page__title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: $text-color;
+  letter-spacing: -0.025em;
+}
+
+// PERUBAHAN: Tambahkan subtitle
+.subtitle {
+  text-align: center;
+  color: $muted-text;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.login-page__error-box {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: $error-color;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &::before {
+    content: "!";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: $error-color;
+    color: $white;
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+}
+
+.login-page__form-group {
+  margin-bottom: 1.5rem;
+
+  &:last-of-type {
+    margin-bottom: 2rem;
+  }
+}
+
+.login-page__label {
+  display: block;
+  color: $text-color;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.login-page__input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid $text-color;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+  }
+}
+
+.login-page__button {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  position: relative;
+  overflow: hidden;
+
+  &--primary {
+    background: linear-gradient(
+      135deg,
+      $primary-color,
+      darken($primary-color, 12%)
+    );
+
+    color: black; // 🔥 DIUBAH
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); // 🔥 DIUBAH
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); // 🔥 DIUBAH
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // 🔥 DIUBAH
+    }
+
+    &:disabled {
+      background: darken($muted-text, 10%); // 🔥 DIUBAH
+      color: rgba(255, 255, 255, 0.7);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+.login-page__register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: $muted-text;
+  font-size: 0.875rem;
+
+  a {
+    color: $primary-color;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
+}
+.login-page__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 2rem; // Separate form from links
+  border-top: 1px solid rgba(255, 255, 255, 0.1); // Slight border to separate form from links
+
+  a {
+    margin: 0 0.5rem; // Spacing between links
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: $muted-text; // Default muted gray
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+      transform: translateY(-1px);
+    }
+  }
+
+  // Tambahkan Style Khusus untuk "Lupa Password" agar berbeda
+  .login-page__link--reset {
+    border: 1px dashed $error-color; // Dashed red border
+    color: $error-color; // Red text color
+    padding: 0.5rem 1rem; // Sedikit lebar agar tombol lebih besar dan mudah di-klik
+
+    &:hover {
+      background: #fef2f2; // Light red background saat hover
+      color: #b91c1c; // Darker red pada hover
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+    }
+  }
+}
